@@ -21,9 +21,10 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="543,337,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnCancel_Click" Foreground="#FFF7F3F3">
+        <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="52" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnCancel_Click" Foreground="#FFF7F3F3">
             <Button.Effect>
                 <DropShadowEffect/>
+
             </Button.Effect>
         </Button>
         <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="218,253,0,0" VerticalAlignment="Top" Width="441" Height="36" FontSize="16">

@@ -36,5 +36,12 @@ namespace PRN212_HairHarmony
         {
             this.Close();
         }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
     }
 }

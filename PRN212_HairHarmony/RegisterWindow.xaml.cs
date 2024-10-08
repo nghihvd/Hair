@@ -35,34 +35,19 @@ namespace PRN212_HairHarmony
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> role = new List<string>();
-            role.Add("Stylist");
-            role.Add("Member");
-            role.Add("Manager");
-            this.cmbRole.ItemsSource = role;
+            
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             int role = 0;
-            if (this.cmbRole.SelectedValue.Equals("Stylist"))
-            {
-                role = 1;
-            }
-            else if (this.cmbRole.SelectedValue.Equals("Member"))
-            {
-                role = 2;
-            }
-            else if(this.cmbRole.SelectedValue.Equals("Manager"))
-            {
-                role = 3; 
-            }
+            
             if (string.IsNullOrEmpty(this.txtUsername.Text)
                 ||string.IsNullOrEmpty(this.txtPassword.Password)
                 ||string.IsNullOrEmpty(this.txtConfirmPassword.Password )
                 ||string.IsNullOrEmpty(this.txtPhoneNumber.Text)
                 || string.IsNullOrEmpty(this.txtEmail.Text)
-                || role == 0
+               
                 || string.IsNullOrEmpty(this.txtFullName.Text))
             {
                 MessageBox.Show("Please enter all your information.");
@@ -91,7 +76,7 @@ namespace PRN212_HairHarmony
             account.Email  = txtEmail.Text;
             account.AccountId = txtUsername.Text;
             account.Phone = txtPhoneNumber.Text;
-            account.RoleId = role;
+            account.RoleId = 3;
             account.Name = txtFullName.Text;
             account.CommissionRate = 0;
             bool result = accountService.RegisAccount(account);
