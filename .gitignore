@@ -1,18 +1,58 @@
-# This .gitignore is appropriate for repositories deployed to GitHub Pages and using
-# a Gemfile as specified at https://github.com/github/pages-gem#conventional
+# Visual Studio temporary files
+*.user
+*.suo
+*.userprefs
+*.tmp
 
-# Basic Jekyll gitignores (synchronize to Jekyll.gitignore)
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
 
-# Additional Ruby/bundler ignore for when you run: bundle install
-/vendor
+# Visual Studio Code files
+.vscode/
+.history/
 
-# Specific ignore for GitHub Pages
-# GitHub Pages will always use its own deployed version of pages-gem 
-# This means GitHub Pages will NOT use your Gemfile.lock and therefore it is
-# counterproductive to check this file into the repository.
-# Details at https://github.com/github/pages-gem/issues/768
-Gemfile.lock
+# Rider files
+.idea/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+!**/packages/build/*.props
+!**/packages/build/*.targets
+
+# User-specific files
+*.sln.ide
+*.sln.docstates
+
+# Logs
+*.log
+
+# Database files
+*.mdf
+*.ldf
+
+# Publish output
+publish/
+publish_output/
+
+# Thư mục chứa các file biên dịch
+*.dll
+*.exe
+*.pdb
+
+# File cấu hình không nên được kiểm soát phiên bản
+appsettings.Development.json
+appsettings.*.json
+
+# Các thư mục và file khác có thể tùy chỉnh theo nhu cầu
+# Ignore Visual Studio temporary files
+.vs/
+.vs/*
+
+# Ignore all files with the .vsidx extension
+*.vsidx
