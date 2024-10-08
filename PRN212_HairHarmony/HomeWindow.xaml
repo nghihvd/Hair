@@ -33,6 +33,11 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Button x:Name="btnFeedback" Content="View Feedback" HorizontalAlignment="Center" Margin="0,189,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>
