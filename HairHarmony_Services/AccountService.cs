@@ -20,11 +20,11 @@ namespace HairHarmony_Services
         {
             return accountRepo.getAccountByID(id);
         }
-        
+
 
         public List<Account> getAllAccounts()
         {
-           return accountRepo.getAllAccounts();
+            return accountRepo.getAllAccounts();
         }
 
         public bool RegisAccount(Account account)

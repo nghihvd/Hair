@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HairHarmony_BusinessObject
 {
@@ -7,7 +10,7 @@ namespace HairHarmony_BusinessObject
     {
         public Service()
         {
-            Appointments = new HashSet<Appointment>();
+            Orders = new HashSet<Order>();
         }
 
         public int ServiceId { get; set; }
@@ -15,6 +18,6 @@ namespace HairHarmony_BusinessObject
         public decimal? Price { get; set; }
         public int? Duration { get; set; }
 
-        public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

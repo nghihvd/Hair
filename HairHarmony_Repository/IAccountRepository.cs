@@ -9,7 +9,7 @@ namespace HairHarmony_Repository
 {
     public interface IAccountRepository
     {
-        public Account getAccountByID(String id); 
+        public Account getAccountByID(String id);
         public List<Account> getAllAccounts();
 
         public bool RegisAccount(Account account);

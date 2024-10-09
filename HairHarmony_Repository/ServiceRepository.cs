@@ -11,9 +11,9 @@ namespace HairHarmony_Repository
     public class ServiceRepository : IServiceRepository
     {
         public Service GetServiceByID(int ServiceId) => ServiceDAO.Instance.GetServiceByID(ServiceId);
-        
+
 
         public List<Service> GetServiceList() => ServiceDAO.Instance.GetServiceList();
-        
+
     }
 }

@@ -11,14 +11,14 @@ namespace HairHarmony_Services
     public class ServiceService : IServiceService
     {
         private IServiceRepository serviceRepo;
-        public ServiceService() 
+        public ServiceService()
         {
             serviceRepo = new ServiceRepository();
         }
 
         public Service GetServiceByID(int ServiceId)
         {
-         return serviceRepo.GetServiceByID(ServiceId);   
+            return serviceRepo.GetServiceByID(ServiceId);
         }
 
         public List<Service> GetServiceList()

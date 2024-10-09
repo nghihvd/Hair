@@ -9,7 +9,7 @@ namespace HairHarmony_DAOs
 {
     public class ServiceDAO
     {
-        private HairHarmonyContext dbContext;
+        private HairContext dbContext;
         private static ServiceDAO instance = null;
 
         public static ServiceDAO Instance
@@ -24,9 +24,9 @@ namespace HairHarmony_DAOs
             }
         }
 
-        public ServiceDAO() 
+        public ServiceDAO()
         {
-            dbContext = new HairHarmonyContext();
+            dbContext = new HairContext();
         }
 
         public List<Service> GetServiceList()
@@ -34,7 +34,7 @@ namespace HairHarmony_DAOs
             return dbContext.Services.ToList();
         }
 
-        public Service GetServiceByID(int ServiceId) 
+        public Service GetServiceByID(int ServiceId)
         {
             return dbContext.Services.SingleOrDefault(a => a.ServiceId.Equals(ServiceId));
         }

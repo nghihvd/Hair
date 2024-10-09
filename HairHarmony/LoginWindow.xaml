@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PRN212_HairHarmony"
+        xmlns:local="clr-namespace:HairHarmony"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" Background="#FFCAC4C1" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="LoginWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
 
         <TextBlock HorizontalAlignment="Left" Margin="206,42,0,0" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="419" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout"/>

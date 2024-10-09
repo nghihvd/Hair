@@ -9,7 +9,7 @@ namespace HairHarmony_DAOs
 {
     public class AccountDAO
     {
-        private HairHarmonyContext dbContext;
+        private HairContext dbContext;
         private static AccountDAO instance = null;
 
         public static AccountDAO Instance
@@ -26,7 +26,7 @@ namespace HairHarmony_DAOs
 
         public AccountDAO()
         {
-            dbContext = new HairHarmonyContext();
+            dbContext = new HairContext();
         }
 
         public List<Account> GetAccountList()

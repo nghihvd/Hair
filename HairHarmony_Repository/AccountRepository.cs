@@ -12,11 +12,11 @@ namespace HairHarmony_Repository
     {
 
         public Account getAccountByID(string id) => AccountDAO.Instance.SearchAccount(id);
-        
+
 
         public List<Account> getAllAccounts() => AccountDAO.Instance.GetAccountList();
 
         public bool RegisAccount(Account account) => AccountDAO.Instance.RegisAccount(account);
-        
+
     }
 }
