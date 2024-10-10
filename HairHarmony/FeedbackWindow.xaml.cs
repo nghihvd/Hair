@@ -56,8 +56,8 @@ namespace PRN212_HairHarmony
             DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
 
             string id = ((TextBlock)RowColumn.Content).Text;
-            int feedbackID = int.Parse(id);
-            Feedback feedback = feedbackService.searchFeedback(feedbackID);
+            int appointID = int.Parse(id);
+            Feedback feedback = feedbackService.getFeedbackByAppoinId(appointID);
             txtFeedback.Text = feedback.Comments;
             txtAppointmentID.Text = feedback.AppointmentId.ToString();
             pgbPoints.Value = (double)feedback.Rating;
