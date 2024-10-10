@@ -19,6 +19,8 @@ namespace PRN212_HairHarmony
     /// </summary>
     public partial class HomeManagerWindow : Window
     {
+
+        
         public HomeManagerWindow()
         {
             InitializeComponent();
@@ -33,15 +35,15 @@ namespace PRN212_HairHarmony
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
-<<<<<<< HEAD
-=======
+
         private void btnViewStylist_Click(object sender, RoutedEventArgs e)
         {
+            this.Hide();
 
         }
->>>>>>> 536afd3dac31d371ba66b7896ccda0a56997d410
+
     }
 }

@@ -1,0 +1,44 @@
+﻿<Window x:Class="PRN212_HairHarmony.ViewAppointment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRN212_HairHarmony"
+        mc:Ignorable="d"
+        Title="ViewAppointment" Height="450" Width="800">
+    <Grid Background="#FFD5EFCD" Margin="0,3,0,-3" Grid.RowSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="214*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnLogout1" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnClose1" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="View Appointments" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
+        <Button x:Name="btnBack1" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <DataGrid x:Name="dtgName1" HorizontalAlignment="Left" Height="297" Margin="50,108,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="DataGrid_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,134,0,0" Grid.Row="1" TextWrapping="Wrap" Text="AppointmentID" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="334,178,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Date Time:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="334,274,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Service Name:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="334,223,0,0" Grid.Row="1" TextWrapping="Wrap" Text="StylistID:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="334,334,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Total:" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <TextBox x:Name="txtAppointment" HorizontalAlignment="Left" Margin="500,140,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="txtDateTime" HorizontalAlignment="Left" Margin="449,181,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="txtSytlistName" HorizontalAlignment="Left" Margin="469,226,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="412,340,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238"/>
+        <ListBox x:Name="lbServiceName" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="479,240,216,82"/>
+
+    </Grid>
+</Window>
