@@ -44,13 +44,6 @@ namespace PRN212_HairHarmony
             loginWindow.Show();
         }
 
-<<<<<<< HEAD
-        
-=======
-        private void btnAppointment_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
->>>>>>> c5fb318bddada97aab5232276b8950062ed9c44e
+
     }
 }

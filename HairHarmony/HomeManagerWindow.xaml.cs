@@ -35,5 +35,6 @@ namespace PRN212_HairHarmony
         {
             this.Hide();
         }
+
     }
 }
