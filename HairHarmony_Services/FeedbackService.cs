@@ -14,9 +14,14 @@ namespace HairHarmony_Services
         public FeedbackService() {
             repository = new FeedbackRepository();
         }
-        public List<Feedback> getFeedbackById(string id)
+        public Feedback getFeedbackByAppoinId(int id)
         {
-            return repository.getFeedBacksById(id);
+            return repository.getFeedbackByAppoinId(id);
+        }
+
+        public Feedback searchFeedback(int feedbackID)
+        {
+            return repository.searchFeedback(feedbackID);
         }
     }
 }

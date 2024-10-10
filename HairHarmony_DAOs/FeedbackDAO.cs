@@ -29,17 +29,14 @@ namespace HairHarmony_DAOs
             dbContext = new HairContext();
         }
 
-        public List<Feedback> getFeedBacksById(string id)
+        public Feedback getFeedbackByAppoinId(int id)
         {
-            List <Feedback> feedbacks = dbContext.Feedbacks.ToList();
-            foreach(Feedback f in feedbacks) 
-            {
-                if (!f.CustomerId.Equals(id))
-                {
-                    feedbacks.Remove(f);
-                }
-            }
-            return feedbacks;
+            return dbContext.Feedbacks.SingleOrDefault(a => a.AppointmentId == id);
+        }
+
+        public Feedback searchFeedback(int feedbackID)
+        {
+            return dbContext.Feedbacks.SingleOrDefault(a => a.FeedbackId == feedbackID);
         }
     }
 }

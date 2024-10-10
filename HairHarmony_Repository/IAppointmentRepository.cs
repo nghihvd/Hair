@@ -12,5 +12,6 @@ namespace HairHarmony_Repository
         public List<Appointment> GetAllByStatusUnfinished();
         public Appointment GetById(int appointmentid);
         public Appointment RemoveByID(int appointmentid);
+        public List<Appointment> getAppointmentByStylistID(string stylistID);
     }
 }

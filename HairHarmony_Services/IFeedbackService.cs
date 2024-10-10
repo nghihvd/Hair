@@ -9,6 +9,8 @@ namespace HairHarmony_Services
 {
     public interface IFeedbackService
     {
-        public List<Feedback> getFeedbackById(string id);
+        public Feedback getFeedbackByAppoinId(int id);
+
+        public Feedback searchFeedback(int feedbackID);
     }
 }

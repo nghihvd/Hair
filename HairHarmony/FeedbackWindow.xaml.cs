@@ -23,10 +23,12 @@ namespace PRN212_HairHarmony
     public partial class FeedbackWindow : Window
     {
         private readonly IFeedbackService feedbackService;
+        private readonly IAppointmentService appointmentService;
         public FeedbackWindow()
         {
             InitializeComponent();
             this.feedbackService = new FeedbackService();
+            this.appointmentService = new AppointmentService();
             LoadGrid(); 
         }
 
@@ -40,18 +42,43 @@ namespace PRN212_HairHarmony
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            StylistHomeWindow stylistHomeWindow = new StylistHomeWindow();  
+            HomeStylistWindow stylistHomeWindow = new HomeStylistWindow();  
             stylistHomeWindow.Show();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            DataGrid dataGrid = sender as DataGrid;
+            DataGridRow row =
+                (DataGridRow)dataGrid.ItemContainerGenerator
+                .ContainerFromIndex(dataGrid.SelectedIndex);
+
+            DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
+
+            string id = ((TextBlock)RowColumn.Content).Text;
+            int feedbackID = int.Parse(id);
+            Feedback feedback = feedbackService.searchFeedback(feedbackID);
+            txtFeedback.Text = feedback.Comments;
+            txtAppointmentID.Text = feedback.AppointmentId.ToString();
+            pgbPoints.Value = (double)feedback.Rating;
+            tblPoint.Text = pgbPoints.Value.ToString();
 
         }
         private void LoadGrid()
         {
-            var log = Application.Current.Properties["LoggedAccount"] as Account;
-            this.dtgName.ItemsSource = feedbackService.getFeedbackById(log.AccountId).Select(a => new {a.FeedbackId });
+
+            var log = Application.Current.Properties["LoggedAccount"] as Account; // stylist acc
+            List<Appointment> appoint = appointmentService.getAppointmentByStylistID(log.AccountId);
+            List<Feedback> feedbacks = new List<Feedback>();
+            foreach(Appointment ap in appoint)
+            {
+                Feedback f = feedbackService.getFeedbackByAppoinId(ap.AppointmentId);
+                if ( f != null)
+                {
+                    feedbacks.Add(f);
+                }
+            }
+            this.dtgName.ItemsSource = feedbacks.Select(a => new {a.AppointmentId });
 
         }
 

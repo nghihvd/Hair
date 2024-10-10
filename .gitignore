@@ -57,6 +57,6 @@ appsettings.*.json
 # Ignore all files with the .vsidx extension
 *.vsidx
 
-HairHarmony/HairContext.cs
+HairHarmony_BusinessObject/HairContext.cs
 
 

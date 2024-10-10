@@ -9,6 +9,8 @@ namespace HairHarmony_Repository
 {
     public interface IFeedbackRepository
     {
-        public List<Feedback> getFeedBacksById(string id);
+        public Feedback getFeedbackByAppoinId(int id);
+
+        public Feedback searchFeedback(int feedbackID);
     }
 }
