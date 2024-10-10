@@ -36,5 +36,12 @@ namespace PRN212_HairHarmony
             this.Hide();
         }
 
+<<<<<<< HEAD
+=======
+        private void btnViewStylist_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+>>>>>>> 536afd3dac31d371ba66b7896ccda0a56997d410
     }
 }
