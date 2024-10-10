@@ -1,0 +1,49 @@
+﻿<Window x:Class="PRN212_HairHarmony.FeedbackWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRN212_HairHarmony"
+        mc:Ignorable="d"
+        Title="FeedbackWindow" Height="450" Width="800">
+    <Grid Background="#FFD5EFCD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="214*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="Feed back" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <DataGrid x:Name="dtgName" HorizontalAlignment="Left" Height="297" Margin="50,108,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="DataGrid_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="276,113,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Appointment ID:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtAppointmentID" HorizontalAlignment="Left" Height="44" Margin="466,113,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="221"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="276,179,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Customer feedback:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtFeedback" HorizontalAlignment="Left" Height="74" Margin="287,216,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="483"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="276,317,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Points:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <ProgressBar x:Name="pgbPoints" HorizontalAlignment="Left" Height="45" Margin="287,349,0,0" Grid.Row="1" VerticalAlignment="Top" Width="484" RenderTransformOrigin="0.5,0.5">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.438"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+
+    </Grid>
+</Window>

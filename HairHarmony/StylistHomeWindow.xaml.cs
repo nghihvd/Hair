@@ -15,26 +15,13 @@ using System.Windows.Shapes;
 namespace PRN212_HairHarmony
 {
     /// <summary>
-    /// Interaction logic for HomeWindow.xaml
+    /// Interaction logic for StylistHomeWindow.xaml
     /// </summary>
-    public partial class HomeWindow : Window
+    public partial class StylistHomeWindow : Window
     {
-        public HomeWindow()
+        public StylistHomeWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnService_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            ServiceWindow serviceWindow = new ServiceWindow();
-            serviceWindow.Show();
-
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -44,13 +31,17 @@ namespace PRN212_HairHarmony
             loginWindow.Show();
         }
 
-<<<<<<< HEAD
-        
-=======
-        private void btnAppointment_Click(object sender, RoutedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-           
+            this.Close();
         }
->>>>>>> c5fb318bddada97aab5232276b8950062ed9c44e
+
+
+        private void btnFeedback_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            FeedbackWindow feedbackWindow = new FeedbackWindow();
+            feedbackWindow.Show();
+        }
     }
 }
