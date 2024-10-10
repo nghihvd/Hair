@@ -1,0 +1,33 @@
+﻿<Window x:Class="PRN212_HairHarmony.StylistHomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRN212_HairHarmony"
+        mc:Ignorable="d"
+        Title="StylistHomeWindow" Height="450" Width="800">
+    <Grid Background="#FFD5EFCD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="214*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="Stylist page" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
+        <Button x:Name="btnFeedback" Content="View Customer Feedback" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Grid.Row="1" Click="btnFeedback_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+
+    </Grid>
+</Window>
