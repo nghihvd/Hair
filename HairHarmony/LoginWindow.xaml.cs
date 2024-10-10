@@ -34,9 +34,24 @@ namespace PRN212_HairHarmony
             if (account != null && account.Password.Equals(txtPassword.Password))
             {
                 Application.Current.Properties["LoggedAccount"] = account;
-                this.Hide();
-                HomeWindow homeWindow = new HomeWindow();
-                homeWindow.Show();
+                if (account.RoleId == 3)
+                {
+                    this.Hide();
+                    HomeWindow homeWindow = new HomeWindow();
+                    homeWindow.Show();
+                }
+                else if (account.RoleId == 1)
+                {
+                    this.Hide();
+                    HomeManagerWindow homeManagerWindow = new HomeManagerWindow();
+                    homeManagerWindow.Show();
+                }
+                else if (account.RoleId == 2)
+                {
+                    this.Hide();
+                    HomeStylistWindow homeStylistWindow = new HomeStylistWindow();
+                    homeStylistWindow.Show();
+                }
             }
             else
             {
