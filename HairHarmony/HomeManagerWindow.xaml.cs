@@ -38,7 +38,11 @@ namespace PRN212_HairHarmony
 
         private void btnViewStylist_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            ViewStylistWindow stylistWindow = new ViewStylistWindow();
+            stylistWindow.Show();
         }
+
+
     }
 }

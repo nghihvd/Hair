@@ -48,5 +48,10 @@ namespace PRN212_HairHarmony
         {
            
         }
+
+        private void btnStylist_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

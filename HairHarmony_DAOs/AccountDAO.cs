@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,8 +51,40 @@ namespace HairHarmony_DAOs
             }
             return result;
         }
+        public List<Account> getStylistAcc()
+        {
 
+            return dbContext.Accounts.Where(a => a.RoleId == 2).ToList();
+        }
+        public bool UpdateSylistAcc(Account account)
+        {
 
+            bool isSuccess = false;
+            Account stylist = SearchAccount(account.AccountId);
+            if (stylist != null)
+            {
+                stylist.Salary = account.Salary;
+                stylist.Level = account.Level;
+                dbContext.Update(stylist);
+                dbContext.SaveChanges();
+                isSuccess = true;
+            }
+            return isSuccess;
+        }
+
+        public bool EnableStylist(string accountID)
+        {
+            bool isSuccess = false;
+            Account stylist = SearchAccount(accountID);
+            if (stylist != null)
+            {
+                stylist.RoleId = 3;
+                dbContext.Update(stylist);
+                dbContext.SaveChanges();
+                isSuccess = true;
+            }
+            return isSuccess;
+        }
 
     }
 }
