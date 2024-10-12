@@ -12,5 +12,8 @@ namespace HairHarmony_Services
         public Service GetServiceByID(int ServiceId);
 
         public List<Service> GetServiceList();
+        public bool AddService(Service service);
+        public bool DeleteService(int ServiceId);
+        public bool UpdateService(Service service);
     }
 }

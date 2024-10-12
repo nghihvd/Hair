@@ -33,7 +33,7 @@
             </PasswordBox.Effect>
         </PasswordBox>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="206,119,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="btnRegis" Content="Register" HorizontalAlignment="Left" Margin="543,347,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnRegis_Click" Foreground="#FFF7F3F3">
+        <Button x:Name="btnRegis" Content="Register" HorizontalAlignment="Left" Margin="543,337,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnRegis_Click" Foreground="#FFF7F3F3">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

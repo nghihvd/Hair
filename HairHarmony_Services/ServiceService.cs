@@ -25,5 +25,20 @@ namespace HairHarmony_Services
         {
             return serviceRepo.GetServiceList();
         }
+
+        public bool AddService(Service service)
+        {
+            return serviceRepo.AddService(service);
+        }
+
+        public bool DeleteService(int ServiceId)
+        {
+           return serviceRepo.DeleteService(ServiceId);
+        }
+
+        public bool UpdateService(Service service)
+        {
+            return serviceRepo.UpdateService(service);
+        }
     }
 }

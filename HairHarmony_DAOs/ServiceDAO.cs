@@ -39,7 +39,7 @@ namespace HairHarmony_DAOs
             return dbContext.Services.SingleOrDefault(a => a.ServiceId.Equals(ServiceId));
         }
 
-        public bool addService(Service service)
+        public bool AddService(Service service)
         {
             bool result = false;    
             Service search = GetServiceByID(service.ServiceId);
@@ -52,6 +52,37 @@ namespace HairHarmony_DAOs
             return result;
 
         }
+
+        public bool DeleteService(int ServiceId)
+        {
+            bool result = false;
+            Service search = GetServiceByID(ServiceId);
+            if(search != null)
+            {
+                dbContext.Services.Remove(search);
+                dbContext.SaveChanges();
+                result=true;
+            }
+            return result;
+        }
+
+        public bool UpdateService(Service service)
+        {
+            bool result = false;
+            Service search = GetServiceByID(service.ServiceId);
+            if (search != null)
+            {
+                search.ServiceId = service.ServiceId;
+                search.Price = service.Price;
+                search.Duration = service.Duration;
+                search.ServiceName = service.ServiceName;   
+                dbContext.Services.Update(search);
+                result = true;
+            }
+            return result;
+        }
+
+        
 
     }
 }
