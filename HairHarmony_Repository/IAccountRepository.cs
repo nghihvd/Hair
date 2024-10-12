@@ -13,5 +13,10 @@ namespace HairHarmony_Repository
         public List<Account> getAllAccounts();
 
         public bool RegisAccount(Account account);
+
+        public bool UpdateSylistAcc(Account account);
+        public bool EnableStylist(string accountID);
+
+        public List<Account> getStylistAcc();
     }
 }

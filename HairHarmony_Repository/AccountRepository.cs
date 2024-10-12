@@ -18,5 +18,9 @@ namespace HairHarmony_Repository
 
         public bool RegisAccount(Account account) => AccountDAO.Instance.RegisAccount(account);
 
+        public bool UpdateSylistAcc(Account account) => AccountDAO.Instance.UpdateSylistAcc(account);
+        public bool EnableStylist(string accountID) => AccountDAO.Instance.EnableStylist(accountID);
+
+        public List<Account> getStylistAcc() => AccountDAO.Instance.getStylistAcc();
     }
 }

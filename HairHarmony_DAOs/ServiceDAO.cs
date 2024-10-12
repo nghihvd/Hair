@@ -39,7 +39,19 @@ namespace HairHarmony_DAOs
             return dbContext.Services.SingleOrDefault(a => a.ServiceId.Equals(ServiceId));
         }
 
+        public bool addService(Service service)
+        {
+            bool result = false;    
+            Service search = GetServiceByID(service.ServiceId);
+            if (search == null)
+            {
+                dbContext.Services.Add(service);
+                dbContext.SaveChanges();
+                result = true;
+            }
+            return result;
 
+        }
 
     }
 }

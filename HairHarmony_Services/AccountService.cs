@@ -16,6 +16,12 @@ namespace HairHarmony_Services
         {
             accountRepo = new AccountRepository();
         }
+
+        public bool EnableStylist(string accountID)
+        {
+            return accountRepo.EnableStylist(accountID);  
+        }
+
         public Account getAccountByID(string id)
         {
             return accountRepo.getAccountByID(id);
@@ -30,6 +36,15 @@ namespace HairHarmony_Services
         public bool RegisAccount(Account account)
         {
             return accountRepo.RegisAccount(account);
+        }
+
+        public bool UpdateSylistAcc(Account account)
+        {
+            return accountRepo.UpdateSylistAcc(account);
+        }
+        public List<Account> getStylistAcc()
+        {
+            return accountRepo.getStylistAcc();
         }
     }
 }
