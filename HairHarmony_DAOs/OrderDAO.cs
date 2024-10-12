@@ -65,6 +65,21 @@ namespace HairHarmony_DAOs
             }
         }
 
+        public Dictionary<int,List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId) 
+        {
+            var orderWithService = dbContext.Orders
+                .Where(o => o.AppointmentId == appointmentId)
+                .Join(dbContext.Services,order => order.ServiceId,service => service.ServiceId,(order,service) => new { order.AppointmentId, servicePrice = service.Price }).ToList();
+
+            if (orderWithService != null && orderWithService.Any()) 
+            {
+                var result = new Dictionary <int, List<decimal?>>();
+                result[appointmentId] = orderWithService.Select(o => o.servicePrice).ToList();
+                return result;
+            }
+            return null;
+        }
+
 
     }
 }

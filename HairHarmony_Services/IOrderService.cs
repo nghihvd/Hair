@@ -14,5 +14,10 @@ namespace HairHarmony_Services
         public Dictionary<int, List<string>> GetOrdersWithServiceNamesByAppointmentId(int appointmentId);
 
         public void DeleteOrdersByAppointmentId(int appointmentId);
+
+        public Dictionary<int, List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId);
+
+
+
     }
 }
