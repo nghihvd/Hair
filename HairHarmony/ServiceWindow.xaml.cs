@@ -26,6 +26,7 @@ namespace PRN212_HairHarmony
         {
             InitializeComponent();
             serviceService = new ServiceService();
+            LoadGrid();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -60,7 +61,7 @@ namespace PRN212_HairHarmony
 
             string id = ((TextBlock)cell.Content).Text;
             int serviceID = int.Parse(id);
-            Service service = new Service();
+            Service service = serviceService.GetServiceByID(serviceID);
             this.txtServiceID.Text = service.ServiceId.ToString();
             this.txtServiceName.Text = service.ServiceName;
             this.txtPrice.Text = service.Price.ToString();
@@ -69,9 +70,16 @@ namespace PRN212_HairHarmony
 
         private void LoadGrid()
         {
-            this.dtgService.ItemsSource = serviceService.GetServiceList();
+            this.dtgService.ItemsSource = serviceService.GetServiceList().Select(a => new {a.ServiceId,a.ServiceName});
         }
 
+        private void ResetInput()
+        {
+            this.txtDuration.Text = "";
+            this.txtPrice.Text = "";
+            this.txtServiceID.Text = "";
+            this.txtServiceName.Text = "";
+        }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(this.txtDuration.Text)
@@ -83,20 +91,83 @@ namespace PRN212_HairHarmony
                 return;
             }
             int serviceID;
-            if(!int.TryParse(this.txtServiceID.Text, out serviceID))
+            if (!int.TryParse(this.txtServiceID.Text, out serviceID))
             {
                 MessageBox.Show("Invalid ID, ID is number");
                 return;
             }
 
             decimal price;
-            if (!int.TryParse(this.txtServiceID.Text, out serviceID))
+            if (!decimal.TryParse(this.txtPrice.Text, out price))
             {
-                MessageBox.Show("Invalid ID, ID is number");
+                MessageBox.Show("Invalid price,price is number");
                 return;
             }
             Service service = new Service();
-            service.Price = this.
+            service.Price = decimal.Parse(this.txtPrice.Text);
+            service.Duration = int.Parse(this.txtDuration.Text);
+            service.ServiceId = int.Parse(this.txtServiceID.Text);
+            service.ServiceName = this.txtServiceName.Text;
+            bool result = serviceService.AddService(service);
+            if (result)
+            {
+                MessageBox.Show("Add service success!!");
+                LoadGrid(); 
+                ResetInput();
+            }
+            else
+            {
+                MessageBox.Show("Some thing wrong");
+            }
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Service service = new Service();
+            service.Price = decimal.Parse (this.txtPrice.Text);
+            service.Duration = int.Parse (this.txtDuration.Text);
+            service.ServiceName= this.txtServiceName.Text;
+            service.ServiceId = int.Parse(this.txtServiceID.Text);
+            if (serviceService.GetServiceByID(service.ServiceId) != null)
+            {
+                MessageBox.Show("Id already exit.Please enter new ID");
+                return;
+            }
+            bool result = serviceService.UpdateService(service);
+            if (result)
+            {
+                MessageBox.Show("Update success");
+                LoadGrid ();
+                ResetInput();
+            }
+            else
+            {
+                MessageBox.Show("Something wrong.Please check again!!!!");
+            }
+            
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(this.txtServiceID.Text);
+            bool result = serviceService.DeleteService(id);
+            if (result)
+            {
+                MessageBox.Show("Delete success!!");
+                LoadGrid();
+                ResetInput();
+            }
+            else
+            {
+                MessageBox.Show("Something wrong");
+            }
+        }
+
+        private void btnReload_Click(object sender, RoutedEventArgs e)
+        {
+            LoadGrid();
+            ResetInput();
         }
     }
 

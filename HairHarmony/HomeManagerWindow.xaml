@@ -29,7 +29,7 @@
         </Button>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Margin="0,6,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,78,0,0" TextWrapping="Wrap" Text="Manager Page" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="btnViewService" Content="View Services" HorizontalAlignment="Left" Margin="193,344,0,0" VerticalAlignment="Top" Height="49" Width="420" Background="#FF72B359" FontSize="16" FontWeight="Bold" Foreground="#FFF7F3F3" >
+        <Button x:Name="btnViewService" Content="View Services" HorizontalAlignment="Left" Margin="193,344,0,0" VerticalAlignment="Top" Height="49" Width="420" Background="#FF72B359" FontSize="16" FontWeight="Bold" Foreground="#FFF7F3F3" Click="btnViewService_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

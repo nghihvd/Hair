@@ -186,5 +186,11 @@ namespace PRN212_HairHarmony
                 this.resetInput();
             }
         }
+
+        private void btnReload_Click(object sender, RoutedEventArgs e)
+        {
+            LoadGrid();
+            resetInput();   
+        }
     }
 }

@@ -14,6 +14,12 @@ namespace HairHarmony_Repository
 
 
         public List<Service> GetServiceList() => ServiceDAO.Instance.GetServiceList();
+        public bool AddService(Service service) => ServiceDAO.Instance.AddService(service);
+
+        public bool DeleteService(int ServiceId) => ServiceDAO.Instance.DeleteService(ServiceId);
+
+
+        public bool UpdateService(Service service) => ServiceDAO.Instance.UpdateService(service);
 
     }
 }

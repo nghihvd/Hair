@@ -13,7 +13,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnStylist" Content="View Stylists" HorizontalAlignment="Left" Margin="308,271,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.ColumnSpan="2">
+        <Button x:Name="btnStylist" Content="View Stylists" HorizontalAlignment="Left" Margin="308,271,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.ColumnSpan="2" Click="btnStylist_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
