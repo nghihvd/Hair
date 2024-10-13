@@ -11,6 +11,8 @@ namespace HairHarmony_DAOs
     {
         private HairContext dbContext;
         private static AppointmentDAO instance = null;
+        
+
 
         public static AppointmentDAO Instance
         {
@@ -71,6 +73,11 @@ namespace HairHarmony_DAOs
             return dbContext.Appointments
                 .Where(a => a.StylistId.Equals(stylistID))
                 .ToList();
+        }
+
+        public List<Appointment> GetAll()
+        {
+            return dbContext.Appointments .ToList();
         }
 
     }

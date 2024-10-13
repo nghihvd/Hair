@@ -10,6 +10,9 @@ namespace HairHarmony_Repository
 {
     public class FeedbackRepository : IFeedbackRepository
     {
+        public bool deleteFeedback(int feedbackID) => FeedbackDAO.Instance.deleteFeedback(feedbackID);
+       
+
         public Feedback getFeedbackByAppoinId(int id) => FeedbackDAO.Instance.getFeedbackByAppoinId(id);
 
         public Feedback searchFeedback(int feedbackID) => FeedbackDAO.Instance.searchFeedback(feedbackID);  

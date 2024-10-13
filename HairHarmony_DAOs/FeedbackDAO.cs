@@ -38,5 +38,17 @@ namespace HairHarmony_DAOs
         {
             return dbContext.Feedbacks.SingleOrDefault(a => a.FeedbackId == feedbackID);
         }
+        public bool deleteFeedback(int appointmentId)
+        {
+            var feedback = dbContext.Feedbacks.Where(o => o.AppointmentId == appointmentId).ToList();
+
+            if (feedback != null && feedback.Any()) {
+                dbContext.RemoveRange(feedback);
+                dbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
     }
 }

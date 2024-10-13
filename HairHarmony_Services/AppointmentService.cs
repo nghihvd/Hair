@@ -19,9 +19,14 @@ namespace HairHarmony_Services
             appointmentRepo = new AppointmentRepository();
         }
 
+        public List<Appointment> GetAll()
+        {
+            return appointmentRepo.GetAll();
+        }
+
         public List<Appointment> GetAllByStatusUnfinished()
         {
-        return appointmentRepo.GetAllByStatusUnfinished();
+            return appointmentRepo.GetAllByStatusUnfinished();
         }
 
         public List<Appointment> getAppointmentByStylistID(string stylistID)

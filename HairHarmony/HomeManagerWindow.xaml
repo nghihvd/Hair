@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="HomeManagerWindow" Height="450" Width="800" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
-        <Button x:Name="btnViewAppoint" Content="View Appointment" HorizontalAlignment="Center" Margin="0,146,0,0" VerticalAlignment="Top" Height="50" Width="420" Background="#FF72B359" FontSize="16" FontWeight="Bold" Foreground="#FFF7F3F3">
+        <Button x:Name="btnViewAppoint" Content="View Appointment" HorizontalAlignment="Center" Margin="0,146,0,0" VerticalAlignment="Top" Height="50" Width="420" Background="#FF72B359" FontSize="16" FontWeight="Bold" Foreground="#FFF7F3F3" Click="btnViewAppoint_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

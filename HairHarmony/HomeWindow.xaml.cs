@@ -49,7 +49,7 @@ namespace PRN212_HairHarmony
 
         private void btnAppointment_Click(object sender, RoutedEventArgs e)
         {
-           
+            
         }
 
         private void btnStylist_Click(object sender, RoutedEventArgs e)

@@ -10,6 +10,9 @@ namespace HairHarmony_Repository
 {
     public class AppointmentRepository : IAppointmentRepository
     {
+        public List<Appointment> GetAll() => AppointmentDAO.Instance.GetAll();
+        
+
         public List<Appointment> GetAllByStatusUnfinished() => AppointmentDAO.Instance.GetAllByStatusUnfinished();
 
         public List<Appointment> getAppointmentByStylistID(string stylistID) => AppointmentDAO.Instance.getAppointmentByStylistID(stylistID);

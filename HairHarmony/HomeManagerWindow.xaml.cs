@@ -52,5 +52,12 @@ namespace PRN212_HairHarmony
             ServiceWindow serviceWindow = new ServiceWindow();
             serviceWindow.Show();
         }
+
+        private void btnViewAppoint_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            ViewAppointment appointWindow = new ViewAppointment();
+            appointWindow.Show();
+        }
     }
 }

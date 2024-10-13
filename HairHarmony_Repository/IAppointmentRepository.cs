@@ -13,5 +13,8 @@ namespace HairHarmony_Repository
         public Appointment GetById(int appointmentid);
         public Appointment RemoveByID(int appointmentid);
         public List<Appointment> getAppointmentByStylistID(string stylistID);
+
+        public List<Appointment> GetAll();
+
     }
 }
