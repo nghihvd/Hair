@@ -50,5 +50,29 @@ namespace HairHarmony_DAOs
             return false;
         }
 
+        public void SaveFeedback(int appointmentId, string feedback, int points, string accountId)
+        {
+            var existingFeedback = dbContext.Feedbacks
+                .FirstOrDefault(f => f.AppointmentId == appointmentId && f.CustomerId == accountId);
+
+            if (existingFeedback != null)
+            {
+                existingFeedback.Comments = feedback;
+                existingFeedback.Rating = points;
+            }
+            else
+            {
+                var feedbackEntry = new Feedback
+                {
+                    AppointmentId = appointmentId,
+                    Comments = feedback,
+                    Rating = points,
+                    CustomerId = accountId
+                };
+                dbContext.Feedbacks.Add(feedbackEntry);
+            }
+            dbContext.SaveChanges();
+        }
+
     }
 }

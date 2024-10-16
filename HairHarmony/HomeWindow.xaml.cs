@@ -49,12 +49,22 @@ namespace PRN212_HairHarmony
 
         private void btnAppointment_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Hide();
+            AppointmentWindow appoitmentWindow = new AppointmentWindow();
+            appoitmentWindow.Show();
         }
+
 
         private void btnStylist_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow profileWindow = new ProfileWindow();
+            profileWindow.Show();
+            this.Close();
         }
     }
 }

@@ -8,7 +8,7 @@
         Title="HomeWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
 
-        <Button x:Name="btnService" Content="Book Services" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnService_Click">
+        <Button x:Name="btnService" Content="Book Services" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnAppointment_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -19,7 +19,7 @@
             </Button.Effect>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="206,42,0,0" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="419" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnProfile" Content="Profile" HorizontalAlignment="Left" Margin="308,351,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.ColumnSpan="2">
+        <Button x:Name="btnProfile" Content="Profile" HorizontalAlignment="Left" Margin="308,351,0,0" VerticalAlignment="Top" Height="53" Width="184" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.ColumnSpan="2" Click="btnProfile_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
