@@ -63,7 +63,6 @@ namespace HairHarmony_DAOs
             Account stylist = SearchAccount(account.AccountId);
             if (stylist != null)
             {
-                stylist.Salary = account.Salary;
                 stylist.Level = account.Level;
                 dbContext.Update(stylist);
                 dbContext.SaveChanges();

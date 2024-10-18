@@ -67,7 +67,6 @@ namespace PRN212_HairHarmony
             this.txtFullName.Text = ac.Name;
             this.txtPassword.Password = ac.Password;
             this.txtPhoneNumber.Text = ac.Phone;
-            this.txtPoints.Text = ac.CommissionRate.ToString();
             this.txtSalary.Text = ac.Salary.ToString();
             this.txtStylistID.Text = ac.AccountId;
             this.cmbLevel.SelectedValue = ac.Level;
@@ -75,7 +74,7 @@ namespace PRN212_HairHarmony
 
         public void LoadGrid()
         {
-            this.dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new {a.AccountId,a.RoleId,a.Phone,a.CommissionRate,a.Email,a.Level,a.LoyaltyPoints });
+            this.dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new {a.AccountId,a.RoleId,a.Phone,a.Email,a.Level,a.LoyaltyPoints });
             List<string> level = new List<string> { "Junior Stylist", "Stylist", "Senior Stylist", "Master Stylist", "Creative Director" };
             this.cmbLevel.ItemsSource = level;
 
@@ -115,7 +114,6 @@ namespace PRN212_HairHarmony
             account.Phone = txtPhoneNumber.Text;
             account.RoleId = 2;
             account.Name = txtFullName.Text;
-            account.CommissionRate = 0;
             bool result = accountService.RegisAccount(account);
             if (result)
             {

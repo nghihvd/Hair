@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HairHarmony_BusinessObject
 {
@@ -10,9 +7,9 @@ namespace HairHarmony_BusinessObject
     {
         public Account()
         {
-            AppointmentCustomers = new HashSet<Appointment>();
-            AppointmentStylists = new HashSet<Appointment>();
-            Feedbacks = new HashSet<Feedback>();
+            Appointments = new HashSet<Appointment>();
+            Shifts = new HashSet<Shift>();
+            StylistServices = new HashSet<StylistService>();
         }
 
         public string AccountId { get; set; } = null!;
@@ -24,10 +21,9 @@ namespace HairHarmony_BusinessObject
         public string? Password { get; set; }
         public string? Level { get; set; }
         public decimal? Salary { get; set; }
-        public decimal? CommissionRate { get; set; }
 
-        public virtual ICollection<Appointment> AppointmentCustomers { get; set; }
-        public virtual ICollection<Appointment> AppointmentStylists { get; set; }
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<Shift> Shifts { get; set; }
+        public virtual ICollection<StylistService> StylistServices { get; set; }
     }
 }

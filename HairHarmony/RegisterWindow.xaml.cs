@@ -78,7 +78,6 @@ namespace PRN212_HairHarmony
             account.Phone = txtPhoneNumber.Text;
             account.RoleId = 3;
             account.Name = txtFullName.Text;
-            account.CommissionRate = 0;
             bool result = accountService.RegisAccount(account);
             if (result)
             {

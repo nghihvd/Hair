@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using HairHarmony_BusinessObject;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace HairHarmony_BusinessObject
 {
@@ -22,17 +22,31 @@ namespace HairHarmony_BusinessObject
         public virtual DbSet<Feedback> Feedbacks { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<Service> Services { get; set; } = null!;
+        public virtual DbSet<Shift> Shifts { get; set; } = null!;
+        public virtual DbSet<StylistService> StylistServices { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-857UNJA9;Database=Hair;Uid=sa;Pwd=12345;");
+                optionsBuilder.UseSqlServer(GetConnectionString());
             }
+           
+            
         }
+    private string GetConnectionString()
+    {
+        IConfiguration config = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", true, true)
+                    .Build();
+        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        return strConn;
+    }
+
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(entity =>
             {
@@ -42,10 +56,6 @@ namespace HairHarmony_BusinessObject
                     .HasMaxLength(45)
                     .IsUnicode(false)
                     .HasColumnName("accountID");
-
-                entity.Property(e => e.CommissionRate)
-                    .HasColumnType("decimal(5, 2)")
-                    .HasColumnName("commissionRate");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(100)
@@ -105,20 +115,10 @@ namespace HairHarmony_BusinessObject
                     .IsUnicode(false)
                     .HasColumnName("status");
 
-                entity.Property(e => e.StylistId)
-                    .HasMaxLength(45)
-                    .IsUnicode(false)
-                    .HasColumnName("stylistID");
-
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.AppointmentCustomers)
+                    .WithMany(p => p.Appointments)
                     .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("fk_appoint_accounts_cus");
-
-                entity.HasOne(d => d.Stylist)
-                    .WithMany(p => p.AppointmentStylists)
-                    .HasForeignKey(d => d.StylistId)
-                    .HasConstraintName("fk_appoint_account_stylist");
             });
 
             modelBuilder.Entity<Feedback>(entity =>
@@ -136,28 +136,24 @@ namespace HairHarmony_BusinessObject
                     .IsUnicode(false)
                     .HasColumnName("comments");
 
-                entity.Property(e => e.CustomerId)
-                    .HasMaxLength(45)
-                    .IsUnicode(false)
-                    .HasColumnName("customerID");
-
                 entity.Property(e => e.Rating).HasColumnName("rating");
 
-                entity.HasOne(d => d.Appointment)
-                    .WithMany(p => p.Feedbacks)
-                    .HasForeignKey(d => d.AppointmentId)
-                    .HasConstraintName("fk_feedback_appoint");
+                entity.Property(e => e.ServiceId).HasColumnName("serviceID");
 
-                entity.HasOne(d => d.Customer)
+                entity.Property(e => e.StylistId)
+                    .HasMaxLength(45)
+                    .IsUnicode(false)
+                    .HasColumnName("stylistID");
+
+                entity.HasOne(d => d.Order)
                     .WithMany(p => p.Feedbacks)
-                    .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("fk_feedback_account_cus");
+                    .HasForeignKey(d => new { d.ServiceId, d.AppointmentId, d.StylistId })
+                    .HasConstraintName("fk_feedback_orders");
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.HasKey(e => new { e.ServiceId, e.AppointmentId })
-                    .HasName("PK__orders__B856056EFBDF9450");
+                entity.HasKey(e => new { e.ServiceId, e.AppointmentId, e.StylistId });
 
                 entity.ToTable("orders");
 
@@ -165,6 +161,14 @@ namespace HairHarmony_BusinessObject
 
                 entity.Property(e => e.AppointmentId).HasColumnName("appointmentID");
 
+                entity.Property(e => e.StylistId)
+                    .HasMaxLength(45)
+                    .IsUnicode(false)
+                    .HasColumnName("stylistID");
+
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(10, 2)")
+                    .HasColumnName("price");
 
                 entity.HasOne(d => d.Appointment)
                     .WithMany(p => p.Orders)
@@ -172,11 +176,11 @@ namespace HairHarmony_BusinessObject
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_order_appointment");
 
-                entity.HasOne(d => d.Service)
+                entity.HasOne(d => d.S)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.ServiceId)
+                    .HasForeignKey(d => new { d.StylistId, d.ServiceId })
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_order_service");
+                    .HasConstraintName("FK_order_stylist_service");
             });
 
             modelBuilder.Entity<Service>(entity =>
@@ -197,6 +201,61 @@ namespace HairHarmony_BusinessObject
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("serviceName");
+            });
+
+            modelBuilder.Entity<Shift>(entity =>
+            {
+                entity.ToTable("shifts");
+
+                entity.Property(e => e.ShiftId).HasColumnName("shiftID");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("date")
+                    .HasColumnName("date");
+
+                entity.Property(e => e.EndTime).HasColumnName("endTime");
+
+                entity.Property(e => e.StartTime).HasColumnName("startTime");
+
+                entity.Property(e => e.StylistId)
+                    .HasMaxLength(45)
+                    .IsUnicode(false)
+                    .HasColumnName("stylistID");
+
+                entity.HasOne(d => d.Stylist)
+                    .WithMany(p => p.Shifts)
+                    .HasForeignKey(d => d.StylistId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__shifts__stylistI__5535A963");
+            });
+
+            modelBuilder.Entity<StylistService>(entity =>
+            {
+                entity.HasKey(e => new { e.StylistId, e.ServiceId })
+                    .HasName("pk_sty_service");
+
+                entity.ToTable("stylist_service");
+
+                entity.Property(e => e.StylistId)
+                    .HasMaxLength(45)
+                    .IsUnicode(false)
+                    .HasColumnName("stylistID");
+
+                entity.Property(e => e.ServiceId).HasColumnName("serviceID");
+
+                entity.Property(e => e.CommissionRate).HasColumnName("commissionRate");
+
+                entity.HasOne(d => d.Service)
+                    .WithMany(p => p.StylistServices)
+                    .HasForeignKey(d => d.ServiceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_service");
+
+                entity.HasOne(d => d.Stylist)
+                    .WithMany(p => p.StylistServices)
+                    .HasForeignKey(d => d.StylistId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_stylist");
             });
 
             OnModelCreatingPartial(modelBuilder);
