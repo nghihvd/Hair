@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace WpfApp1
+namespace HairHarmony_BusinessObject
 {
     public partial class HairContext : DbContext
     {
