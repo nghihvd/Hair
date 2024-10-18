@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HairHarmony_BusinessObject
+namespace WpfApp1
 {
     public partial class StylistService
     {
@@ -13,6 +13,7 @@ namespace HairHarmony_BusinessObject
         public string StylistId { get; set; } = null!;
         public int ServiceId { get; set; }
         public double? CommissionRate { get; set; }
+        public bool? Status { get; set; }
 
         public virtual Service Service { get; set; } = null!;
         public virtual Account Stylist { get; set; } = null!;

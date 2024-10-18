@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HairHarmony_BusinessObject
+namespace WpfApp1
 {
     public partial class Shift
     {

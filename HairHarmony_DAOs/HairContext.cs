@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
-namespace HairHarmony_BusinessObject
+namespace WpfApp1
 {
     public partial class HairContext : DbContext
     {
@@ -29,25 +28,12 @@ namespace HairHarmony_BusinessObject
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(GetConnectionString());
-
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=ADMIN\\DONGNGHI;Database=Hair;Uid=sa;Pwd=12345;");
             }
-           
-            
         }
-    private string GetConnectionString()
-    {
-        IConfiguration config = new ConfigurationBuilder()
-             .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", true, true)
-                    .Build();
-        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
 
-        return strConn;
-    }
-
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(entity =>
             {
@@ -245,6 +231,8 @@ namespace HairHarmony_BusinessObject
                 entity.Property(e => e.ServiceId).HasColumnName("serviceID");
 
                 entity.Property(e => e.CommissionRate).HasColumnName("commissionRate");
+
+                entity.Property(e => e.Status).HasColumnName("status");
 
                 entity.HasOne(d => d.Service)
                     .WithMany(p => p.StylistServices)
