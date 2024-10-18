@@ -18,5 +18,7 @@ namespace HairHarmony_Repository
         public bool EnableStylist(string accountID);
 
         public List<Account> getStylistAcc();
+
+        public void UpdateAccount(Account account);
     }
 }

@@ -46,5 +46,9 @@ namespace HairHarmony_Services
         {
             return accountRepo.getStylistAcc();
         }
+        public void UpdateAccount(Account account)
+        {
+            accountRepo.UpdateAccount(account);
+        }
     }
 }

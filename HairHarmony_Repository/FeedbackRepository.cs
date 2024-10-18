@@ -15,6 +15,10 @@ namespace HairHarmony_Repository
 
         public Feedback getFeedbackByAppoinId(int id) => FeedbackDAO.Instance.getFeedbackByAppoinId(id);
 
-        public Feedback searchFeedback(int feedbackID) => FeedbackDAO.Instance.searchFeedback(feedbackID);  
+        public Feedback searchFeedback(int feedbackID) => FeedbackDAO.Instance.searchFeedback(feedbackID);
+        public void SaveFeedback(int appointmentId, string feedback, int points, string cus)
+        {
+            FeedbackDAO.Instance.SaveFeedback(appointmentId, feedback, points, cus);
+        }
     }
 }

@@ -45,5 +45,15 @@ namespace HairHarmony_Services
         {
             return appointmentRepo.RemoveByID(appointmentid);
         }
+
+        public List<Appointment> getAppointmentByCustomerID(string customerId)
+        {
+            return appointmentRepo.getAppointmentByCustomerID(customerId);
+        }
+
+        public void UpdateStatus(int appointmentId, string newStatus)
+        {
+            appointmentRepo.UpdateStatus(appointmentId, newStatus);
+        }
     }
 }

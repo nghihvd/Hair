@@ -29,5 +29,10 @@ namespace HairHarmony_Services
         {
             return repository.searchFeedback(feedbackID);
         }
+
+        public void SaveFeedback(int appointmentId, string feedback, int points, string cus)
+        {
+            repository.SaveFeedback(appointmentId, feedback, points, cus);
+        }
     }
 }

@@ -16,5 +16,7 @@ namespace HairHarmony_Repository
 
         public List<Appointment> GetAll();
 
+        public List<Appointment> getAppointmentByCustomerID(string customerID);
+        public void UpdateStatus(int appointmentId, string newStatus);
     }
 }

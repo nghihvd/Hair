@@ -14,6 +14,7 @@ namespace HairHarmony_Repository
         public Feedback searchFeedback(int feedbackID);
 
         public bool deleteFeedback(int feedbackID);
+        public void SaveFeedback(int appointmentId, string feedback, int points, string cus);
 
     }
 }

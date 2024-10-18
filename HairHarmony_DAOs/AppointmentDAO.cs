@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HairHarmony_BusinessObject;
+using Microsoft.EntityFrameworkCore;
 
 namespace HairHarmony_DAOs
 {
@@ -78,6 +79,30 @@ namespace HairHarmony_DAOs
         public List<Appointment> GetAll()
         {
             return dbContext.Appointments .ToList();
+        }
+
+        public List<Appointment> getAppointmentByCustomerID(string customerId)
+        {
+            return dbContext.Appointments
+                .Where(a => a.CustomerId.Equals(customerId))
+                .Include(a => a.Stylist)
+                .Include(a => a.Orders)
+                .ToList();
+        }
+
+        public void UpdateStatus(int appointmentId, string newStatus)
+        {
+            var appointment = dbContext.Appointments.FirstOrDefault(a => a.AppointmentId == appointmentId);
+
+            if (appointment != null)
+            {
+                appointment.Status = newStatus;
+                dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Appointment not found.");
+            }
         }
 
     }

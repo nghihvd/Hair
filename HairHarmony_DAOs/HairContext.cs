@@ -30,6 +30,7 @@ namespace HairHarmony_BusinessObject
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(GetConnectionString());
+
             }
            
             

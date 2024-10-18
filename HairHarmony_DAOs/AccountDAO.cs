@@ -85,5 +85,23 @@ namespace HairHarmony_DAOs
             return isSuccess;
         }
 
+        public void UpdateAccount(Account account)
+        {
+            var existingAccount = dbContext.Accounts.FirstOrDefault(a => a.AccountId == account.AccountId);
+
+            if (existingAccount != null)
+            {
+                existingAccount.Name = account.Name;
+                existingAccount.Email = account.Email;
+                existingAccount.Phone = account.Phone;
+
+                if (!string.IsNullOrEmpty(account.Password))
+                {
+                    existingAccount.Password = account.Password;
+                }
+
+                dbContext.SaveChanges();
+            }
+        }
     }
 }
