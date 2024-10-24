@@ -85,6 +85,29 @@ namespace HairHarmony_DAOs
             return isSuccess;
         }
 
+        public List<Account> getManagerAcc()
+        {
+            return dbContext.Accounts.Where(a => a.RoleId == 1).ToList();
+        }
+
+        public bool UpdateManagerAcc(Account account)
+        {
+
+            bool isSuccess = false;
+            Account manager = SearchAccount(account.AccountId);
+            if (manager != null)
+            {
+                manager.Name = account.Name;
+                manager.Email = account.Email;
+                manager.Phone = account.Phone;
+                manager.Password = account.Password;
+
+                dbContext.Update(manager);
+                dbContext.SaveChanges();
+                isSuccess = true;
+            }
+            return isSuccess;
+        }
         public void UpdateAccount(Account account)
         {
             var existingAccount = dbContext.Accounts.FirstOrDefault(a => a.AccountId == account.AccountId);
