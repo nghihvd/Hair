@@ -50,5 +50,10 @@ namespace HairHarmony_Services
         {
             accountRepo.UpdateAccount(account);
         }
+
+        public bool UpdateManagerAcc(Account account)
+        {
+            return accountRepo.UpdateManagerAcc(account);
+        }
     }
 }
