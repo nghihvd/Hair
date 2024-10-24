@@ -42,5 +42,11 @@ namespace PRN212_HairHarmony
             FeedbackWindow feedbackWindow = new FeedbackWindow();
             feedbackWindow.Show();
         }
+
+        private void btnViewComission_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
+        }
     }
 }

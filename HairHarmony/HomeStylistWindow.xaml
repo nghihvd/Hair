@@ -28,6 +28,11 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Button x:Name="btnViewComission" Content="View Comission / Serivce" HorizontalAlignment="Center" Margin="0,222,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Grid.Row="1" Click="btnViewComission_Click" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>
