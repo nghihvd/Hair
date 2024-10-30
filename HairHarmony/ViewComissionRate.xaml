@@ -35,7 +35,7 @@
         <TextBox x:Name="txtComission" HorizontalAlignment="Left" Height="41" Margin="496,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
         <Label Content="Status" HorizontalAlignment="Left" Height="41" Margin="446,276,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
         <CheckBox x:Name="ckbRate" Content="Selected " HorizontalAlignment="Left" Height="34" Margin="496,323,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
-        <Button x:Name="btnAddService" HorizontalAlignment="Left" Margin="73,366,0,0" VerticalAlignment="Top" Height="38" Width="169" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Add service" >
+        <Button x:Name="btnAddService" HorizontalAlignment="Left" Margin="73,366,0,0" VerticalAlignment="Top" Height="38" Width="169" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Add service" Click="btnAddService_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -45,7 +45,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnEnableService_Copy" HorizontalAlignment="Left" Margin="570,366,0,0" VerticalAlignment="Top" Height="38" Width="180" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Enable" >
+        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="570,366,0,0" VerticalAlignment="Top" Height="38" Width="180" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

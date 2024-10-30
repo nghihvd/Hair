@@ -12,5 +12,7 @@ namespace HairHarmony_Repository
         public List<StylistService> getListServiceStylist();
 
         public StylistService GetStylistServiceByStylistID(string id);
+
+        public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId);
     }
 }

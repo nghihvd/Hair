@@ -57,8 +57,9 @@ namespace PRN212_HairHarmony
             DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
 
             string id = ((TextBlock)RowColumn.Content).Text;
-            int appointID = int.Parse(id);
-            Feedback feedback = feedbackService.getFeedbackByAppoinId(appointID);
+            int feedbackID = int.Parse(id);
+
+            Feedback feedback = feedbackService.searchFeedback(feedbackID);
             txtFeedback.Text = feedback.Comments;
             txtAppointmentID.Text = feedback.AppointmentId.ToString();
             pgbPoints.Value = (double)feedback.Rating;
@@ -70,28 +71,21 @@ namespace PRN212_HairHarmony
         {
 
             var log = Application.Current.Properties["LoggedAccount"] as Account; // stylist acc
-            //List<Appointment> appoint = appointmentService.getAppointmentByStylistID(log.AccountId);
-            List<Feedback> feedbacks = new List<Feedback>();
-            //foreach(Appointment ap in appoint)
-            //{
-            //    Feedback f = feedbackService.getFeedbackByAppoinId(ap.AppointmentId);
-            //    if ( f != null)
-            //    {
-            //        feedbacks.Add(f);
-            //    }
-            //}
-            this.dtgName.ItemsSource = feedbacks.Select(a => new {a.AppointmentId });
+
+            this.dtgName.ItemsSource = feedbackService.getFeedbackByStylistID(log.AccountId);
 
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
            
         }
+
+      
     }
 }

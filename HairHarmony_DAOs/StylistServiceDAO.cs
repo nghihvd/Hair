@@ -38,5 +38,10 @@ namespace HairHarmony_DAOs
         {
             return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id));
         }
+
+        public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId)
+        {
+            return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id) & a.ServiceId == serviceId);
+        }
     }
 }

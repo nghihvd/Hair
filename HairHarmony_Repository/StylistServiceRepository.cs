@@ -13,5 +13,6 @@ namespace HairHarmony_Repository
         public List<StylistService> getListServiceStylist() => StylistServiceDAO.Instance.getListServiceStylist();
 
         public StylistService GetStylistServiceByStylistID(string id) => StylistServiceDAO.Instance.GetStylistServiceByStylistID(id);
+        public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId) => StylistServiceDAO.Instance.GetStylistServiceByStylistIDAndServiceID(id, serviceId);
     }
 }

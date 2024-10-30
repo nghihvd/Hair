@@ -45,7 +45,12 @@ namespace PRN212_HairHarmony
                 dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
 
             string id = ((TextBlock)cell.Content).Text; // cột đầu tiên là cột stylistID
-            StylistService stylistService = stylistServiceService.GetStylistServiceByStylistID(id);
+
+            DataGridCell cell2 =
+                dataGrid.Columns[1].GetCellContent(row).Parent as DataGridCell;
+            string serviceId = ((TextBlock)cell2.Content).Text;
+            int ser = int.Parse(serviceId);
+            StylistService stylistService = stylistServiceService.GetStylistServiceByStylistIDAndServiceID(id, ser);
             this.txtServiceID.Text = stylistService.ServiceId.ToString();
             this.txtComission.Text =  stylistService.CommissionRate.ToString();
             this.ckbRate.IsChecked = stylistService.Status;
@@ -75,6 +80,11 @@ namespace PRN212_HairHarmony
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void btnAddService_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
