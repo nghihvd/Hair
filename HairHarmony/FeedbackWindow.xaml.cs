@@ -24,6 +24,7 @@ namespace PRN212_HairHarmony
     {
         private readonly IFeedbackService feedbackService;
         private readonly IAppointmentService appointmentService;
+       
         public FeedbackWindow()
         {
             InitializeComponent();
@@ -62,7 +63,8 @@ namespace PRN212_HairHarmony
             txtAppointmentID.Text = feedback.AppointmentId.ToString();
             pgbPoints.Value = (double)feedback.Rating;
             tblPoint.Text = pgbPoints.Value.ToString();
-
+            txtServiceID.Text = feedback.ServiceId.ToString();
+            tblDate.Text = appointmentService.GetById(feedback.AppointmentId).AppointmentDate.ToString();
         }
         private void LoadGrid()
         {
@@ -85,6 +87,11 @@ namespace PRN212_HairHarmony
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

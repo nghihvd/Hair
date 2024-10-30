@@ -66,7 +66,7 @@ namespace PRN212_HairHarmony
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown(); 
         }
 
         private void btnRegis_Click(object sender, RoutedEventArgs e)

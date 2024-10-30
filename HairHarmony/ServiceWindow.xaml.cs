@@ -129,9 +129,9 @@ namespace PRN212_HairHarmony
             service.Duration = int.Parse (this.txtDuration.Text);
             service.ServiceName= this.txtServiceName.Text;
             service.ServiceId = int.Parse(this.txtServiceID.Text);
-            if (serviceService.GetServiceByID(service.ServiceId) != null)
+            if (serviceService.GetServiceByID(service.ServiceId) == null)
             {
-                MessageBox.Show("Id already exit.Please enter new ID");
+                MessageBox.Show("Id not exit.Please enter new ID");
                 return;
             }
             bool result = serviceService.UpdateService(service);

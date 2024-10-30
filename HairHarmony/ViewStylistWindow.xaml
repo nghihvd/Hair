@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="ViewStylistWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="ViewStylistWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterOwner">
     <Grid Background="#FFD5EFCD">
         <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
@@ -33,27 +33,36 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnEnable" Content="Enable" HorizontalAlignment="Left" Margin="332,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnEnable_Click" >
+        <Button x:Name="btnEnable" Content="Disable" HorizontalAlignment="Left" Margin="332,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnEnable_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,71,0,0" TextWrapping="Wrap" Text="Stylist ID" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtStylistID" HorizontalAlignment="Left" Height="18" Margin="585,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,104,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="18" Margin="585,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,137,0,0" TextWrapping="Wrap" Text="Full Name" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="18" Margin="585,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,168,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="18" Margin="585,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="36" Margin="505,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"><Run Text="Phone "/><LineBreak/><Run Text="number"/><LineBreak/><Run/></TextBlock>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="18" Margin="585,102,0,0" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,240,0,0" TextWrapping="Wrap" Text="Salary" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="txtSalary" HorizontalAlignment="Left" Height="18" Margin="585,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,280,0,0" TextWrapping="Wrap" Text="Level" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <ComboBox x:Name="cmbLevel" HorizontalAlignment="Left" Height="20" Margin="585,280,0,0" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="505,323,0,0" TextWrapping="Wrap" Text="Points" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <TextBlock x:Name="txtPoints" HorizontalAlignment="Left" Height="26" Margin="588,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FFEE0808"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,71,0,0" TextWrapping="Wrap" Text="Stylist ID" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold"/>
+        <TextBox x:Name="txtStylistID" HorizontalAlignment="Left" Height="18" Margin="585,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,111,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="18" Margin="585,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,150,0,0" TextWrapping="Wrap" Text="Full Name" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="18" Margin="585,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,186,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="18" Margin="585,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="510,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"><Run Text="Phone "/><LineBreak/><Run Text="number"/><LineBreak/><Run/></TextBlock>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="18" Margin="585,115,0,0" VerticalAlignment="Top" Width="205"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,290,0,0" TextWrapping="Wrap" Text="Salary" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="txtSalary" HorizontalAlignment="Left" Height="18" Margin="585,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,329,0,0" TextWrapping="Wrap" Text="Level" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <ComboBox x:Name="cmbLevel" HorizontalAlignment="Left" Height="20" Margin="585,334,0,0" VerticalAlignment="Top" Width="205"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,375,0,0" TextWrapping="Wrap" Text="Points" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock x:Name="txtPoints" HorizontalAlignment="Left" Height="26" Margin="616,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FFEE0808"/>
         <Button x:Name="btnReload" Content="🔃" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnReload_Click">
             <Button.Effect>
                 <DropShadowEffect/>

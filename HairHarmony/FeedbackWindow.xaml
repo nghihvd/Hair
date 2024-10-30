@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="FeedbackWindow" Height="450" Width="800">
+        Title="FeedbackWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid Background="#FFD5EFCD">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -33,14 +33,14 @@
                 <DropShadowEffect/>
             </DataGrid.Effect>
         </DataGrid>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="276,113,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Appointment ID:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="txtAppointmentID" HorizontalAlignment="Left" Height="44" Margin="466,113,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="24">
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="267,113,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Appointment ID:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtAppointmentID" HorizontalAlignment="Left" Height="32" Margin="452,113,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="24">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
         </TextBox>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="276,179,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Customer feedback:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="txtFeedback" HorizontalAlignment="Left" Height="74" Margin="287,216,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="483" FontSize="24">
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="266,214,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Customer feedback:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtFeedback" HorizontalAlignment="Left" Height="74" Margin="291,238,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="483" FontSize="24">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
@@ -60,6 +60,13 @@
             </ProgressBar.RenderTransform>
         </ProgressBar>
         <TextBlock x:Name="tblPoint" HorizontalAlignment="Left" Height="38" Margin="464,353,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontWeight="Bold" TextAlignment="Center" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="266,167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Service ID :" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtServiceID" HorizontalAlignment="Left" Height="32" Margin="452,167,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="24">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBlock x:Name="tblDate" HorizontalAlignment="Left" Height="41" Margin="648,67,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

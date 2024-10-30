@@ -32,7 +32,7 @@ namespace PRN212_HairHarmony
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -70,11 +70,12 @@ namespace PRN212_HairHarmony
             this.txtSalary.Text = ac.Salary.ToString();
             this.txtStylistID.Text = ac.AccountId;
             this.cmbLevel.SelectedValue = ac.Level;
+            this.txtPoints.Text = ac.LoyaltyPoints.ToString();
         }
 
-        public void LoadGrid()
+        private void LoadGrid()
         {
-            this.dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new {a.AccountId,a.RoleId,a.Phone,a.Email,a.Level,a.LoyaltyPoints });
+            this.dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new {a.AccountId,a.RoleId,a.Phone,a.Email,a.Level,a.LoyaltyPoints ,a.Salary});
             List<string> level = new List<string> { "Junior Stylist", "Stylist", "Senior Stylist", "Master Stylist", "Creative Director" };
             this.cmbLevel.ItemsSource = level;
 
@@ -114,11 +115,14 @@ namespace PRN212_HairHarmony
             account.Phone = txtPhoneNumber.Text;
             account.RoleId = 2;
             account.Name = txtFullName.Text;
+            account.Salary =int.Parse(txtSalary.Text.ToString());
+            account.Level = cmbLevel.SelectedValue.ToString();
+            account.LoyaltyPoints = 0;
             bool result = accountService.RegisAccount(account);
             if (result)
             {
                 MessageBox.Show("Register success");
-                return;
+                
             }
             else
             {
@@ -171,7 +175,7 @@ namespace PRN212_HairHarmony
                 bool result = accountService.UpdateSylistAcc(acc);
                 if (result)
                 {
-                    MessageBox.Show($"Update account {this.txtStylistID} success.");
+                    MessageBox.Show($"Update account {this.txtStylistID.Text} success.");
                 }
                 else
                 {

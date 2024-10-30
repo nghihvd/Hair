@@ -20,5 +20,6 @@ namespace HairHarmony_Repository
         {
             FeedbackDAO.Instance.SaveFeedback(appointmentId, feedback, points, cus);
         }
+        public List<Feedback> getFeedbackByStylistID(string id) => FeedbackDAO.Instance.getFeedbackByStylistID(id);
     }
 }

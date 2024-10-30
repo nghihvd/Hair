@@ -28,7 +28,18 @@ namespace HairHarmony_DAOs
         {
             dbContext = new HairContext();
         }
-
+        public List<Feedback> getFeedbackByStylistID(string id)
+        {
+            List<Feedback> feed = dbContext.Feedbacks.ToList();
+            foreach (Feedback f in feed)
+            {
+                if(f.StylistId != id)
+                {
+                    feed.Remove(f);
+                }
+            }
+            return feed;    
+        }
         public Feedback getFeedbackByAppoinId(int id)
         {
             return dbContext.Feedbacks.SingleOrDefault(a => a.AppointmentId == id);
