@@ -86,7 +86,7 @@ namespace PRN212_HairHarmony
             Dictionary<int,List<string>> orders  = orderService.GetOrdersWithServiceNamesByAppointmentId(Int32.Parse(appointmentid));
             lbServiceName.ItemsSource = orders.Values.SelectMany(list => list).ToList();
             // Hiển thị tên stylist
-            txtSytlistName.Text = appointment.StylistId.ToString();
+            //txtSytlistName.Text = appointment.StylistId.ToString();
 
             // Tính tổng tiền của tất cả các dịch vụ trong cuộc hẹn
             Dictionary<int,List<decimal?>> servicePrice = orderService.GetPriceWithServiceIDByAppointmentID(Int32.Parse(appointmentid));

@@ -150,8 +150,24 @@ namespace PRN212_HairHarmony
             {
                 Account acc = new Account();
                 acc.AccountId = this.txtStylistID.Text;
-                acc.Salary = Decimal.Parse(this.txtSalary.Text);
-                acc.Level = this.cmbLevel.SelectedValue.ToString();
+                
+                if (this.txtSalary.Text.Trim().Length == 0)
+                {
+                    acc.Salary = 0;
+                }
+                else
+                {
+                    acc.Salary = Decimal.Parse(this.txtSalary.Text);
+                }
+                if (this.cmbLevel.SelectedValue == null)
+                {
+                    acc.Level = null;
+                }
+                else
+                {
+                    acc.Level = this.cmbLevel.SelectedValue.ToString();
+                }
+                
                 bool result = accountService.UpdateSylistAcc(acc);
                 if (result)
                 {

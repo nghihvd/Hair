@@ -69,12 +69,12 @@ namespace HairHarmony_DAOs
             return appointment; // Trả về appointment đã bị xóa
         }
 
-        public List<Appointment> getAppointmentByStylistID(string stylistID)
-        {
-            return dbContext.Appointments
-                .Where(a => a.StylistId.Equals(stylistID))
-                .ToList();
-        }
+        //public List<Appointment> getAppointmentByStylistID(string stylistID)
+        //{
+        //    return dbContext.Appointments
+        //        .Where(a => a.StylistId.Equals(stylistID))
+        //        .ToList();
+        //}
 
         public List<Appointment> GetAll()
         {
@@ -85,7 +85,6 @@ namespace HairHarmony_DAOs
         {
             return dbContext.Appointments
                 .Where(a => a.CustomerId.Equals(customerId))
-                .Include(a => a.Stylist)
                 .Include(a => a.Orders)
                 .ToList();
         }

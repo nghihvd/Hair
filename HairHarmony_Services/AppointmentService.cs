@@ -29,10 +29,10 @@ namespace HairHarmony_Services
             return appointmentRepo.GetAllByStatusUnfinished();
         }
 
-        public List<Appointment> getAppointmentByStylistID(string stylistID)
-        {
-            return appointmentRepo.getAppointmentByStylistID(stylistID);
-        }
+        //public List<Appointment> getAppointmentByStylistID(string stylistID)
+        //{
+        //    return appointmentRepo.getAppointmentByStylistID(stylistID);
+        //}
 
         
 

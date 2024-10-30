@@ -15,7 +15,7 @@ namespace HairHarmony_Repository
 
         public List<Appointment> GetAllByStatusUnfinished() => AppointmentDAO.Instance.GetAllByStatusUnfinished();
 
-        public List<Appointment> getAppointmentByStylistID(string stylistID) => AppointmentDAO.Instance.getAppointmentByStylistID(stylistID);
+        //public List<Appointment> getAppointmentByStylistID(string stylistID) => AppointmentDAO.Instance.getAppointmentByStylistID(stylistID);
         
 
         public Appointment GetById(int appointmentid) => AppointmentDAO.Instance.GetById(appointmentid);

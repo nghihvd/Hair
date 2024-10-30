@@ -68,16 +68,16 @@ namespace PRN212_HairHarmony
         {
 
             var log = Application.Current.Properties["LoggedAccount"] as Account; // stylist acc
-            List<Appointment> appoint = appointmentService.getAppointmentByStylistID(log.AccountId);
+            //List<Appointment> appoint = appointmentService.getAppointmentByStylistID(log.AccountId);
             List<Feedback> feedbacks = new List<Feedback>();
-            foreach(Appointment ap in appoint)
-            {
-                Feedback f = feedbackService.getFeedbackByAppoinId(ap.AppointmentId);
-                if ( f != null)
-                {
-                    feedbacks.Add(f);
-                }
-            }
+            //foreach(Appointment ap in appoint)
+            //{
+            //    Feedback f = feedbackService.getFeedbackByAppoinId(ap.AppointmentId);
+            //    if ( f != null)
+            //    {
+            //        feedbacks.Add(f);
+            //    }
+            //}
             this.dtgName.ItemsSource = feedbacks.Select(a => new {a.AppointmentId });
 
         }

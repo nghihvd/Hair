@@ -53,7 +53,7 @@ namespace HairHarmony_DAOs
         public void SaveFeedback(int appointmentId, string feedback, int points, string accountId)
         {
             var existingFeedback = dbContext.Feedbacks
-                .FirstOrDefault(f => f.AppointmentId == appointmentId && f.CustomerId == accountId);
+                .FirstOrDefault(f => f.AppointmentId == appointmentId);
 
             if (existingFeedback != null)
             {
@@ -67,7 +67,6 @@ namespace HairHarmony_DAOs
                     AppointmentId = appointmentId,
                     Comments = feedback,
                     Rating = points,
-                    CustomerId = accountId
                 };
                 dbContext.Feedbacks.Add(feedbackEntry);
             }

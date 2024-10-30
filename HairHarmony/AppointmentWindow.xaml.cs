@@ -87,7 +87,7 @@ namespace PRN212_HairHarmony
             if (selectedAppointment != null)
             {
                 txtAppointmentID.Text = selectedAppointment.AppointmentId.ToString();
-                txtStylistName.Text = selectedAppointment.Stylist?.Name ?? "No Stylist";
+                //txtStylistName.Text = selectedAppointment.Stylist?.Name ?? "No Stylist";
                 txtAppointmentDate.Text = selectedAppointment.AppointmentDate?.ToString("MM/dd/yyyy HH:mm") ?? "No Date";
 
                 lstServices.Items.Clear();

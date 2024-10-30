@@ -53,6 +53,28 @@ namespace PRN212_HairHarmony
 
         }
 
-        
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            HomeStylistWindow homeStylistWindow = new HomeStylistWindow();
+            homeStylistWindow.Show();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
+
+        private void btnReload_Click(object sender, RoutedEventArgs e)
+        {
+            LoadGrid();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

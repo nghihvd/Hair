@@ -46,7 +46,8 @@ namespace PRN212_HairHarmony
         private void btnViewComission_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-
+            ViewComissionRate viewComissionRate = new ViewComissionRate();
+            viewComissionRate.Show();
         }
     }
 }
