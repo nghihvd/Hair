@@ -22,13 +22,32 @@ namespace PRN212_HairHarmony
     public partial class ServiceWindow : Window
     {
         private readonly IServiceService serviceService;
+        private int? role;
         public ServiceWindow()
         {
             InitializeComponent();
             serviceService = new ServiceService();
             LoadGrid();
         }
-
+        public ServiceWindow(int? role)
+        {
+            InitializeComponent();
+            serviceService = new ServiceService();
+            switch (role)
+            {
+                case 1:
+                    
+                    this.btnSelect.Visibility = Visibility.Hidden ;
+                    break;
+                case 2:
+                    this.btnAdd.Visibility = Visibility.Hidden;
+                    this.btnDelete.Visibility = Visibility.Hidden;
+                    this.btnUpdate.Visibility = Visibility.Hidden;
+             
+                    break;
+            }
+            LoadGrid();
+        }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -168,6 +187,11 @@ namespace PRN212_HairHarmony
         {
             LoadGrid();
             ResetInput();
+        }
+
+        private void btnSelect_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

@@ -40,12 +40,12 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnEnableService" HorizontalAlignment="Left" Margin="300,366,0,0" VerticalAlignment="Top" Height="38" Width="181" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Enable" >
+        <Button x:Name="btnEnableService" HorizontalAlignment="Left" Margin="300,366,0,0" VerticalAlignment="Top" Height="38" Width="181" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Enable" Click="btnEnableService_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="570,366,0,0" VerticalAlignment="Top" Height="38" Width="180" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" >
+        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="570,366,0,0" VerticalAlignment="Top" Height="38" Width="180" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" Click="btnDisable_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

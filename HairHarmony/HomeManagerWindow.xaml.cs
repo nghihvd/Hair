@@ -49,7 +49,7 @@ namespace PRN212_HairHarmony
         private void btnViewService_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            ServiceWindow serviceWindow = new ServiceWindow();
+            ServiceWindow serviceWindow = new ServiceWindow(1);
             serviceWindow.Show();
         }
 

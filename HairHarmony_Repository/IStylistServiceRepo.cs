@@ -14,5 +14,8 @@ namespace HairHarmony_Repository
         public StylistService GetStylistServiceByStylistID(string id);
 
         public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId);
+        public bool DisableServiceStylist(string stylistID, int serviceID);
+
+        public bool EnableServiceStylist(string stylistID, int serviceID);
     }
 }
