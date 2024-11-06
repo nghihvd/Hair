@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="FeedbackWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+        Title="FeedbackWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>

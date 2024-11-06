@@ -116,6 +116,7 @@ namespace PRN212_HairHarmony
             this.txtPrice.Text = "";
             this.txtServiceID.Text = "";
             this.txtServiceName.Text = "";
+            this.dtgService.SelectedItem = null;
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -124,20 +125,20 @@ namespace PRN212_HairHarmony
                 || string.IsNullOrEmpty(this.txtPrice.Text)
                 || string.IsNullOrEmpty(this.txtServiceID.Text))
             {
-                MessageBox.Show("Please enter enough information");
+                MessageBox.Show("All field is required", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             int serviceID;
             if (!int.TryParse(this.txtServiceID.Text, out serviceID))
             {
-                MessageBox.Show("Invalid ID, ID is number");
+                MessageBox.Show("Invalid ID, ID is number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             decimal price;
             if (!decimal.TryParse(this.txtPrice.Text, out price))
             {
-                MessageBox.Show("Invalid price,price is number");
+                MessageBox.Show("Invalid price,price is number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             Service service = new Service();
@@ -148,19 +149,26 @@ namespace PRN212_HairHarmony
             bool result = serviceService.AddService(service);
             if (result)
             {
-                MessageBox.Show("Add service success!!");
+                MessageBox.Show("Add service success!!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadGrid();
                 ResetInput();
             }
             else
             {
-                MessageBox.Show("Some thing wrong");
+                MessageBox.Show("Some thing wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(this.txtDuration.Text)
+                || string.IsNullOrEmpty(this.txtServiceName.Text)
+                || string.IsNullOrEmpty(this.txtPrice.Text)
+                || string.IsNullOrEmpty(this.txtServiceID.Text))
+            {
+                MessageBox.Show("All field is required", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             Service service = new Service();
             service.Price = decimal.Parse(this.txtPrice.Text);
             service.Duration = int.Parse(this.txtDuration.Text);
@@ -168,36 +176,41 @@ namespace PRN212_HairHarmony
             service.ServiceId = int.Parse(this.txtServiceID.Text);
             if (serviceService.GetServiceByID(service.ServiceId) == null)
             {
-                MessageBox.Show("Id not exit.Please enter new ID");
+                MessageBox.Show("Id not exit.Please enter new ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             bool result = serviceService.UpdateService(service);
             if (result)
             {
-                MessageBox.Show("Update success");
+                MessageBox.Show("Update success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadGrid();
                 ResetInput();
             }
             else
             {
-                MessageBox.Show("Something wrong.Please check again!!!!");
+                MessageBox.Show("Something wrong.Please check again!!!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(this.txtServiceID.Text))
+            {
+                MessageBox.Show("Please enter service ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             int id = int.Parse(this.txtServiceID.Text);
             bool result = serviceService.DeleteService(id);
             if (result)
             {
-                MessageBox.Show("Delete success!!");
+                MessageBox.Show("Delete success!!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadGrid();
                 ResetInput();
             }
             else
             {
-                MessageBox.Show("Something wrong");
+                MessageBox.Show("Something wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -210,18 +223,18 @@ namespace PRN212_HairHarmony
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
           
-            if (txtDuration.Text == null ||
-                txtPrice.Text == null ||
-                txtServiceID.Text == null ||
-                txtServiceName.Text == null)
+            if (string.IsNullOrEmpty(this.txtDuration.Text)
+                || string.IsNullOrEmpty(this.txtServiceName.Text)
+                || string.IsNullOrEmpty(this.txtPrice.Text)
+                || string.IsNullOrEmpty(this.txtServiceID.Text))
             {
-                MessageBox.Show("All field is required.");
+                MessageBox.Show("All field is required", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             int id = int.Parse(txtServiceID.Text);
             if(serviceService.GetServiceByID(id) == null)
             {
-                MessageBox.Show("Service not exist.");
+                MessageBox.Show("Service not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             StylistService stylistPerService = new StylistService();
@@ -233,12 +246,12 @@ namespace PRN212_HairHarmony
             bool result = stylistService.AddMoreServiceOfStylist(stylistPerService);
             if (result)
             {
-                MessageBox.Show("Add success");
+                MessageBox.Show("Add success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
             else
             {
-                MessageBox.Show("Service already added");
+                MessageBox.Show("Service already added", "Announce", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

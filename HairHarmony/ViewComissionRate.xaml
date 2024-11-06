@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ViewComissionRate" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
-        <TextBlock HorizontalAlignment="Center" Height="36" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="416" TextAlignment="Center" FontSize="24" FontWeight="Bold" Text="Service of Stylists"/>
+        <TextBlock HorizontalAlignment="Center" Height="31" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="416" TextAlignment="Center" FontSize="24" FontWeight="Bold" Text="Service of Stylists"/>
         <Button x:Name="btnLogout1" Content="📲" HorizontalAlignment="Left" Margin="639,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
                 <DropShadowEffect/>

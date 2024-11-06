@@ -54,10 +54,13 @@ namespace PRN212_HairHarmony
         {
             DataGrid dataGrid = sender as DataGrid;
             if (dataGrid.SelectedIndex < 0) return;
-            ; DataGridRow row =
+            DataGridRow row =
                             (DataGridRow)dataGrid.ItemContainerGenerator
                             .ContainerFromIndex(dataGrid.SelectedIndex);
-
+            if(row == null)
+            {
+                return;
+            }
             DataGridCell? rowColum =
                 dataGrid.Columns[0].GetCellContent(row)?.Parent as DataGridCell;
 
@@ -92,44 +95,59 @@ namespace PRN212_HairHarmony
 
                 || string.IsNullOrEmpty(this.txtFullName.Text))
             {
-                MessageBox.Show("Please enter all your information.");
+                MessageBox.Show("Please enter all information.","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
             if (accountService.getAccountByID(this.txtStylistID.Text) != null)
             {
-                MessageBox.Show("Account already exist. Please enter another user name");
+                MessageBox.Show("Account already exist. Please enter another user name",
+                    "Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
 
             string pattern = @"^0\d{8,10}$";
             if (!Regex.IsMatch(this.txtPhoneNumber.Text, pattern))
             {
-                MessageBox.Show("Phone number has to 9 to 11 numbers and start with 0");
+                MessageBox.Show("Phone number has to 9 to 11 numbers and start with 0",
+                    "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                return;
+            }
+            string patternEmail = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(this.txtEmail.Text, patternEmail))
+            {
+                MessageBox.Show("Wrong pattern email","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+
                 return;
             }
 
-            Account account = new Account();
-            account.Password = txtPassword.Password;
-            account.Email = txtEmail.Text;
-            account.AccountId = txtStylistID.Text;
-            account.Phone = txtPhoneNumber.Text;
-            account.RoleId = 2;
-            account.Name = txtFullName.Text;
-            account.Salary = int.Parse(txtSalary.Text.ToString());
-            account.Level = cmbLevel.SelectedValue.ToString();
-            account.LoyaltyPoints = 0;
-            bool result = accountService.RegisAccount(account);
-            if (result)
+            MessageBoxResult messageBox = MessageBox.Show("Do you want to add " + this.txtFullName.Text + " to system?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (messageBox == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Register success");
+                Account account = new Account();
+                account.Password = txtPassword.Password;
+                account.Email = txtEmail.Text;
+                account.AccountId = txtStylistID.Text;
+                account.Phone = txtPhoneNumber.Text;
+                account.RoleId = 2;
+                account.Name = txtFullName.Text;
+                account.Salary = int.Parse(txtSalary.Text.ToString());
+                account.Level = cmbLevel.SelectedValue.ToString();
+                account.LoyaltyPoints = 0;
+                bool result = accountService.RegisAccount(account);
+                if (result)
+                {
+                    MessageBox.Show("Register success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            }
-            else
-            {
-                MessageBox.Show("Something wrong please check again.");
+                }
+                else
+                {
+                    MessageBox.Show("Something wrong please check again.","Confirmation",MessageBoxButton.OK,MessageBoxImage.Error);
+                }
+                
             }
             resetInput();
             LoadGrid();
+
         }
         private void resetInput()
         {
@@ -141,14 +159,25 @@ namespace PRN212_HairHarmony
             this.txtEmail.Text = "";
             this.txtPhoneNumber.Text = "";
             this.cmbLevel.SelectedValue = null;
+            this.dtgStylist.SelectedItem = null;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(this.txtStylistID.Text)
+                || string.IsNullOrEmpty(this.txtPassword.Password)
+                || string.IsNullOrEmpty(this.txtPhoneNumber.Text)
+                || string.IsNullOrEmpty(this.txtEmail.Text)
+
+                || string.IsNullOrEmpty(this.txtFullName.Text))
+            {
+                MessageBox.Show("Please enter all information.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             decimal salary;
             if (!decimal.TryParse(this.txtSalary.Text, out salary))
             {
-                MessageBox.Show("Salary is wrong");
+                MessageBox.Show("Salary is wrong","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
             if (accountService.getAccountByID(this.txtStylistID.Text) != null)
@@ -176,16 +205,16 @@ namespace PRN212_HairHarmony
                 bool result = accountService.UpdateSylistAcc(acc);
                 if (result)
                 {
-                    MessageBox.Show($"Update account {this.txtStylistID.Text} success.");
+                    MessageBox.Show($"Update account {this.txtStylistID.Text} success.","Success",MessageBoxButton.OK,MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Something wrong. Please check again.");
+                    MessageBox.Show("Something wrong. Please check again.","Error",MessageBoxButton.OK,MessageBoxImage.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Account not exist");
+                MessageBox.Show("Account not exist","Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             this.LoadGrid();
             this.resetInput();
@@ -193,6 +222,11 @@ namespace PRN212_HairHarmony
 
         private void btnEnable_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(this.txtStylistID.Text))
+            {
+                MessageBox.Show("Please enter stylist ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             bool result = accountService.EnableStylist(this.txtStylistID.Text);
             if (result)
             {

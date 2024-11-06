@@ -50,24 +50,24 @@ namespace PRN212_HairHarmony
 
                 || string.IsNullOrEmpty(this.txtFullName.Text))
             {
-                MessageBox.Show("Please enter all your information.");
+                MessageBox.Show("Please enter all your information.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (accountService.getAccountByID(this.txtUsername.Text) != null)
             {
-                MessageBox.Show("Account already exist. Please enter another user name");
+                MessageBox.Show("Account already exist. Please enter another user name", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (!txtConfirmPassword.Password.Equals(txtPassword.Password))
             {
-                MessageBox.Show("Confirm password is incorrect");
+                MessageBox.Show("Confirm password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             string pattern = @"^0\d{8,10}$";
             if (!Regex.IsMatch(this.txtPhoneNumber.Text, pattern))
             {
-                MessageBox.Show("Phone number has to 9 to 11 numbers and start with 0");
+                MessageBox.Show("Phone number has to 9 to 11 numbers and start with 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -81,10 +81,10 @@ namespace PRN212_HairHarmony
             bool result = accountService.RegisAccount(account);
             if (result)
             {
-                MessageBox.Show("Register success");
+                MessageBox.Show("Register success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-            else { MessageBox.Show("Something wrong please check again."); }
+            else { MessageBox.Show("Something wrong please check again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
 
         }
 

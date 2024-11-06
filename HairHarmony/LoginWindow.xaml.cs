@@ -29,6 +29,12 @@ namespace PRN212_HairHarmony
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if(string.IsNullOrEmpty(this.txtPassword.Password)||
+                string.IsNullOrEmpty(this.txtUsername.Text))
+            {
+                MessageBox.Show("All fields is required","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                return;
+            }
             Account account = iAccountServ.getAccountByID(txtUsername.Text.Trim());
 
             if (account != null && account.Password.Equals(txtPassword.Password))
@@ -55,11 +61,11 @@ namespace PRN212_HairHarmony
             }
             else
             {
-                MessageBox.Show("Wrong Password, Sorry !");
+                MessageBox.Show("Wrong Password, Sorry !", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             if (!account.AccountId.Equals(txtUsername.Text.Trim()))
             {
-                MessageBox.Show("Account not exist");
+                MessageBox.Show("Account not exist", "Not found", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

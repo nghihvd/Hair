@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HairHarmony_BusinessObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace PRN212_HairHarmony
     /// </summary>
     public partial class HomeWindow : Window
     {
+        private Account? account;
         public HomeWindow()
         {
             InitializeComponent();
+           account = Application.Current.Properties["LoggedAccount"] as Account;
+            this.tblWelcome.Text = "Welcome "+ account.Name;
         }
 
         private void btnService_Click(object sender, RoutedEventArgs e)
@@ -34,7 +38,7 @@ namespace PRN212_HairHarmony
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
