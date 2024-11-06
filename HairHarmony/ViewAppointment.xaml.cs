@@ -48,7 +48,7 @@ namespace PRN212_HairHarmony
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -61,11 +61,16 @@ namespace PRN212_HairHarmony
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dataGrid = sender as DataGrid;
+            if (dataGrid.SelectedIndex == -1)
+            {
+                return;
+            }
             DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
             if (row == null)
             {
                 return; 
             }
+            
 
             DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
             if (RowColumn == null)
@@ -73,20 +78,21 @@ namespace PRN212_HairHarmony
                 return; 
             }
 
-
+            //lấy được appointmentID 
             string appointmentid = ((TextBlock)RowColumn.Content).Text;
+            //rồi từ ID kiếm được apponintment 
             Appointment appointment = appointmentService.GetById(Int32.Parse(appointmentid));
 
             txtAppointment.Text = appointmentid;
             txtDateTime.Text = appointment.AppointmentDate.ToString();
-
-
-
             // Lấy serviceName từ bảng Order và hiển thị tên dịch vụ
-            Dictionary<int,List<string>> orders  = orderService.GetOrdersWithServiceNamesByAppointmentId(Int32.Parse(appointmentid));
+            Dictionary<int,List<(string serviceName, string stylistID)>> orders  = orderService.GetOrdersWithServiceNamesByAppointmentId(Int32.Parse(appointmentid));
             lbServiceName.ItemsSource = orders.Values.SelectMany(list => list).ToList();
-            // Hiển thị tên stylist
-            //txtSytlistName.Text = appointment.StylistId.ToString();
+            //Hiển thị tên của khách hàng 
+            txtCustomerID.Text = appointment.CustomerId;
+
+            // Hiển thị tên stylist và các dịch vụ tương ứng 
+
 
             // Tính tổng tiền của tất cả các dịch vụ trong cuộc hẹn
             Dictionary<int,List<decimal?>> servicePrice = orderService.GetPriceWithServiceIDByAppointmentID(Int32.Parse(appointmentid));
@@ -96,34 +102,46 @@ namespace PRN212_HairHarmony
 
         private void LoadGrid()
         {
-            this.dtgAppointment.ItemsSource = appointmentService.GetAll().Select(a => new { a.AppointmentId, a.AppointmentDate });
+            this.dtgAppointment.ItemsSource = appointmentService.GetAll().Select(a => new { a.AppointmentId, a.AppointmentDate,a.CustomerId,a.Status});
         }
 
         private void btnDeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
-            int appointmentId = int.Parse(txtAppointment.Text);
+            if (string.IsNullOrEmpty(txtAppointment.Text)) {
+                MessageBox.Show("Oh No! Can't remove it","=((",MessageBoxButton.OK,MessageBoxImage.Warning);
+                return;
+            }
+            MessageBoxResult mbr = MessageBox.Show("Are you sure to remove it?","Confirmation",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            if (mbr == MessageBoxResult.Yes) 
+            {
+                
+                int appointmentId = int.Parse(txtAppointment.Text);
 
-            feedbackService.deleteFeedback(appointmentId);
-            orderService.DeleteOrdersByAppointmentId(appointmentId);
-            Appointment appointmentDeleted = appointmentService.RemoveByID(appointmentId);
-            if (appointmentDeleted != null) 
-            {
-                MessageBox.Show("Delete success !!");
-                LoadGrid();
+                feedbackService.deleteFeedback(appointmentId);
+                orderService.DeleteOrdersByAppointmentId(appointmentId);
+                Appointment appointmentDeleted = appointmentService.RemoveByID(appointmentId);
+                if (appointmentDeleted != null)
+                {
+                    MessageBox.Show("Delete success !!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Something wrong");
+                }
             }
-            else 
-            {
-                MessageBox.Show("Something wrong");
-            }
+
+            
         }
 
         private void btnReload_Click(object sender, RoutedEventArgs e)
         {
-            txtAppointment.Text = string.Empty;
-            txtDateTime.Text = string.Empty;
+            txtAppointment.Text = null;
+            txtDateTime.Text = null;
             lbServiceName.ItemsSource = null;
-            txtSytlistName.Text = string.Empty;
-            txtTotal.Text = string.Empty;
+            txtCustomerID.Text = null;
+            txtTotal.Text = null;
+            dtgAppointment.SelectedIndex = -1;
         }
     }
 }

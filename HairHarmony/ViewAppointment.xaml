@@ -31,12 +31,12 @@
         <DataGrid x:Name="dtgAppointment" HorizontalAlignment="Left" Height="271" Margin="27,135,0,0" Grid.Row="1" VerticalAlignment="Top" Width="290" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="DataGrid_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="368,135,0,0" Grid.Row="1" TextWrapping="Wrap" Text="AppointmentID" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
         <TextBlock HorizontalAlignment="Left" Margin="370,179,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Date Time:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="370,266,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Service Name:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="370,224,0,0" Grid.Row="1" TextWrapping="Wrap" Text="StylistID:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="370,274,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"><Run Text="Service Name "/><LineBreak/><Run Text="&amp;"/><LineBreak/><Run Text="SytlistID"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="370,224,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CustomerID:" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
         <TextBlock HorizontalAlignment="Left" Margin="370,382,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Total:" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
         <TextBox x:Name="txtAppointment" HorizontalAlignment="Left" Margin="519,141,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
         <TextBox x:Name="txtDateTime" HorizontalAlignment="Left" Margin="519,182,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
-        <TextBox x:Name="txtSytlistName" HorizontalAlignment="Left" Margin="519,227,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
+        <TextBox x:Name="txtCustomerID" HorizontalAlignment="Left" Margin="519,227,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="519,388,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
         <ListBox x:Name="lbServiceName" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="519,266,26,56" Width="255" Height="106"/>
         <Button x:Name="btnDeleteAppointment" Content="Delete" HorizontalAlignment="Left" Margin="707,72,0,0" VerticalAlignment="Top" Height="42" Width="67" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White"  Grid.Row="1" Click="btnDeleteAppointment_Click" >

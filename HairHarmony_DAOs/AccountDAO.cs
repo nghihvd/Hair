@@ -95,14 +95,28 @@ namespace HairHarmony_DAOs
         {
 
             bool isSuccess = false;
+            // account là thong tin mới 
+            //manager chứa thong tin cũ 
             Account manager = SearchAccount(account.AccountId);
             if (manager != null)
             {
-                manager.Name = account.Name;
-                manager.Email = account.Email;
-                manager.Phone = account.Phone;
-                manager.Password = account.Password;
-
+                if (!string.IsNullOrEmpty(account.Name) && !account.Name.ToString().Equals(manager.Name.ToString()))
+                {
+                    manager.Name = account.Name.ToString();
+                }
+                if (!string.IsNullOrEmpty(account.Email) && !account.Email.ToString().Equals(manager.Email.ToString())) 
+                {
+                    manager.Email = account.Email.ToString();
+                }
+                if (!string.IsNullOrEmpty(account.Phone) && !account.Phone.ToString().Equals(manager.Phone.ToString())) 
+                {
+                    manager.Phone = account.Phone.ToString();
+                }
+                if (!string.IsNullOrEmpty(account.Password) && !account.Password.ToString().Equals(manager.Password.ToString()))
+                {
+                    manager.Password = account.Password.ToString();
+                }
+                                
                 dbContext.Update(manager);
                 dbContext.SaveChanges();
                 isSuccess = true;

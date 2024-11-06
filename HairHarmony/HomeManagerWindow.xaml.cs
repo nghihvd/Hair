@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HairHarmony_BusinessObject;
 
 namespace PRN212_HairHarmony
 {
@@ -20,10 +21,13 @@ namespace PRN212_HairHarmony
     public partial class HomeManagerWindow : Window
     {
 
-        
+        private Account? account;
+
         public HomeManagerWindow()
         {
             InitializeComponent();
+            account = Application.Current.Properties["LoggedAccount"] as Account;
+
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -58,6 +62,13 @@ namespace PRN212_HairHarmony
             this.Hide();
             ViewAppointment appointWindow = new ViewAppointment();
             appointWindow.Show();
+        }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            ProfileManagerWindow profileManagerWindow = new ProfileManagerWindow(account);
+            profileManagerWindow.Show();
         }
     }
 }
