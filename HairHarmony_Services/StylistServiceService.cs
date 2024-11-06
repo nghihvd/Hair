@@ -19,7 +19,7 @@ namespace HairHarmony_Services
         {
             return repo.getListServiceStylist();    
         }
-        public StylistService GetStylistServiceByStylistID(string id)
+        public List<StylistService> GetStylistServiceByStylistID(string id)
         {
             return repo.GetStylistServiceByStylistID(id);
         }
@@ -37,6 +37,16 @@ namespace HairHarmony_Services
         public bool EnableServiceStylist(string stylistID, int serviceID)
         {
             return repo.EnableServiceStylist(stylistID, serviceID); 
+        }
+
+        public bool AddMoreServiceOfStylist(StylistService sty)
+        {
+            return repo.AddMoreServiceOfStylist(sty);
+        }
+
+        public bool UpdateComission(string stylisID, int serviceID, double comissionRate)
+        {
+            return repo.UpdateComission(stylisID, serviceID, comissionRate);    
         }
     }
 }

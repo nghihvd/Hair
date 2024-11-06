@@ -22,37 +22,55 @@ namespace PRN212_HairHarmony
     public partial class ServiceWindow : Window
     {
         private readonly IServiceService serviceService;
+        private readonly IStylistServiceService stylistService;
         private int? role;
+        private Account? account;
         public ServiceWindow()
         {
             InitializeComponent();
             serviceService = new ServiceService();
+            stylistService = new StylistServiceService();
+            account = Application.Current.Properties["LoggedAccount"] as Account;
             LoadGrid();
         }
         public ServiceWindow(int? role)
         {
             InitializeComponent();
             serviceService = new ServiceService();
+            stylistService = new StylistServiceService();
+            account = Application.Current.Properties["LoggedAccount"] as Account;
             switch (role)
             {
                 case 1:
-                    
-                    this.btnSelect.Visibility = Visibility.Hidden ;
+
+                    this.btnSelect.Visibility = Visibility.Hidden;
                     break;
                 case 2:
                     this.btnAdd.Visibility = Visibility.Hidden;
                     this.btnDelete.Visibility = Visibility.Hidden;
                     this.btnUpdate.Visibility = Visibility.Hidden;
-             
+
                     break;
             }
             LoadGrid();
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            HomeManagerWindow homeWindow = new HomeManagerWindow();
-            homeWindow.Show();
+            switch (account.RoleId)
+            {
+                case 1:
+                    this.Hide();
+                    HomeManagerWindow homeWindow = new HomeManagerWindow();
+                    homeWindow.Show();
+                    break;
+                case 2:
+                    this.Hide();
+                    ViewComissionRate viewComissionRate = new ViewComissionRate();
+                    viewComissionRate.Show();
+                    break;
+
+            }
+
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -89,7 +107,7 @@ namespace PRN212_HairHarmony
 
         private void LoadGrid()
         {
-            this.dtgService.ItemsSource = serviceService.GetServiceList().Select(a => new {a.ServiceId,a.ServiceName});
+            this.dtgService.ItemsSource = serviceService.GetServiceList().Select(a => new { a.ServiceId, a.ServiceName });
         }
 
         private void ResetInput()
@@ -131,7 +149,7 @@ namespace PRN212_HairHarmony
             if (result)
             {
                 MessageBox.Show("Add service success!!");
-                LoadGrid(); 
+                LoadGrid();
                 ResetInput();
             }
             else
@@ -142,11 +160,11 @@ namespace PRN212_HairHarmony
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            
+
             Service service = new Service();
-            service.Price = decimal.Parse (this.txtPrice.Text);
-            service.Duration = int.Parse (this.txtDuration.Text);
-            service.ServiceName= this.txtServiceName.Text;
+            service.Price = decimal.Parse(this.txtPrice.Text);
+            service.Duration = int.Parse(this.txtDuration.Text);
+            service.ServiceName = this.txtServiceName.Text;
             service.ServiceId = int.Parse(this.txtServiceID.Text);
             if (serviceService.GetServiceByID(service.ServiceId) == null)
             {
@@ -157,14 +175,14 @@ namespace PRN212_HairHarmony
             if (result)
             {
                 MessageBox.Show("Update success");
-                LoadGrid ();
+                LoadGrid();
                 ResetInput();
             }
             else
             {
                 MessageBox.Show("Something wrong.Please check again!!!!");
             }
-            
+
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -191,8 +209,38 @@ namespace PRN212_HairHarmony
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
+          
+            if (txtDuration.Text == null ||
+                txtPrice.Text == null ||
+                txtServiceID.Text == null ||
+                txtServiceName.Text == null)
+            {
+                MessageBox.Show("All field is required.");
+                return;
+            }
+            int id = int.Parse(txtServiceID.Text);
+            if(serviceService.GetServiceByID(id) == null)
+            {
+                MessageBox.Show("Service not exist.");
+                return;
+            }
+            StylistService stylistPerService = new StylistService();
+            stylistPerService.StylistId = account.AccountId;
+            stylistPerService.Status = true;
+            stylistPerService.CommissionRate = 0;
+            stylistPerService.ServiceId = id;
+            
+            bool result = stylistService.AddMoreServiceOfStylist(stylistPerService);
+            if (result)
+            {
+                MessageBox.Show("Add success");
 
+            }
+            else
+            {
+                MessageBox.Show("Service already added");
+            }
         }
-    }
 
+    }
 }

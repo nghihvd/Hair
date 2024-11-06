@@ -34,14 +34,24 @@ namespace HairHarmony_DAOs
             return dbContext.StylistServices.ToList();
         }
 
-        public StylistService GetStylistServiceByStylistID(string id)
+
+        public List<StylistService> GetStylistServiceByStylistID(string id)
         {
-            return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id));
+            List<StylistService> stylistServices = getListServiceStylist();
+            foreach (StylistService stylistService in stylistServices)
+            {
+                if (!stylistService.StylistId.Equals(id))
+                {
+                    stylistServices.Remove(stylistService);
+                }
+            }
+            return stylistServices;
+
         }
 
         public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId)
         {
-            return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id) & a.ServiceId == serviceId);
+            return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id) && a.ServiceId == serviceId);
         }
 
         public bool DisableServiceStylist(string stylistID, int serviceID)
@@ -51,6 +61,8 @@ namespace HairHarmony_DAOs
             if (stylist.Status)
             {
                 stylist.Status = false;
+                dbContext.Update(stylist);
+                dbContext.SaveChanges();
                 result = true;
             }
             return result;
@@ -63,18 +75,35 @@ namespace HairHarmony_DAOs
             if (!stylist.Status)
             {
                 stylist.Status = true;
+                dbContext.Update(stylist);
+                dbContext.SaveChanges();
                 result = true;
             }
             return result;
         }
 
-        public bool AddMoreServiceOfStylist(string stylistID, int serviceID)
+        public bool AddMoreServiceOfStylist(StylistService sty)
         {
             bool result = false;
-            StylistService stylist = GetStylistServiceByStylistIDAndServiceID(stylistID, serviceID);
+            StylistService stylist = GetStylistServiceByStylistIDAndServiceID(sty.StylistId, sty.ServiceId);
             if (stylist == null)
             {
-                stylist.Status = true;
+                dbContext.Add(sty);
+                dbContext.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
+        public bool UpdateComission(string stylisID, int serviceID, double comissionRate)
+        {
+            bool result = false;
+            StylistService stylistService = GetStylistServiceByStylistIDAndServiceID(stylisID, serviceID);
+            if (stylistService != null)
+            {
+                stylistService.CommissionRate = comissionRate;
+                dbContext.Update(stylistService);
+                dbContext.SaveChanges();
                 result = true;
             }
             return result;

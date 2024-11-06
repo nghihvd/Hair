@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="ViewStylistWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterOwner">
+        Title="ViewStylistWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFD5EFCD">
         <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
@@ -62,8 +62,13 @@
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,329,0,0" TextWrapping="Wrap" Text="Level" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <ComboBox x:Name="cmbLevel" HorizontalAlignment="Left" Height="20" Margin="585,334,0,0" VerticalAlignment="Top" Width="205"/>
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,375,0,0" TextWrapping="Wrap" Text="Points" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <TextBlock x:Name="txtPoints" HorizontalAlignment="Left" Height="26" Margin="616,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FFEE0808"/>
+        <TextBlock x:Name="txtPoints" HorizontalAlignment="Left" Height="26" Margin="585,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FFEE0808"/>
         <Button x:Name="btnReload" Content="🔃" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnReload_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnDetail" Content="Detail" HorizontalAlignment="Left" Margin="703,373,0,0" VerticalAlignment="Top" Height="56" Width="71" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnDetail_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

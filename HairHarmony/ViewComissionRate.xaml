@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="ViewComissionRate" Height="450" Width="800">
+        Title="ViewComissionRate" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
-        <TextBlock HorizontalAlignment="Center" Height="36" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="416" TextAlignment="Center" FontSize="24" FontWeight="Bold"><Run Text="View your service"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Height="36" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="416" TextAlignment="Center" FontSize="24" FontWeight="Bold" Text="Service of Stylists"/>
         <Button x:Name="btnLogout1" Content="📲" HorizontalAlignment="Left" Margin="639,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
@@ -29,26 +29,32 @@
             </Button.Effect>
         </Button>
         <DataGrid x:Name="dtgService" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="27,90,416,95" SelectionChanged="DataGrid_SelectionChanged"/>
-        <TextBox x:Name="txtServiceID" HorizontalAlignment="Left" Height="41" Margin="496,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
-        <Label Content="Service ID" HorizontalAlignment="Left" Height="41" Margin="446,70,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Commission Rate" HorizontalAlignment="Left" Height="41" Margin="446,174,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="txtComission" HorizontalAlignment="Left" Height="41" Margin="496,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
-        <Label Content="Status" HorizontalAlignment="Left" Height="41" Margin="446,276,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
-        <CheckBox x:Name="ckbRate" Content="Selected " HorizontalAlignment="Left" Height="34" Margin="496,323,0,0" VerticalAlignment="Top" Width="276" FontSize="16"/>
-        <Button x:Name="btnAddService" HorizontalAlignment="Left" Margin="73,366,0,0" VerticalAlignment="Top" Height="38" Width="169" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Add service" Click="btnAddService_Click" >
+        <TextBox x:Name="txtServiceID" HorizontalAlignment="Left" Height="41" Margin="496,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
+        <Label Content="Service ID" HorizontalAlignment="Left" Height="41" Margin="446,123,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Commission Rate" HorizontalAlignment="Left" Height="41" Margin="446,215,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="txtComission" HorizontalAlignment="Left" Height="42" Margin="494,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
+        <Label Content="Status" HorizontalAlignment="Left" Height="41" Margin="446,320,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="ckbRate" Content="Selected " HorizontalAlignment="Left" Height="34" Margin="614,327,0,0" VerticalAlignment="Top" Width="80" FontSize="16"/>
+        <Button x:Name="btnAddService" HorizontalAlignment="Left" Margin="27,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Add service" Click="btnAddService_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnEnableService" HorizontalAlignment="Left" Margin="300,366,0,0" VerticalAlignment="Top" Height="38" Width="181" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Enable" Click="btnEnableService_Click" >
+        <Button x:Name="btnEnableService" HorizontalAlignment="Left" Margin="219,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Enable" Click="btnEnableService_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="570,366,0,0" VerticalAlignment="Top" Height="38" Width="180" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" Click="btnDisable_Click" >
+        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="428,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" Click="btnDisable_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Button x:Name="btnComission" HorizontalAlignment="Left" Margin="614,366,0,0" VerticalAlignment="Top" Height="38" Width="136" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Update" Click="btnComission_Click" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock x:Name="tblStylistID" HorizontalAlignment="Left" Height="36" Margin="428,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
     </Grid>
 </Window>

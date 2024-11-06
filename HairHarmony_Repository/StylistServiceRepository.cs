@@ -12,13 +12,15 @@ namespace HairHarmony_Repository
     {
         public List<StylistService> getListServiceStylist() => StylistServiceDAO.Instance.getListServiceStylist();
 
-        public StylistService GetStylistServiceByStylistID(string id) => StylistServiceDAO.Instance.GetStylistServiceByStylistID(id);
+        public List<StylistService> GetStylistServiceByStylistID(string id) => StylistServiceDAO.Instance.GetStylistServiceByStylistID(id);
         public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId) => StylistServiceDAO.Instance.GetStylistServiceByStylistIDAndServiceID(id, serviceId);
 
         public bool DisableServiceStylist(string stylistID, int serviceID) => StylistServiceDAO.Instance.DisableServiceStylist(stylistID, serviceID);
 
         public bool EnableServiceStylist(string stylistID, int serviceID) => StylistServiceDAO.Instance.EnableServiceStylist(stylistID,serviceID);
 
-       
+        public bool AddMoreServiceOfStylist(StylistService sty) => StylistServiceDAO.Instance.AddMoreServiceOfStylist(sty);
+
+        public bool UpdateComission(string stylisID, int serviceID, double comissionRate) => StylistServiceDAO.Instance.UpdateComission(stylisID, serviceID, comissionRate);
     }
 }

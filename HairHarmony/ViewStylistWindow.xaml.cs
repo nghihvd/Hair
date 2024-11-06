@@ -54,9 +54,9 @@ namespace PRN212_HairHarmony
         {
             DataGrid dataGrid = sender as DataGrid;
             if (dataGrid.SelectedIndex < 0) return;
-;            DataGridRow row =
-                (DataGridRow)dataGrid.ItemContainerGenerator
-                .ContainerFromIndex(dataGrid.SelectedIndex);
+            ; DataGridRow row =
+                            (DataGridRow)dataGrid.ItemContainerGenerator
+                            .ContainerFromIndex(dataGrid.SelectedIndex);
 
             DataGridCell? rowColum =
                 dataGrid.Columns[0].GetCellContent(row)?.Parent as DataGridCell;
@@ -75,7 +75,7 @@ namespace PRN212_HairHarmony
 
         private void LoadGrid()
         {
-            this.dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new {a.AccountId,a.RoleId,a.Phone,a.Email,a.Level,a.LoyaltyPoints ,a.Salary});
+            this.dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new { a.AccountId, a.RoleId, a.Phone, a.Email, a.Level, a.LoyaltyPoints, a.Salary });
             List<string> level = new List<string> { "Junior Stylist", "Stylist", "Senior Stylist", "Master Stylist", "Creative Director" };
             this.cmbLevel.ItemsSource = level;
 
@@ -115,14 +115,14 @@ namespace PRN212_HairHarmony
             account.Phone = txtPhoneNumber.Text;
             account.RoleId = 2;
             account.Name = txtFullName.Text;
-            account.Salary =int.Parse(txtSalary.Text.ToString());
+            account.Salary = int.Parse(txtSalary.Text.ToString());
             account.Level = cmbLevel.SelectedValue.ToString();
             account.LoyaltyPoints = 0;
             bool result = accountService.RegisAccount(account);
             if (result)
             {
                 MessageBox.Show("Register success");
-                
+
             }
             else
             {
@@ -146,7 +146,8 @@ namespace PRN212_HairHarmony
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             decimal salary;
-            if(!decimal.TryParse(this.txtSalary.Text, out salary)){
+            if (!decimal.TryParse(this.txtSalary.Text, out salary))
+            {
                 MessageBox.Show("Salary is wrong");
                 return;
             }
@@ -154,7 +155,7 @@ namespace PRN212_HairHarmony
             {
                 Account acc = new Account();
                 acc.AccountId = this.txtStylistID.Text;
-                
+
                 if (this.txtSalary.Text.Trim().Length == 0)
                 {
                     acc.Salary = 0;
@@ -171,7 +172,7 @@ namespace PRN212_HairHarmony
                 {
                     acc.Level = this.cmbLevel.SelectedValue.ToString();
                 }
-                
+
                 bool result = accountService.UpdateSylistAcc(acc);
                 if (result)
                 {
@@ -193,7 +194,8 @@ namespace PRN212_HairHarmony
         private void btnEnable_Click(object sender, RoutedEventArgs e)
         {
             bool result = accountService.EnableStylist(this.txtStylistID.Text);
-            if (result) {
+            if (result)
+            {
                 MessageBox.Show("Enalble Sucess");
                 this.LoadGrid();
                 this.resetInput();
@@ -208,7 +210,15 @@ namespace PRN212_HairHarmony
         private void btnReload_Click(object sender, RoutedEventArgs e)
         {
             LoadGrid();
-            resetInput();   
+            resetInput();
+        }
+
+        private void btnDetail_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.Hide();
+            ViewComissionRate viewComissionRate = new ViewComissionRate();
+            viewComissionRate.Show();
         }
     }
 }

@@ -11,12 +11,16 @@ namespace HairHarmony_Services
     {
         public List<StylistService> getListServiceStylist();
 
-        public StylistService GetStylistServiceByStylistID(string id);
+        public List<StylistService> GetStylistServiceByStylistID(string id);
 
         public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId);
 
         public bool DisableServiceStylist(string stylistID, int serviceID);
 
         public bool EnableServiceStylist(string stylistID, int serviceID);
+
+        public bool AddMoreServiceOfStylist(StylistService sty);
+
+        public bool UpdateComission(string stylisID, int serviceID, double comissionRate);
     }
 }
