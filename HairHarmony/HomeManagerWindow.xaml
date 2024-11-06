@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="HomeManagerWindow" Height="450" Width="800" WindowStyle="None">
+        Title="HomeManagerWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFD5EFCD">
         <Button x:Name="btnViewAppoint" Content="View Appointment" HorizontalAlignment="Center" Margin="0,146,0,0" VerticalAlignment="Top" Height="50" Width="420" Background="#FF72B359" FontSize="16" FontWeight="Bold" Foreground="#FFF7F3F3" Click="btnViewAppoint_Click">
             <Button.Effect>

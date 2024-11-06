@@ -60,7 +60,7 @@
             </ProgressBar.RenderTransform>
         </ProgressBar>
         <TextBlock x:Name="tblPoint" HorizontalAlignment="Left" Height="38" Margin="464,353,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontWeight="Bold" TextAlignment="Center" FontSize="24"/>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="266,167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Service ID :" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="266,167,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Service Name:" VerticalAlignment="Top" Width="185" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="txtServiceID" HorizontalAlignment="Left" Height="32" Margin="452,167,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="14">
             <TextBox.Effect>
                 <DropShadowEffect/>
