@@ -20,7 +20,9 @@ namespace HairHarmony_Services
         public bool EnableServiceStylist(string stylistID, int serviceID);
 
         public bool AddMoreServiceOfStylist(StylistService sty);
+        public bool UpdateComission(string stylistID, int serviceID, double commission);
 
-        public bool UpdateComission(string stylisID, int serviceID, double comissionRate);
+        public List<StylistService> GetListStylistByServiceID(int serviceID);
+
     }
 }

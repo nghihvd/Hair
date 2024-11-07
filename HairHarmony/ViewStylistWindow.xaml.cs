@@ -254,5 +254,6 @@ namespace PRN212_HairHarmony
             ViewComissionRate viewComissionRate = new ViewComissionRate();
             viewComissionRate.Show();
         }
+ 
     }
 }

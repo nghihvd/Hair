@@ -29,10 +29,6 @@ namespace PRN212_HairHarmony
             accountService = new AccountService();
         }
 
-
-
-
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 

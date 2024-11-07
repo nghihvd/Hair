@@ -94,20 +94,32 @@ namespace HairHarmony_DAOs
             }
             return result;
         }
-
-        public bool UpdateComission(string stylisID, int serviceID, double comissionRate)
+        public bool UpdateComission(string stylistID, int serviceID, double commission)
         {
             bool result = false;
-            StylistService stylistService = GetStylistServiceByStylistIDAndServiceID(stylisID, serviceID);
-            if (stylistService != null)
+            StylistService search = GetStylistServiceByStylistIDAndServiceID(stylistID,serviceID);
+            if (search != null)
             {
-                stylistService.CommissionRate = comissionRate;
-                dbContext.Update(stylistService);
+                search.CommissionRate = commission;
+                dbContext.Update(search);
                 dbContext.SaveChanges();
                 result = true;
             }
             return result;
         }
 
+        public List<StylistService> GetListStylistByServiceID(int serviceID)
+        {
+            List<StylistService> stylistServices = getListServiceStylist();
+            foreach(StylistService stylistService in stylistServices)
+            {
+                if (stylistService.ServiceId != serviceID)
+                {
+                    stylistServices.Remove(stylistService);
+                }
+            }
+            return stylistServices;
+        }
+      
     }
 }

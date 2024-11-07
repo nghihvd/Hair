@@ -21,6 +21,8 @@ namespace HairHarmony_Repository
 
         public bool AddMoreServiceOfStylist(StylistService sty);
 
-        public bool UpdateComission(string stylisID, int serviceID, double comissionRate);
+        public bool UpdateComission(string stylistID, int serviceID, double commission);
+
+        public List<StylistService> GetListStylistByServiceID(int serviceID);
     }
 }

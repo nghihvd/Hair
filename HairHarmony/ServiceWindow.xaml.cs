@@ -183,6 +183,7 @@ namespace PRN212_HairHarmony
             if (result)
             {
                 MessageBox.Show("Update success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                
                 LoadGrid();
                 ResetInput();
             }
@@ -237,10 +238,30 @@ namespace PRN212_HairHarmony
                 MessageBox.Show("Service not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            Service service = serviceService.GetServiceByID(id);
             StylistService stylistPerService = new StylistService();
             stylistPerService.StylistId = account.AccountId;
             stylistPerService.Status = true;
-            stylistPerService.CommissionRate = 0;
+            double comission = 0;
+            switch (account.Level)
+            {
+                case "Junior Stylist":
+                    comission = 0.15;
+                    break;
+                case "Stylist":
+                    comission = 0.2;
+                    break;
+                case "Senior Stylist":
+                    comission = 0.25;
+                    break;
+                case "Master Stylist":
+                    comission = 0.32;
+                    break;
+                case "Creative Director":
+                    comission = 0.5;
+                    break;
+            }
+            stylistPerService.CommissionRate = comission ;
             stylistPerService.ServiceId = id;
             
             bool result = stylistService.AddMoreServiceOfStylist(stylistPerService);

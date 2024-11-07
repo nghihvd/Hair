@@ -39,7 +39,7 @@ namespace PRN212_HairHarmony
                     this.dtgService.ItemsSource = stylistServiceService.getListServiceStylist();
                     break;
                 case 2:
-                    btnComission.Visibility = Visibility.Hidden;
+                  
                     LoadGrid();
                     break;
             }
@@ -59,7 +59,7 @@ namespace PRN212_HairHarmony
                     this.dtgService.ItemsSource = stylistServiceService.getListServiceStylist();
                     break;
                 case 2:
-                    btnComission.Visibility = Visibility.Hidden;
+                 
                     LoadGrid();
                     break;
             }
@@ -98,7 +98,11 @@ namespace PRN212_HairHarmony
             {
                 return;
             }
-            int ser = int.Parse(serviceId);
+           
+            if(!int.TryParse(serviceId, out int ser))
+            {
+                MessageBox.Show("Invalid service ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }    
             StylistService stylistService = stylistServiceService.GetStylistServiceByStylistIDAndServiceID(id, ser);
             this.txtServiceID.Text = stylistService.ServiceId.ToString();
             this.txtComission.Text = stylistService.CommissionRate.ToString();
@@ -218,48 +222,6 @@ namespace PRN212_HairHarmony
             this.dtgService.SelectedItem = null;
         }
 
-        private void btnComission_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(this.txtServiceID.Text) ||
-                string.IsNullOrEmpty(this.txtComission.Text))
-            {
-                MessageBox.Show("All field is required", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            string stylistID = this.tblStylistID.Text;
-            int serviceID;
-            if (!int.TryParse(this.txtServiceID.Text, out serviceID))
-            {
-                MessageBox.Show("Invalid ServiceID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            double commission;
-            if (!double.TryParse(this.txtComission.Text, out commission))
-            {
-                MessageBox.Show("Invalid Commission", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to change the commission rate to " + commission + "??", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
-                bool result = stylistServiceService.UpdateComission(stylistID, serviceID, commission);
-                if (result)
-                {
-                    MessageBox.Show("Update success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadGridAll();
-                    resetInput();
-                }
-                else
-                {
-                    MessageBox.Show("Cannot find service", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
-            {
-                LoadGridAll();
-            }
-
-
-        }
+        
     }
 }
