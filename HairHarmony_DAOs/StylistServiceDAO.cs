@@ -34,17 +34,12 @@ namespace HairHarmony_DAOs
             return dbContext.StylistServices.ToList();
         }
 
+        
 
         public List<StylistService> GetStylistServiceByStylistID(string id)
         {
             List<StylistService> stylistServices = getListServiceStylist();
-            foreach (StylistService stylistService in stylistServices)
-            {
-                if (!stylistService.StylistId.Equals(id))
-                {
-                    stylistServices.Remove(stylistService);
-                }
-            }
+            stylistServices.RemoveAll(a => !a.StylistId.Equals(id));
             return stylistServices;
 
         }
@@ -111,13 +106,8 @@ namespace HairHarmony_DAOs
         public List<StylistService> GetListStylistByServiceID(int serviceID)
         {
             List<StylistService> stylistServices = getListServiceStylist();
-            foreach(StylistService stylistService in stylistServices)
-            {
-                if (stylistService.ServiceId != serviceID)
-                {
-                    stylistServices.Remove(stylistService);
-                }
-            }
+            stylistServices.RemoveAll(a => a.ServiceId != serviceID);
+            
             return stylistServices;
         }
       

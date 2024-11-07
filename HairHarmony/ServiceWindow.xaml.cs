@@ -39,20 +39,21 @@ namespace PRN212_HairHarmony
             serviceService = new ServiceService();
             stylistService = new StylistServiceService();
             account = Application.Current.Properties["LoggedAccount"] as Account;
+            this.role = role;   
             switch (role)
             {
                 case 1:
-
                     this.btnSelect.Visibility = Visibility.Hidden;
+                    LoadGrid();
                     break;
                 case 2:
                     this.btnAdd.Visibility = Visibility.Hidden;
                     this.btnDelete.Visibility = Visibility.Hidden;
                     this.btnUpdate.Visibility = Visibility.Hidden;
-
+                    LoadGridCustomer();
                     break;
             }
-            LoadGrid();
+            
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -109,7 +110,10 @@ namespace PRN212_HairHarmony
         {
             this.dtgService.ItemsSource = serviceService.GetServiceList().Select(a => new { a.ServiceId, a.ServiceName });
         }
-
+        private void LoadGridCustomer()
+        {
+            this.dtgService.ItemsSource = serviceService.ShowServiceForCustomer().Select(a => new { a.ServiceId, a.ServiceName });
+        }
         private void ResetInput()
         {
             this.txtDuration.Text = "";
@@ -202,7 +206,16 @@ namespace PRN212_HairHarmony
                 return;
             }
             int id = int.Parse(this.txtServiceID.Text);
-            bool result = serviceService.DeleteService(id);
+            bool result;
+            List<StylistService> stylistServices = stylistService.GetListStylistByServiceID(id);
+            if (stylistServices != null)
+            {
+                result = serviceService.DisableService(id);
+            }
+            else
+            {
+                result = serviceService.DeleteService(id);
+            }
             if (result)
             {
                 MessageBox.Show("Delete success!!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -217,7 +230,17 @@ namespace PRN212_HairHarmony
 
         private void btnReload_Click(object sender, RoutedEventArgs e)
         {
-            LoadGrid();
+            switch (this.role)
+            {
+                case 1:
+
+                    LoadGrid();
+                    break;
+                case 2:
+
+                    LoadGridCustomer();
+                    break;
+            }
             ResetInput();
         }
 

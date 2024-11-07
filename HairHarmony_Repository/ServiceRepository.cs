@@ -21,5 +21,9 @@ namespace HairHarmony_Repository
 
         public bool UpdateService(Service service) => ServiceDAO.Instance.UpdateService(service);
 
+        public bool DisableService(int ServiceId) => ServiceDAO.Instance.DisableService(ServiceId);
+
+        public List<Service> ShowServiceForCustomer() => ServiceDAO.Instance.ShowServiceForCustomer();
+
     }
 }

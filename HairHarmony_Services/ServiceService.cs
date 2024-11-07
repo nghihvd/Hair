@@ -40,5 +40,15 @@ namespace HairHarmony_Services
         {
             return serviceRepo.UpdateService(service);
         }
+
+        public bool DisableService(int ServiceId)
+        {
+            return serviceRepo.DisableService(ServiceId);
+        }
+
+        public List<Service> ShowServiceForCustomer()
+        {
+            return serviceRepo.ShowServiceForCustomer();
+        }
     }
 }
