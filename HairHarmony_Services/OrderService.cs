@@ -26,9 +26,9 @@ namespace HairHarmony_Services
             return orderrepo.GetAllOrders();
         }
 
-        public Dictionary<int, List<(string serviceName,string stylistID)>> GetOrdersWithServiceNamesByAppointmentId(int appointmentId)
+        public Dictionary<int, List<(string serviceName,string stylistID)>> GetServiceNamesAndStylistByAppointmentId(int appointmentId)
         {
-            return orderrepo.GetOrdersWithServiceNamesByAppointmentId(appointmentId);
+            return orderrepo.GetServiceNamesAndStylistByAppointmentId(appointmentId);
         }
 
         public Dictionary<int, List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId)
