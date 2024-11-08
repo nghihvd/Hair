@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HairHarmony_BusinessObject\HairHarmony_BusinessObject.csproj" />
+    <ProjectReference Include="..\HairHarmony_DAOs\HairHarmony_DAOs.csproj" />
+    <ProjectReference Include="..\HairHarmony_Repository\HairHarmony_Repository.csproj" />
     <ProjectReference Include="..\HairHarmony_Services\HairHarmony_Services.csproj" />
   </ItemGroup>
 

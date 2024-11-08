@@ -27,7 +27,7 @@ namespace HairHarmony_DAOs
             dbContext = new HairContext();
         }
 
-       
+
 
         // Get all orders
         public List<Order> GetAllOrders()
@@ -35,20 +35,20 @@ namespace HairHarmony_DAOs
             return dbContext.Orders.ToList();
         }
 
-        public Dictionary<int, List<(string serviceName,string stylistID)>> GetOrdersWithServiceNamesByAppointmentId(int appointmentId)
+        public Dictionary<int, List<string>> GetOrdersWithServiceNamesByAppointmentId(int appointmentId)
         {
             var ordersWithServices = dbContext.Orders
                 .Where(o => o.AppointmentId == appointmentId)
                 .Join(dbContext.Services,
                     order => order.ServiceId,
                     service => service.ServiceId,
-                    (order, service) => new { order.AppointmentId, ServiceName = service.ServiceName,StylistID  = order.StylistId })
+                    (order, service) => new { order.AppointmentId, ServiceName = service.ServiceName })
                 .ToList();
 
             if (ordersWithServices != null && ordersWithServices.Any())
             {
-                var result = new Dictionary<int, List<(string ServiceName,string stylistID)>>();
-                result[appointmentId] = ordersWithServices.Select(o => (o.ServiceName,o.StylistID)).ToList();
+                var result = new Dictionary<int, List<string>>();
+                result[appointmentId] = ordersWithServices.Select(o => o.ServiceName).ToList();
                 return result;
             }
             return null;
@@ -65,46 +65,45 @@ namespace HairHarmony_DAOs
             }
         }
 
-        public Dictionary<int,List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId) 
+        public Dictionary<int, List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId)
         {
             var orderWithService = dbContext.Orders
                 .Where(o => o.AppointmentId == appointmentId)
-                .Join(dbContext.Services,order => order.ServiceId,service => service.ServiceId,(order,service) => new { order.AppointmentId, servicePrice = service.Price }).ToList();
+                .Join(dbContext.Services, order => order.ServiceId, service => service.ServiceId, (order, service) => new { order.AppointmentId, servicePrice = service.Price }).ToList();
 
-            if (orderWithService != null && orderWithService.Any()) 
+            if (orderWithService != null && orderWithService.Any())
             {
-                var result = new Dictionary <int, List<decimal?>>();
+                var result = new Dictionary<int, List<decimal?>>();
                 result[appointmentId] = orderWithService.Select(o => o.servicePrice).ToList();
                 return result;
             }
             return null;
         }
 
-        public Dictionary<int, List<(string ServiceName, decimal Price)>> GetServicesWithPricesByAppointmentId(int appointmentId)
+        public (string StylistName, List<(string ServiceName, decimal Price)> Services) GetServicesWithPricesByAppointmentId(int appointmentId)
         {
-            var ordersWithServices = dbContext.Orders
+            var orders = dbContext.Orders
                 .Where(o => o.AppointmentId == appointmentId)
+                .ToList();
+
+            var services = orders
                 .Join(dbContext.Services,
                       order => order.ServiceId,
                       service => service.ServiceId,
-                      (order, service) => new { order.AppointmentId, service.ServiceName, service.Price })
+                      (order, service) => new { order.StylistId, service.ServiceName, service.Price })
                 .ToList();
 
-            if (ordersWithServices != null && ordersWithServices.Any())
-            {
-                var result = new Dictionary<int, List<(string ServiceName, decimal Price)>>();
+            var stylistId = services.FirstOrDefault()?.StylistId;
+            var stylistName = dbContext.Accounts
+                .Where(a => a.AccountId == stylistId)
+                .Select(a => a.Name)
+                .FirstOrDefault() ?? "Unknown Stylist";
 
-                result[appointmentId] = ordersWithServices
-                    .Select(o => (o.ServiceName, o.Price ?? 0))
-                    .ToList();
+            var serviceList = services
+                .Select(o => (o.ServiceName, o.Price ?? 0))
+                .ToList();
 
-                return result;
-            }
-
-            return null;
+            return (stylistName, serviceList);
         }
-
-
-
     }
 }
