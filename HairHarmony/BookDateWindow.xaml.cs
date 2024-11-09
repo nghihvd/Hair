@@ -42,8 +42,7 @@ namespace PRN212_HairHarmony
                 minuteComboBox.Items.Add(minute.ToString("D2")); 
             }
 
-            hourComboBox.SelectedIndex = DateTime.Now.Hour;
-            minuteComboBox.SelectedIndex = DateTime.Now.Minute / 15;
+
 
             LoadSelectedServices();
         }
