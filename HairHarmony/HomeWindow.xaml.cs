@@ -54,7 +54,7 @@ namespace PRN212_HairHarmony
         private void btnAppointment_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            AppointmentWindow appoitmentWindow = new AppointmentWindow();
+            ViewAppointment appoitmentWindow = new ViewAppointment(account);
             appoitmentWindow.Show();
         }
 
