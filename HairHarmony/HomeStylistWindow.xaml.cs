@@ -53,16 +53,18 @@ namespace PRN212_HairHarmony
             viewComissionRate.Show();
         }
 
-        private void btnStylistInfo_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            StylistAccountInformation stylistAccountInformation = new StylistAccountInformation(account);
-            stylistAccountInformation.Show();
-        }
+       
 
         private void btnAppoinment_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            StylistAccountInformation stylistAccountInformation = new StylistAccountInformation(account);
+            stylistAccountInformation.Show();
         }
     }
 }

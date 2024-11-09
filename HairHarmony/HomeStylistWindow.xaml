@@ -23,7 +23,7 @@
         </Button>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="Stylist page" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
-        <Button x:Name="btnFeedback" Content="View Customer Feedback" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Grid.Row="1" Click="btnFeedback_Click">
+        <Button x:Name="btnFeedback" Content="View Customer Feedback" HorizontalAlignment="Center" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Grid.Row="1" Click="btnFeedback_Click" Margin="0,238,0,0">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -33,16 +33,16 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnStylistInfo" Content="View Stylist Information" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Grid.Row="1" Click="btnStylistInfo_Click" >
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
         <Button x:Name="btnAppointment" Content="View Appoinment" HorizontalAlignment="Center" Margin="0,337,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Grid.Row="1" Click="btnAppoinment_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
+        <Button x:Name="btnProfile" Content="👤" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnProfile_Click" Grid.Row="1" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
     </Grid>
-    
+
 </Window>
