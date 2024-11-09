@@ -27,6 +27,7 @@ namespace PRN212_HairHarmony
         private readonly IServiceService serviceService;
         private readonly IOrderService orderService;
         private readonly IFeedbackService feedbackService;
+        private Account? account;
         public ViewAppointment()
         {
             InitializeComponent();
@@ -37,7 +38,18 @@ namespace PRN212_HairHarmony
             LoadGrid();
         }
 
-        
+        public ViewAppointment(Account acc)
+        {
+            InitializeComponent();
+            this.appointmentService = new AppointmentService();
+            this.serviceService = new ServiceService();
+            this.orderService = new OrderService();
+            this.feedbackService = new FeedbackService();
+            this.btnDeleteAppointment.IsEnabled = false;
+            account = acc;
+            this.dtgAppointment.ItemsSource = appointmentService.getAppointmentByCustomerID(acc.AccountId);
+        }
+
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -54,8 +66,18 @@ namespace PRN212_HairHarmony
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            HomeManagerWindow HomeManagerWindow = new HomeManagerWindow();
-            HomeManagerWindow.Show();
+            switch (account.RoleId)
+            {
+                case 1:
+                    HomeManagerWindow HomeManagerWindow = new HomeManagerWindow();
+                    HomeManagerWindow.Show();
+                    break;
+                case 3:
+                    HomeWindow homeWindow = new HomeWindow();
+                    homeWindow.Show();
+                    break;
+            }
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,14 +90,14 @@ namespace PRN212_HairHarmony
             DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
             if (row == null)
             {
-                return; 
+                return;
             }
-            
+
 
             DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
             if (RowColumn == null)
             {
-                return; 
+                return;
             }
 
             //lấy được appointmentID 
@@ -86,7 +108,7 @@ namespace PRN212_HairHarmony
             txtAppointment.Text = appointmentid;
             txtDateTime.Text = appointment.AppointmentDate.ToString();
             // Lấy serviceName từ bảng Order và hiển thị tên dịch vụ
-            Dictionary<int,List<(string serviceName, string stylistID)>> orders  = orderService.GetServiceNamesAndStylistByAppointmentId(Int32.Parse(appointmentid));
+            Dictionary<int, List<(string serviceName, string stylistID)>> orders = orderService.GetServiceNamesAndStylistByAppointmentId(Int32.Parse(appointmentid));
             lbServiceName.ItemsSource = orders.Values.SelectMany(list => list).ToList();
             //Hiển thị tên của khách hàng 
             txtCustomerID.Text = appointment.CustomerId;
@@ -95,26 +117,27 @@ namespace PRN212_HairHarmony
 
 
             // Tính tổng tiền của tất cả các dịch vụ trong cuộc hẹn
-            Dictionary<int,List<decimal?>> servicePrice = orderService.GetPriceWithServiceIDByAppointmentID(Int32.Parse(appointmentid));
+            Dictionary<int, List<decimal?>> servicePrice = orderService.GetPriceWithServiceIDByAppointmentID(Int32.Parse(appointmentid));
             decimal? totalAmount = servicePrice.Values.SelectMany(list => list).Sum();
             txtTotal.Text = totalAmount?.ToString("C") ?? "N/A"; // Định dạng tiền tệ
         }
 
         private void LoadGrid()
         {
-            this.dtgAppointment.ItemsSource = appointmentService.GetAll().Select(a => new { a.AppointmentId, a.AppointmentDate,a.CustomerId,a.Status});
+            this.dtgAppointment.ItemsSource = appointmentService.GetAll().Select(a => new { a.AppointmentId, a.AppointmentDate, a.CustomerId, a.Status });
         }
 
         private void btnDeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAppointment.Text)) {
-                MessageBox.Show("Oh No! Can't remove it","=((",MessageBoxButton.OK,MessageBoxImage.Warning);
+            if (string.IsNullOrEmpty(txtAppointment.Text))
+            {
+                MessageBox.Show("Oh No! Can't remove it", "=((", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            MessageBoxResult mbr = MessageBox.Show("Are you sure to remove it?","Confirmation",MessageBoxButton.YesNo,MessageBoxImage.Question);
-            if (mbr == MessageBoxResult.Yes) 
+            MessageBoxResult mbr = MessageBox.Show("Are you sure to remove it?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (mbr == MessageBoxResult.Yes)
             {
-                
+
                 int appointmentId = int.Parse(txtAppointment.Text);
 
                 feedbackService.deleteFeedback(appointmentId);
@@ -131,7 +154,7 @@ namespace PRN212_HairHarmony
                 }
             }
 
-            
+
         }
 
         private void btnReload_Click(object sender, RoutedEventArgs e)
