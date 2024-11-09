@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HairHarmony_BusinessObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace PRN212_HairHarmony
     /// </summary>
     public partial class HomeStylistWindow : Window
     {
+        private Account? account;
         public HomeStylistWindow()
         {
             InitializeComponent();
+            account = Application.Current.Properties["LoggedAccount"] as Account;
         }
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -48,6 +51,18 @@ namespace PRN212_HairHarmony
             this.Hide();
             ViewComissionRate viewComissionRate = new ViewComissionRate();
             viewComissionRate.Show();
+        }
+
+        private void btnStylistInfo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            StylistAccountInformation stylistAccountInformation = new StylistAccountInformation(account);
+            stylistAccountInformation.Show();
+        }
+
+        private void btnAppoinment_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
