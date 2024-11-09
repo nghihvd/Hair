@@ -26,7 +26,7 @@ namespace PRN212_HairHarmony
         public AppointmentWindow()
         {
             InitializeComponent();
-            appoitmentService  = new AppointmentService();
+            appoitmentService = new AppointmentService();
             LoadGrid();
         }
 
@@ -37,11 +37,11 @@ namespace PRN212_HairHarmony
         }
         private void ResetInput()
         {
-  
+
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ namespace PRN212_HairHarmony
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void btnReload_Click(object sender, RoutedEventArgs e)
@@ -82,53 +82,42 @@ namespace PRN212_HairHarmony
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedAppointment = (Appointment)dtgAppointment.SelectedItem;
-
-            if (selectedAppointment != null)
+            if (dtgAppointment.SelectedItem is Appointment selectedAppointment)
             {
-                txtAppointmentID.Text = selectedAppointment.AppointmentId.ToString();
-                //txtStylistName.Text = selectedAppointment.Stylist?.Name ?? "No Stylist";
-                txtAppointmentDate.Text = selectedAppointment.AppointmentDate?.ToString("MM/dd/yyyy HH:mm") ?? "No Date";
+                var (stylistName, servicesWithPrices) = OrderDAO.Instance.GetServicesWithPricesByAppointmentId(selectedAppointment.AppointmentId);
 
+                // Hiển thị tên stylist
+                txtStylistName.Text = stylistName;
+
+                // Hiển thị danh sách dịch vụ trong ListBox
                 lstServices.Items.Clear();
-
-                var servicesWithPrices = OrderDAO.Instance.GetServicesWithPricesByAppointmentId(selectedAppointment.AppointmentId);
-
-                if (servicesWithPrices != null && servicesWithPrices.ContainsKey(selectedAppointment.AppointmentId))
+                decimal totalPrice = 0;
+                foreach (var service in servicesWithPrices)
                 {
-                    var serviceList = servicesWithPrices[selectedAppointment.AppointmentId];
-
-                    decimal totalPrice = 0;
-
-                    foreach (var service in serviceList)
-                    {
-                        lstServices.Items.Add($"{service.ServiceName} - {service.Price:C2}");
-
-                        totalPrice += service.Price;
-                    }
-
-                    txtTotalPrice.Text = $"Total: {totalPrice:C2}";
+                    lstServices.Items.Add($"{service.ServiceName} - ${service.Price:F2}");
+                    totalPrice += service.Price;
                 }
-                if (selectedAppointment.Status != "Finished") 
-                {
-                    btnFeedback.IsEnabled = false; 
-                    btnCancel.Visibility = Visibility.Visible; 
-                }
-                else
-                {
-                    btnFeedback.IsEnabled = true; 
-                    btnCancel.Visibility = Visibility.Collapsed; 
-                }
+
+                // Hiển thị tổng giá trị dịch vụ trong TextBox txtTotalPrice
+                txtTotalPrice.Text = $"${totalPrice:F2}";
+
+                // Điền các thông tin khác của cuộc hẹn
+                txtAppointmentID.Text = selectedAppointment.AppointmentId.ToString();
+                txtAppointmentDate.Text = selectedAppointment.AppointmentDate?.ToString("MM/dd/yyyy");
             }
         }
+
+
+
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             var selectedAppointment = (Appointment)dtgAppointment.SelectedItem;
             if (selectedAppointment != null)
             {
-                selectedAppointment.Status = "Cancelled"; 
-                appoitmentService.UpdateStatus(selectedAppointment.AppointmentId, selectedAppointment.Status); 
+                selectedAppointment.Status = "Cancelled";
+                appoitmentService.UpdateStatus(selectedAppointment.AppointmentId, selectedAppointment.Status);
 
                 MessageBox.Show("Appointment has been cancelled.", "Cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
 

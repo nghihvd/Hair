@@ -55,5 +55,17 @@ namespace HairHarmony_Services
         {
             appointmentRepo.UpdateStatus(appointmentId, newStatus);
         }
+
+        public int GetLastAppointmentId()
+        {
+            return appointmentRepo.GetLastAppointmentId();
+        }
+
+        public Appointment CreateNewAppointment(DateTime appointmentDate, string customerId)
+        {
+            return appointmentRepo.CreateNewAppointment(appointmentDate, customerId);
+        }
+
+
     }
 }

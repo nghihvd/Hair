@@ -141,5 +141,11 @@ namespace HairHarmony_DAOs
                 dbContext.SaveChanges();
             }
         }
+
+        public List<Account> GetStylists()
+        {
+                return dbContext.Accounts.Where(a => a.RoleId == 2).ToList();
+            
+        }
     }
 }

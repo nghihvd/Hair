@@ -33,12 +33,22 @@ namespace HairHarmony_Services
 
         public bool DeleteService(int ServiceId)
         {
-           return serviceRepo.DeleteService(ServiceId);
+            return serviceRepo.DeleteService(ServiceId);
         }
 
         public bool UpdateService(Service service)
         {
             return serviceRepo.UpdateService(service);
+        }
+
+        public bool DisableService(int ServiceId)
+        {
+            return serviceRepo.DisableService(ServiceId);
+        }
+
+        public List<Service> ShowServiceForCustomer()
+        {
+            return serviceRepo.ShowServiceForCustomer();
         }
     }
 }

@@ -27,5 +27,9 @@ namespace HairHarmony_Repository
             AppointmentDAO.Instance.UpdateStatus(appointmentId, newStatus);
         }
         public List<Appointment> getAppointmentByCustomerID(string customerId) => AppointmentDAO.Instance.getAppointmentByCustomerID(customerId);
+
+        public int GetLastAppointmentId() => AppointmentDAO.Instance.GetLastAppointmentId();
+
+        public Appointment CreateNewAppointment(DateTime appointmentDate, string customerId) => AppointmentDAO.Instance.CreateNewAppointment(appointmentDate, customerId);
     }
 }

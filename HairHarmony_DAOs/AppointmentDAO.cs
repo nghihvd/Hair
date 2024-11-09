@@ -104,5 +104,29 @@ namespace HairHarmony_DAOs
             }
         }
 
+        public int GetLastAppointmentId()
+        {
+            var lastAppointment = dbContext.Appointments.OrderByDescending(a => a.AppointmentId).FirstOrDefault();
+            return lastAppointment != null ? lastAppointment.AppointmentId : 0;
+        }
+
+        public Appointment CreateNewAppointment(DateTime appointmentDate, string customerId)
+        {
+            int lastAppointmentId = GetLastAppointmentId();
+            int newAppointmentId = lastAppointmentId + 1;
+
+            var newAppointment = new Appointment
+            {
+                AppointmentId = newAppointmentId,
+                AppointmentDate = appointmentDate,
+                CustomerId = customerId,
+                Status = "Pending" 
+            };
+
+            dbContext.Appointments.Add(newAppointment);
+            dbContext.SaveChanges();
+            return newAppointment;
+        }
+
     }
 }

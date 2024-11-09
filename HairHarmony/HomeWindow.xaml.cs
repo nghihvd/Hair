@@ -70,5 +70,12 @@ namespace PRN212_HairHarmony
             profileWindow.Show();
             this.Close();
         }
+
+        private void btnBookService_Click(object sender, RoutedEventArgs e)
+        {
+            BookServiceWindow bookServiceWindow = new BookServiceWindow();
+            bookServiceWindow.Show();
+            this.Close();
+        }
     }
 }

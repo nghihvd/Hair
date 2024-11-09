@@ -55,5 +55,10 @@ namespace HairHarmony_Services
         {
             return accountRepo.UpdateManagerAcc(account);
         }
+
+        public List<Account> GetStylists()
+        {
+            return accountRepo.GetStylists();
+        }
     }
 }

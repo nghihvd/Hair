@@ -11,13 +11,14 @@ namespace HairHarmony_Services
     {
         public List<Order> GetAllOrders();
 
-        public Dictionary<int, List<(string serviceName, string stylistID)>> GetOrdersWithServiceNamesByAppointmentId(int appointmentId);
+        public Dictionary<int, List<(string serviceName, string stylistID)>> GetServiceNamesAndStylistByAppointmentId(int appointmentId);
 
         public void DeleteOrdersByAppointmentId(int appointmentId);
 
         public Dictionary<int, List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId);
 
+        public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID);
 
-
+        public void CreateOrder(Order order);
     }
 }
