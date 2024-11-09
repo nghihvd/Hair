@@ -84,5 +84,49 @@ namespace HairHarmony_DAOs
             dbContext.SaveChanges();
         }
 
+        public Feedback getFeedbackByAppoinIdAndServiceId(int appointmentId, int serviceId)
+        {
+            return dbContext.Feedbacks.FirstOrDefault(f => f.AppointmentId == appointmentId && f.ServiceId == serviceId);
+        }
+
+        public void SaveFeedback(int appointmentId, int serviceId, string comments, int rating, string stylistId)
+        {
+            try
+            {
+                var feedback = dbContext.Feedbacks.FirstOrDefault(f => f.AppointmentId == appointmentId && f.ServiceId == serviceId);
+
+                if (feedback == null)
+                {
+                    int newFeedbackId = dbContext.Feedbacks.Any() ? dbContext.Feedbacks.Max(f => f.FeedbackId) + 1 : 1;
+                    feedback = new Feedback
+                    {
+                        FeedbackId = newFeedbackId,
+                        AppointmentId = appointmentId,
+                        ServiceId = serviceId,
+                        Comments = comments,
+                        Rating = rating,
+                        StylistId = stylistId
+                    };
+
+                    dbContext.Feedbacks.Add(feedback);
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    feedback.Comments = comments;
+                    feedback.Rating = rating;
+                    feedback.StylistId = stylistId;
+                    dbContext.Update(feedback);
+                    dbContext.SaveChanges();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while saving feedback.", ex);
+            }
+        }
+
     }
 }

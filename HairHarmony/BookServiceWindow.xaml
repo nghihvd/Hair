@@ -1,0 +1,66 @@
+﻿<Window x:Class="PRN212_HairHarmony.BookServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRN212_HairHarmony"
+        mc:Ignorable="d"
+        Title="BookServiceWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
+    <Grid Background="#FFD5EFCD">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="214*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="BOOK SERVICE" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="190,54,0,0" TextWrapping="Wrap" Text="Select service" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
+
+        <DataGrid x:Name="dtgBookService" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="297" Margin="10,95,0,0" Grid.Row="1" VerticalAlignment="Top" Width="294" SelectionChanged="dtgBookService_SelectionChanged">
+            <DataGrid.Effect>
+                <DropShadowEffect/>
+            </DataGrid.Effect>
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding IsSelected, Mode=TwoWay}" Header="Select"/>
+                <DataGridTextColumn Binding="{Binding ServiceName}" Header="Service Name"/>
+                <DataGridTextColumn Binding="{Binding Price}" Header="Price"/>
+                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ListBox x:Name="lstSelectedServices" Margin="334,324,270,10" Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Center" Height="32" Margin="0,113,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Service name :" VerticalAlignment="Top" Width="138" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtServiceName" IsReadOnly="True" HorizontalAlignment="Left" Height="32" Margin="474,113,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" FontSize="14" RenderTransformOrigin="0.873,1.102">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Center" Height="32" Margin="0,190,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Price :" VerticalAlignment="Top" Width="132" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtServicePrice" IsReadOnly="True" HorizontalAlignment="Left" Height="32" Margin="474,190,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="14">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="331,262,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Duration :" VerticalAlignment="Top" Width="131" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtServiceDuration" IsReadOnly="True" HorizontalAlignment="Left" Height="32" Margin="474,262,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="14" RenderTransformOrigin="0.52,2.493">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <Button x:Name="btnBookSerNext" Content="Next" HorizontalAlignment="Left" Margin="592,363,0,0" VerticalAlignment="Top" Height="42" Width="158" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBookSerNext_Click" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+
+    </Grid>
+</Window>

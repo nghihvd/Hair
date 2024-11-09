@@ -23,6 +23,7 @@ namespace PRN212_HairHarmony
     public partial class AppointmentWindow : Window
     {
         private readonly IAppointmentService appoitmentService;
+        private List<Appointment> Appointments;
         public AppointmentWindow()
         {
             InitializeComponent();
@@ -33,8 +34,24 @@ namespace PRN212_HairHarmony
         private void LoadGrid()
         {
             Account loggedAccount = (Account)Application.Current.Properties["LoggedAccount"];
-            this.dtgAppointment.ItemsSource = appoitmentService.getAppointmentByCustomerID(loggedAccount.AccountId);
+            AppointmentDAO appointmentDAO = new AppointmentDAO();
+            this.dtgAppointment.ItemsSource = appointmentDAO.GetAppointmentsByUserId(loggedAccount.AccountId);
         }
+
+        private Order? selectedOrder;
+
+        private void lstServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstServices.SelectedItem is string selectedServiceName && dtgAppointment.SelectedItem is Appointment selectedAppointment)
+            {
+                selectedOrder = selectedAppointment.Orders
+                    .FirstOrDefault(o => o.S.Service.ServiceName == selectedServiceName);
+            }
+        }
+
+
+
+
         private void ResetInput()
         {
 
@@ -84,28 +101,28 @@ namespace PRN212_HairHarmony
         {
             if (dtgAppointment.SelectedItem is Appointment selectedAppointment)
             {
-                var (stylistName, servicesWithPrices) = OrderDAO.Instance.GetServicesWithPricesByAppointmentId(selectedAppointment.AppointmentId);
-
-                // Hiển thị tên stylist
-                txtStylistName.Text = stylistName;
-
-                // Hiển thị danh sách dịch vụ trong ListBox
-                lstServices.Items.Clear();
-                decimal totalPrice = 0;
-                foreach (var service in servicesWithPrices)
-                {
-                    lstServices.Items.Add($"{service.ServiceName} - ${service.Price:F2}");
-                    totalPrice += service.Price;
-                }
-
-                // Hiển thị tổng giá trị dịch vụ trong TextBox txtTotalPrice
-                txtTotalPrice.Text = $"${totalPrice:F2}";
-
-                // Điền các thông tin khác của cuộc hẹn
-                txtAppointmentID.Text = selectedAppointment.AppointmentId.ToString();
-                txtAppointmentDate.Text = selectedAppointment.AppointmentDate?.ToString("MM/dd/yyyy");
+                DisplayAppointmentDetails(selectedAppointment);
+                btnFeedback.Visibility = selectedAppointment.Status == "Completed"
+            ? Visibility.Visible
+            : Visibility.Collapsed;
             }
         }
+
+        private void DisplayAppointmentDetails(Appointment appointment)
+        {
+            txtAppointmentID.Text = appointment.AppointmentId.ToString();
+            txtAppointmentDate.Text = appointment.AppointmentDate?.ToString("MM/dd/yyyy") ?? "Unknown";
+            txtTotalPrice.Text = appointment.Orders.Sum(o => o.Price ?? 0).ToString("C");
+
+            // Hiển thị tên stylist cho dịch vụ đầu tiên mặc định
+            var firstOrder = appointment.Orders.FirstOrDefault();
+            txtStylistName.Text = firstOrder?.S.Stylist.Name ?? "Unknown";
+
+            // Hiển thị danh sách các dịch vụ
+            lstServices.ItemsSource = appointment.Orders.Select(o => o.S.Service.ServiceName).ToList();
+        }
+
+
 
 
 
@@ -128,11 +145,18 @@ namespace PRN212_HairHarmony
 
         private void btnFeedback_Click(object sender, RoutedEventArgs e)
         {
-            var selectedAppointment = (Appointment)dtgAppointment.SelectedItem;
-            CustomerFeedbackWindow fb = new CustomerFeedbackWindow(selectedAppointment.AppointmentId);
-            fb.Show();
-            this.Close();
+            if (selectedOrder != null)
+            {
+                CustomerFeedbackWindow feedbackWindow = new CustomerFeedbackWindow(selectedOrder);
+                feedbackWindow.ShowDialog();
+                selectedOrder = null;
+            }
+            else
+            {
+                MessageBox.Show("Please select a service to provide feedback.");
+            }
         }
+
 
 
 

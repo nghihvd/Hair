@@ -11,7 +11,7 @@ namespace HairHarmony_Repository
     {
         public List<Order> GetAllOrders();
 
-        public Dictionary<int, List<(string serviceName,string stylistID)>> GetServiceNamesAndStylistByAppointmentId(int appointmentId);
+        public Dictionary<int, List<(string serviceName, string stylistID)>> GetServiceNamesAndStylistByAppointmentId(int appointmentId);
 
         public void DeleteOrdersByAppointmentId(int appointmentId);
 
@@ -19,6 +19,6 @@ namespace HairHarmony_Repository
 
         public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID);
 
-
+        public void CreateOrder(Order order);
     }
 }

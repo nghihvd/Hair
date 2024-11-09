@@ -22,5 +22,9 @@ namespace HairHarmony_Services
         public bool UpdateManagerAcc(Account account);
 
         public void UpdateAccount(Account account);
+
+        public List<Account> GetStylists();
+
+        public void UpdateAccountLoyaltyPoints(Account account);
     }
 }

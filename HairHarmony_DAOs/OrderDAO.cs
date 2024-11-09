@@ -132,6 +132,12 @@ namespace HairHarmony_DAOs
             orders.RemoveAll(a => !a.StylistId.Equals(stylistId) && a.ServiceId != serviceID);
             return orders;
         }
+
+        public void CreateOrder(Order order)
+        {
+            dbContext.Orders.Add(order);
+            dbContext.SaveChanges();
+        }
     }
 
 

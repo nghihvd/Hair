@@ -17,5 +17,9 @@ namespace HairHarmony_Services
         public void SaveFeedback(int appointmentId, string feedback, int points, string cus);
         public List<Feedback> getFeedbackByStylistID(string id);
 
+        Feedback getFeedbackByAppoinIdAndServiceId(int appointmentId, int serviceId);
+
+        void SaveFeedback(int appointmentId, int serviceId, string comments, int rating, string stylistId);
+
     }
 }

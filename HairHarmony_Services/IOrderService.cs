@@ -19,5 +19,6 @@ namespace HairHarmony_Services
 
         public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID);
 
+        public void CreateOrder(Order order);
     }
 }

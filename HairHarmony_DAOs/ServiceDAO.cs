@@ -10,7 +10,7 @@ namespace HairHarmony_DAOs
     public class ServiceDAO
     {
         private HairContext dbContext;
-        
+
         private static ServiceDAO instance = null;
 
         public static ServiceDAO Instance
@@ -42,7 +42,7 @@ namespace HairHarmony_DAOs
 
         public bool AddService(Service service)
         {
-            bool result = false;    
+            bool result = false;
             Service search = GetServiceByID(service.ServiceId);
             if (search == null)
             {
@@ -62,12 +62,12 @@ namespace HairHarmony_DAOs
             {   
                 dbContext.Services.Remove(search);
                 dbContext.SaveChanges();
-                result=true;
+                result = true;
             }
             return result;
         }
 
-        public bool DisableService (int ServiceId)
+        public bool DisableService(int ServiceId)
         {
             bool result = false;
             Service search = GetServiceByID(ServiceId);
@@ -90,7 +90,7 @@ namespace HairHarmony_DAOs
                 search.ServiceId = service.ServiceId;
                 search.Price = service.Price;
                 search.Duration = service.Duration;
-                search.ServiceName = service.ServiceName;   
+                search.ServiceName = service.ServiceName;
                 dbContext.Services.Update(search);
                 result = true;
             }
@@ -104,7 +104,7 @@ namespace HairHarmony_DAOs
             services.RemoveAll(a => a.Duration == 0);
             return services;
         }
-        
+
 
     }
 }

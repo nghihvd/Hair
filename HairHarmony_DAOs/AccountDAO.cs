@@ -141,5 +141,24 @@ namespace HairHarmony_DAOs
                 dbContext.SaveChanges();
             }
         }
+
+        public List<Account> GetStylists()
+        {
+                return dbContext.Accounts.Where(a => a.RoleId == 2).ToList();
+            
+        }
+
+        public void UpdateAccountLoyaltyPoints(Account account)
+        {
+            try
+            {
+                dbContext.Accounts.Update(account);
+                dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while updating loyalty points.", ex);
+            }
+        }
     }
 }
