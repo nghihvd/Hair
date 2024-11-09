@@ -50,6 +50,8 @@ namespace PRN212_HairHarmony
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
             DataGrid dataGrid = sender as DataGrid;
             DataGridRow row =
                 (DataGridRow)dataGrid.ItemContainerGenerator

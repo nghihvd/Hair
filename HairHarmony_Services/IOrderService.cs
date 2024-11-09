@@ -17,7 +17,7 @@ namespace HairHarmony_Services
 
         public Dictionary<int, List<decimal?>> GetPriceWithServiceIDByAppointmentID(int appointmentId);
 
-
+        public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID);
 
     }
 }

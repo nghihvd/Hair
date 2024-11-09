@@ -125,5 +125,15 @@ namespace HairHarmony_DAOs
 
             return (stylistName, serviceList);
         }
+
+        public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID)
+        {
+            List<Order> orders = this.GetAllOrders();
+            orders.RemoveAll(a => !a.StylistId.Equals(stylistId) && a.ServiceId != serviceID);
+            return orders;
+        }
     }
+
+
+
 }

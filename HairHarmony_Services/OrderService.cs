@@ -35,5 +35,10 @@ namespace HairHarmony_Services
         {
             return orderrepo.GetPriceWithServiceIDByAppointmentID(appointmentId);
         }
+
+        public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID)
+        {
+            return orderrepo.GetOrderByStylistIDAndServiceID(stylistId, serviceID);
+        }
     }
 }

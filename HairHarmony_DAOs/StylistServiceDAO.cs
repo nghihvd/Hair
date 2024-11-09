@@ -63,6 +63,19 @@ namespace HairHarmony_DAOs
             return result;
         }
 
+        public bool Delete(string stylistID, int serviceID)
+        {
+            bool result = false;
+            StylistService stylist = GetStylistServiceByStylistIDAndServiceID(stylistID, serviceID);
+            if (stylist!= null)
+            {
+                dbContext.Remove(stylist);
+                dbContext.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
         public bool EnableServiceStylist(string stylistID, int serviceID)
         {
             bool result = false;
@@ -110,6 +123,8 @@ namespace HairHarmony_DAOs
             
             return stylistServices;
         }
+
+        
       
     }
 }
