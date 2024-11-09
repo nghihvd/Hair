@@ -29,5 +29,7 @@ namespace HairHarmony_Repository
         {
             AccountDAO.Instance.UpdateAccount(account);
         }
+
+        public List<Account> GetStylists() => AccountDAO.Instance.GetStylists();
     }
 }

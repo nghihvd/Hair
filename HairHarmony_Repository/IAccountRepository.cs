@@ -23,5 +23,7 @@ namespace HairHarmony_Repository
 
         public bool UpdateManagerAcc(Account account);
 
+        public List<Account> GetStylists();
+
     }
 }

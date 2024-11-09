@@ -24,5 +24,7 @@ namespace HairHarmony_Repository
 
         public List<StylistService> GetListStylistByServiceID(int serviceID) => StylistServiceDAO.Instance.GetListStylistByServiceID(serviceID);
 
+        public bool Delete(string stylistID, int serviceID) => StylistServiceDAO.Instance.Delete(stylistID, serviceID);
+
     }
 }

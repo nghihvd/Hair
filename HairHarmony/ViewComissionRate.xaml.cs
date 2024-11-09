@@ -23,11 +23,13 @@ namespace PRN212_HairHarmony
     public partial class ViewComissionRate : Window
     {
         private readonly IStylistServiceService stylistServiceService;
+        private readonly IOrderService orderService;
         private Account? account;
         public ViewComissionRate()
         {
             InitializeComponent();
             stylistServiceService = new StylistServiceService();
+            orderService = new OrderService();
             account = Application.Current.Properties["LoggedAccount"] as Account;
 
             switch (account.RoleId)
@@ -48,6 +50,7 @@ namespace PRN212_HairHarmony
         {
             InitializeComponent();
             stylistServiceService = new StylistServiceService();
+            orderService = new OrderService();
             account = Application.Current.Properties["LoggedAccount"] as Account;
 
             switch (account.RoleId)
@@ -102,6 +105,7 @@ namespace PRN212_HairHarmony
             if(!int.TryParse(serviceId, out int ser))
             {
                 MessageBox.Show("Invalid service ID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }    
             StylistService stylistService = stylistServiceService.GetStylistServiceByStylistIDAndServiceID(id, ser);
             this.txtServiceID.Text = stylistService.ServiceId.ToString();
@@ -176,8 +180,25 @@ namespace PRN212_HairHarmony
                 MessageBox.Show("Invalid serviceID", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure to delete/disable this service", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if(messageBoxResult == MessageBoxResult.No)
+            {
+                LoadGrid();
+                resetInput();
+                return;
+            }
             var stylist = Application.Current.Properties["LoggedAccount"] as Account;
-            bool result = stylistServiceService.DisableServiceStylist(stylist.AccountId, serviceID);
+            List<Order> searchOrder = orderService.GetOrderByStylistIDAndServiceID(stylist.AccountId, serviceID);
+            bool result;
+            if(searchOrder.Count == 0)
+            {
+                result = stylistServiceService.Delete(stylist.AccountId, serviceID);
+            }
+            else
+            {
+                result = stylistServiceService.DisableServiceStylist(stylist.AccountId, serviceID);
+            }
+             
             if (result)
             {
                 MessageBox.Show("Disable success", "Success", MessageBoxButton.OK, MessageBoxImage.Error);
