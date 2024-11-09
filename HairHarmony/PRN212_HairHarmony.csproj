@@ -29,4 +29,10 @@
     <ProjectReference Include="..\HairHarmony_Services\HairHarmony_Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
