@@ -41,9 +41,18 @@ namespace PRN212_HairHarmony
             var serviceList = serviceService.GetServiceList();
 
             Console.WriteLine($"Kiểu của serviceList: {serviceList.GetType()}");
-            foreach (var service in serviceList)
+
+            for (int i = serviceList.Count - 1; i >= 0; i--)
             {
-                service.IsSelected = false; 
+                var service = serviceList[i];
+                if (!(service.Duration > 0))
+                {
+                    serviceList.Remove(service);
+                }
+                else
+                {
+                    service.IsSelected = false;
+                }
             }
             dtgBookService.ItemsSource = serviceList;
         }

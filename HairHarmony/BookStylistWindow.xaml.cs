@@ -30,6 +30,7 @@ namespace PRN212_HairHarmony
         private DateTime selectedDateTime;
         private Appointment currentAppointment;
         private Account currentAccount;
+        private List<StylistService> allStylistService;
 
         private int currentServiceIndex = 0;
 
@@ -46,6 +47,7 @@ namespace PRN212_HairHarmony
             currentAccount = (Account)Application.Current.Properties["LoggedAccount"];
 
             currentAppointment = appointmentService.CreateNewAppointment(selectedDateTime, currentAccount.AccountId);
+            allStylistService = stylistServiceService.getListServiceStylist();
 
             DisplaySelectedServices();
             LoadAvailableStylists();
@@ -119,6 +121,7 @@ namespace PRN212_HairHarmony
                 var selectedService = selectedServices[currentServiceIndex];
                 var getAllShift = shiftService.GetAllShifts();
                 bool checkFreeStylist = true;
+                bool checkStylistService = false;
                 var newOrder = new Order
                 {
                     ServiceId = selectedService.ServiceId,
@@ -126,6 +129,17 @@ namespace PRN212_HairHarmony
                     StylistId = selectedStylist.AccountId,
                     Price = selectedService.Price
                 };
+
+                foreach(var stylistService in allStylistService)
+                {
+                    if (stylistService.StylistId.Equals(selectedStylist.AccountId))
+                    {
+                        if (stylistService.ServiceId.Equals(selectedService.ServiceId))
+                        {
+                            checkStylistService = true;
+                        }
+                    }
+                }
 
                 foreach(Shift aShift in getAllShift)
                 {
@@ -137,7 +151,7 @@ namespace PRN212_HairHarmony
                         }
                     }
                 }
-                if (checkFreeStylist)
+                if (checkFreeStylist && checkStylistService)
                 {
                     orderService.CreateOrder(newOrder);
                     MessageBox.Show("Order created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -166,7 +180,7 @@ namespace PRN212_HairHarmony
                     }
                 } else
                 {
-                    MessageBox.Show("This stylist is not available during the selected time period.", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("This stylist is not available during the selected time period or cannot perform this service.", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
 
