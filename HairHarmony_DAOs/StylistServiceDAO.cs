@@ -34,17 +34,12 @@ namespace HairHarmony_DAOs
             return dbContext.StylistServices.ToList();
         }
 
+        
 
         public List<StylistService> GetStylistServiceByStylistID(string id)
         {
             List<StylistService> stylistServices = getListServiceStylist();
-            foreach (StylistService stylistService in stylistServices)
-            {
-                if (!stylistService.StylistId.Equals(id))
-                {
-                    stylistServices.Remove(stylistService);
-                }
-            }
+            stylistServices.RemoveAll(a => !a.StylistId.Equals(id));
             return stylistServices;
 
         }
@@ -62,6 +57,19 @@ namespace HairHarmony_DAOs
             {
                 stylist.Status = false;
                 dbContext.Update(stylist);
+                dbContext.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
+        public bool Delete(string stylistID, int serviceID)
+        {
+            bool result = false;
+            StylistService stylist = GetStylistServiceByStylistIDAndServiceID(stylistID, serviceID);
+            if (stylist!= null)
+            {
+                dbContext.Remove(stylist);
                 dbContext.SaveChanges();
                 result = true;
             }
@@ -94,20 +102,29 @@ namespace HairHarmony_DAOs
             }
             return result;
         }
-
-        public bool UpdateComission(string stylisID, int serviceID, double comissionRate)
+        public bool UpdateComission(string stylistID, int serviceID, double commission)
         {
             bool result = false;
-            StylistService stylistService = GetStylistServiceByStylistIDAndServiceID(stylisID, serviceID);
-            if (stylistService != null)
+            StylistService search = GetStylistServiceByStylistIDAndServiceID(stylistID,serviceID);
+            if (search != null)
             {
-                stylistService.CommissionRate = comissionRate;
-                dbContext.Update(stylistService);
+                search.CommissionRate = commission;
+                dbContext.Update(search);
                 dbContext.SaveChanges();
                 result = true;
             }
             return result;
         }
 
+        public List<StylistService> GetListStylistByServiceID(int serviceID)
+        {
+            List<StylistService> stylistServices = getListServiceStylist();
+            stylistServices.RemoveAll(a => a.ServiceId != serviceID);
+            
+            return stylistServices;
+        }
+
+        
+      
     }
 }

@@ -58,8 +58,8 @@ namespace HairHarmony_DAOs
         {
             bool result = false;
             Service search = GetServiceByID(ServiceId);
-            if (search != null)
-            {
+            if(search != null)
+            {   
                 dbContext.Services.Remove(search);
                 dbContext.SaveChanges();
                 result = true;

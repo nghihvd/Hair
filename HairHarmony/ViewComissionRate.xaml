@@ -50,11 +50,6 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnComission" HorizontalAlignment="Left" Margin="614,366,0,0" VerticalAlignment="Top" Height="38" Width="136" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Update" Click="btnComission_Click" >
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
         <TextBlock x:Name="tblStylistID" HorizontalAlignment="Left" Height="36" Margin="428,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
     </Grid>
 </Window>

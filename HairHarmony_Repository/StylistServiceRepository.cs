@@ -20,7 +20,11 @@ namespace HairHarmony_Repository
         public bool EnableServiceStylist(string stylistID, int serviceID) => StylistServiceDAO.Instance.EnableServiceStylist(stylistID,serviceID);
 
         public bool AddMoreServiceOfStylist(StylistService sty) => StylistServiceDAO.Instance.AddMoreServiceOfStylist(sty);
+        public bool UpdateComission(string stylistID, int serviceID, double commission) => StylistServiceDAO.Instance.UpdateComission(stylistID,serviceID,commission);
 
-        public bool UpdateComission(string stylisID, int serviceID, double comissionRate) => StylistServiceDAO.Instance.UpdateComission(stylisID, serviceID, comissionRate);
+        public List<StylistService> GetListStylistByServiceID(int serviceID) => StylistServiceDAO.Instance.GetListStylistByServiceID(serviceID);
+
+        public bool Delete(string stylistID, int serviceID) => StylistServiceDAO.Instance.Delete(stylistID, serviceID);
+
     }
 }
