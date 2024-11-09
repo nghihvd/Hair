@@ -81,7 +81,7 @@ namespace PRN212_HairHarmony
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            HomeManagerWindow homeWindow = new HomeManagerWindow();
+            HomeWindow homeWindow = new HomeWindow();
             homeWindow.Show();
         }
 

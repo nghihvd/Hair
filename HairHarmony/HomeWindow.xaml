@@ -34,12 +34,6 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnAppointmentCus" Content="Appointments Cus" HorizontalAlignment="Left" Margin="562,116,0,0" VerticalAlignment="Top" Height="53" Width="212" 
-                Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnAppointmentCus_Click" >
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
         <TextBlock x:Name="tblWelcome" HorizontalAlignment="Center" Height="38" Margin="0,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
         <Button x:Name="btnProfile1" Content="👤" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnProfile_Click" >
             <Button.Effect>
