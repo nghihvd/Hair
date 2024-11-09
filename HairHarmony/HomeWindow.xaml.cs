@@ -58,6 +58,14 @@ namespace PRN212_HairHarmony
             appoitmentWindow.Show();
         }
 
+        private void btnAppointmentCus_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            AppointmentWindow appoitmentWindow = new AppointmentWindow();
+            appoitmentWindow.Show();
+        }
+
+
 
         private void btnStylist_Click(object sender, RoutedEventArgs e)
         {
