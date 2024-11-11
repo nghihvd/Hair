@@ -6,34 +6,34 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="ViewStylistWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFD5EFCD">
-        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
+    <Grid Background="#FFF6F0D4">
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <DataGrid x:Name="dtgStylist" HorizontalAlignment="Left" Height="294" Margin="27,74,0,0" VerticalAlignment="Top" Width="478" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="DataGrid_SelectionChanged"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="27,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnAdd_Click" >
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="27,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnAdd_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="176,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnUpdate_Click" >
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="176,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnUpdate_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnEnable" Content="Disable" HorizontalAlignment="Left" Margin="332,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnEnable_Click" >
+        <Button x:Name="btnEnable" Content="Disable" HorizontalAlignment="Left" Margin="332,373,0,0" VerticalAlignment="Top" Height="56" Width="111" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnEnable_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -63,12 +63,12 @@
         <ComboBox x:Name="cmbLevel" HorizontalAlignment="Left" Height="20" Margin="585,334,0,0" VerticalAlignment="Top" Width="205"/>
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,375,0,0" TextWrapping="Wrap" Text="Points" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <TextBlock x:Name="txtPoints" HorizontalAlignment="Left" Height="26" Margin="585,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FFEE0808"/>
-        <Button x:Name="btnReload" Content="🔃" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnReload_Click">
+        <Button x:Name="btnReload" Content="🔃" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnReload_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnDetail" Content="Detail" HorizontalAlignment="Left" Margin="703,373,0,0" VerticalAlignment="Top" Height="56" Width="71" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnDetail_Click" >
+        <Button x:Name="btnDetail" Content="Detail" HorizontalAlignment="Left" Margin="703,373,0,0" VerticalAlignment="Top" Height="56" Width="71" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnDetail_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

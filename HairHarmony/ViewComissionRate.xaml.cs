@@ -24,12 +24,14 @@ namespace PRN212_HairHarmony
     {
         private readonly IStylistServiceService stylistServiceService;
         private readonly IOrderService orderService;
+        private readonly IServiceService serviceService;
         private Account? account;
         public ViewComissionRate()
         {
             InitializeComponent();
             stylistServiceService = new StylistServiceService();
             orderService = new OrderService();
+            serviceService = new ServiceService();  
             account = Application.Current.Properties["LoggedAccount"] as Account;
 
             switch (account.RoleId)
@@ -51,6 +53,7 @@ namespace PRN212_HairHarmony
             InitializeComponent();
             stylistServiceService = new StylistServiceService();
             orderService = new OrderService();
+            serviceService = new ServiceService();
             account = Application.Current.Properties["LoggedAccount"] as Account;
 
             switch (account.RoleId)
@@ -108,7 +111,7 @@ namespace PRN212_HairHarmony
                 return;
             }    
             StylistService stylistService = stylistServiceService.GetStylistServiceByStylistIDAndServiceID(id, ser);
-            this.txtServiceID.Text = stylistService.ServiceId.ToString();
+            this.txtServiceID.Text = serviceService.GetServiceByID(stylistService.ServiceId).ServiceName;
             this.txtComission.Text = stylistService.CommissionRate.ToString();
             this.ckbRate.IsChecked = stylistService.Status;
             this.tblStylistID.Text = stylistService.StylistId;
@@ -243,6 +246,6 @@ namespace PRN212_HairHarmony
             this.dtgService.SelectedItem = null;
         }
 
-        
+       
     }
 }

@@ -6,24 +6,24 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="FeedbackWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowStyle="None">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="214*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="Feed back" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
-        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

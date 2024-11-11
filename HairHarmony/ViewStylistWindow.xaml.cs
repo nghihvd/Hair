@@ -36,11 +36,11 @@ namespace PRN212_HairHarmony
             InitializeComponent();
             accountService = new AccountService();
             btnAdd.Visibility = Visibility.Hidden;
-            btnEnable.Visibility = Visibility.Hidden;   
+            btnEnable.Visibility = Visibility.Hidden;
             btnDetail.Visibility = Visibility.Hidden;
             btnUpdate.Visibility = Visibility.Hidden;
             tblSalary.Visibility = Visibility.Hidden;
-            txtSalary.Visibility = Visibility.Hidden;   
+            txtSalary.Visibility = Visibility.Hidden;
 
             LoadGridMember();
         }
@@ -63,7 +63,7 @@ namespace PRN212_HairHarmony
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if(acc != null)
+            if (acc != null)
             {
                 this.Hide();
                 HomeWindow homeWindow = new HomeWindow();
@@ -83,7 +83,7 @@ namespace PRN212_HairHarmony
             DataGridRow row =
                             (DataGridRow)dataGrid.ItemContainerGenerator
                             .ContainerFromIndex(dataGrid.SelectedIndex);
-            if(row == null)
+            if (row == null)
             {
                 return;
             }
@@ -91,9 +91,9 @@ namespace PRN212_HairHarmony
                 dataGrid.Columns[0].GetCellContent(row)?.Parent as DataGridCell;
             if (rowColum == null) return;
             string id = ((TextBlock)rowColum.Content).Text;
-            if(id == null) return;
+            if (id == null) return;
             Account ac = accountService.getAccountByID(id);
-            if (ac == null) return; 
+            if (ac == null) return;
             this.txtEmail.Text = ac.Email;
             this.txtFullName.Text = ac.Name;
             this.txtPassword.Password = ac.Password;
@@ -121,15 +121,16 @@ namespace PRN212_HairHarmony
                 || string.IsNullOrEmpty(this.txtPhoneNumber.Text)
                 || string.IsNullOrEmpty(this.txtEmail.Text)
 
-                || string.IsNullOrEmpty(this.txtFullName.Text))
+                || string.IsNullOrEmpty(this.txtFullName.Text) ||
+                cmbLevel.SelectedItem == null)
             {
-                MessageBox.Show("Please enter all information.","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Please enter all information.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (accountService.getAccountByID(this.txtStylistID.Text) != null)
             {
                 MessageBox.Show("Account already exist. Please enter another user name",
-                    "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -137,13 +138,13 @@ namespace PRN212_HairHarmony
             if (!Regex.IsMatch(this.txtPhoneNumber.Text, pattern))
             {
                 MessageBox.Show("Phone number has to 9 to 11 numbers and start with 0",
-                    "Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             string patternEmail = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             if (!Regex.IsMatch(this.txtEmail.Text, patternEmail))
             {
-                MessageBox.Show("Wrong pattern email","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Wrong pattern email", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 return;
             }
@@ -158,7 +159,14 @@ namespace PRN212_HairHarmony
                 account.Phone = txtPhoneNumber.Text;
                 account.RoleId = 2;
                 account.Name = txtFullName.Text;
-                account.Salary = int.Parse(txtSalary.Text.ToString());
+                if (string.IsNullOrEmpty(txtSalary.Text))
+                {
+                    account.Salary = 0;
+                }
+                else
+                {
+                    account.Salary = int.Parse(txtSalary.Text.ToString());
+                }
                 account.Level = cmbLevel.SelectedValue.ToString();
                 account.LoyaltyPoints = 0;
                 bool result = accountService.RegisAccount(account);
@@ -169,9 +177,9 @@ namespace PRN212_HairHarmony
                 }
                 else
                 {
-                    MessageBox.Show("Something wrong please check again.","Confirmation",MessageBoxButton.OK,MessageBoxImage.Error);
+                    MessageBox.Show("Something wrong please check again.", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                
+
             }
             resetInput();
             LoadGrid();
@@ -205,7 +213,7 @@ namespace PRN212_HairHarmony
             decimal salary;
             if (!decimal.TryParse(this.txtSalary.Text, out salary))
             {
-                MessageBox.Show("Salary is wrong","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Salary is wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (accountService.getAccountByID(this.txtStylistID.Text) != null)
@@ -233,16 +241,16 @@ namespace PRN212_HairHarmony
                 bool result = accountService.UpdateSylistAcc(acc);
                 if (result)
                 {
-                    MessageBox.Show($"Update account {this.txtStylistID.Text} success.","Success",MessageBoxButton.OK,MessageBoxImage.Information);
+                    MessageBox.Show($"Update account {this.txtStylistID.Text} success.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Something wrong. Please check again.","Error",MessageBoxButton.OK,MessageBoxImage.Information);
+                    MessageBox.Show("Something wrong. Please check again.", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Account not exist","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Account not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.LoadGrid();
             this.resetInput();
@@ -258,7 +266,7 @@ namespace PRN212_HairHarmony
             bool result = accountService.EnableStylist(this.txtStylistID.Text);
             if (result)
             {
-                MessageBox.Show("Enalble Sucess");
+                MessageBox.Show("Disable Success");
                 this.LoadGrid();
                 this.resetInput();
             }
@@ -282,6 +290,6 @@ namespace PRN212_HairHarmony
             ViewComissionRate viewComissionRate = new ViewComissionRate();
             viewComissionRate.Show();
         }
- 
+
     }
 }

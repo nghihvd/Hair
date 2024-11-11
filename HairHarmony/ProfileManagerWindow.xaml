@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="ProfileManagerWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,74,0,0" FontSize="16" Text="AccountID:" FontWeight="Bold"/>
         <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,70,0,0" Width="200" Height="30" IsReadOnly="True" />
 
@@ -21,19 +21,19 @@
 
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,114,0,0" FontSize="16" Text="Phone number:" FontWeight="Bold"/>
         <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,110,0,0" Width="200" Height="30"/>
-        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click" >
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" >
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,286,0,0" FontSize="16" FontWeight="Bold"><Run Text="Confirm new "/><LineBreak/><Run Text="password:"/></TextBlock>
         <PasswordBox x:Name="txtConfirmPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,292,0,0" Width="200" Height="30"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="218,360,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF72B359" FontSize="16" FontWeight="Bold"  Foreground="#FFF7F3F3" Click="btnUpdate_Click">
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="218,360,0,0" VerticalAlignment="Top" Height="34" Width="342" Background="#FF8B5A2B" FontSize="16" FontWeight="Bold"  Foreground="#FFF7F3F3" Click="btnUpdate_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

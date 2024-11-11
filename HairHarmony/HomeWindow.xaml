@@ -6,36 +6,36 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="HomeWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
 
-        <Button x:Name="btnBookService" Content="Book Services" HorizontalAlignment="Center" Margin="0,189,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnBookService_Click">
+        <Button x:Name="btnBookService" Content="Book Services" HorizontalAlignment="Center" Margin="0,189,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnBookService_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnStylist" Content="View Stylists" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnStylist_Click">
+        <Button x:Name="btnStylist" Content="View Stylists" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnStylist_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="206,42,0,0" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="419" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnAppointment" Content="Appointments" HorizontalAlignment="Center" Margin="0,272,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnAppointment_Click" >
+        <Button x:Name="btnAppointment" Content="Appointments" HorizontalAlignment="Center" Margin="0,272,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnAppointment_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBlock x:Name="tblWelcome" HorizontalAlignment="Center" Height="38" Margin="0,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
-        <Button x:Name="btnProfile1" Content="👤" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnProfile_Click" >
+        <Button x:Name="btnProfile1" Content="👤" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnProfile_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

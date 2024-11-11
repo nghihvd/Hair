@@ -6,24 +6,24 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="ViewAppointment" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFD5EFCD" Margin="0,3,0,-3" Grid.RowSpan="2">
+    <Grid Background="#FFF6F0D4" Margin="0,3,0,-3" Grid.RowSpan="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="214*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnLogout1" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
+        <Button x:Name="btnLogout1" Content="📲" HorizontalAlignment="Left" Margin="639,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" Grid.Row="1" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnClose1" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+        <Button x:Name="btnClose1" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="420" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="View Appointments" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
-        <Button x:Name="btnBack1" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
+        <Button x:Name="btnBack1" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -39,12 +39,12 @@
         <TextBox x:Name="txtCustomerID" HorizontalAlignment="Left" Margin="519,227,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="519,388,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
         <ListBox x:Name="lbServiceName" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="519,266,26,56" Width="255" Height="106"/>
-        <Button x:Name="btnDeleteAppointment" Content="Delete" HorizontalAlignment="Left" Margin="707,72,0,0" VerticalAlignment="Top" Height="42" Width="67" Background="#FF72B359" FontSize="20" FontWeight="Bold"  Foreground="White"  Grid.Row="1" Click="btnDeleteAppointment_Click" >
+        <Button x:Name="btnDeleteAppointment" Content="Delete" HorizontalAlignment="Left" Margin="707,72,0,0" VerticalAlignment="Top" Height="42" Width="67" Background="#FF8B5A2B" FontSize="20" FontWeight="Bold"  Foreground="White"  Grid.Row="1" Click="btnDeleteAppointment_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnReload" Content="🔃" HorizontalAlignment="Left" Margin="116,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnReload_Click">
+        <Button x:Name="btnReload" Content="🔃" HorizontalAlignment="Left" Margin="116,4,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnReload_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

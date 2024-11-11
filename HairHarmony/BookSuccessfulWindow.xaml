@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="BookSuccessfulWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="214*"/>
             </Grid.RowDefinitions>
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
@@ -39,7 +39,7 @@
         </TextBlock>
         
 
-        <Button x:Name="btnBookReturnHome" Content="Go to home page" HorizontalAlignment="Left" Margin="539,363,0,0" VerticalAlignment="Top" Height="42" Width="211" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBookReturnHome_Click" >
+        <Button x:Name="btnBookReturnHome" Content="Go to home page" HorizontalAlignment="Left" Margin="539,363,0,0" VerticalAlignment="Top" Height="42" Width="211" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBookReturnHome_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

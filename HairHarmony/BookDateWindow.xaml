@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="BookDateWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="214*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" Grid.Row="1">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,4,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBack_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -26,7 +26,7 @@
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="193,72,0,0" TextWrapping="Wrap" Text="Select date and time" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Row="1"/>
 
 
-        <Button x:Name="btnBookSerNext" Content="Next" HorizontalAlignment="Left" Margin="592,363,0,0" VerticalAlignment="Top" Height="42" Width="158" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBookSerNext_Click" >
+        <Button x:Name="btnBookSerNext" Content="Next" HorizontalAlignment="Left" Margin="592,363,0,0" VerticalAlignment="Top" Height="42" Width="158" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnBookSerNext_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

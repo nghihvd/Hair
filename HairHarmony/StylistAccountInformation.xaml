@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="StylistAccountInformation" Height="450" Width="800">
-    <Grid Background="#FFD5EFCD">
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
+    <Grid Background="#FFF6F0D4">
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" Margin="0,336,0,0" VerticalAlignment="Top" Height="56" Width="112" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnUpdate_Click" RenderTransformOrigin="0.242,0.434" >
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Center" Margin="0,336,0,0" VerticalAlignment="Top" Height="47" Width="418" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnUpdate_Click" RenderTransformOrigin="0.242,0.434" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -37,7 +37,7 @@
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="588,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" Foreground="#FFEE0808"/>
 
 
-        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="RegisterWindow" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
         <TextBlock HorizontalAlignment="Left" Margin="215,0,0,0" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="419" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout"/>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="198,72,0,0" TextWrapping="Wrap" Text="Register" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="36" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" FontSize="18">
@@ -39,7 +39,7 @@
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="10,120,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="68" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.485,1.154"/>
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="10,199,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="68" FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.485,1.154"/>
         <TextBlock HorizontalAlignment="Left" Height="46" Margin="14,272,0,0" TextWrapping="Wrap" Text="Confirm password" VerticalAlignment="Top" Width="68" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Margin="540,347,0,0" VerticalAlignment="Top" Height="52" Width="192" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnRegister_Click" Foreground="#FFF7F3F3">
+        <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Margin="540,347,0,0" VerticalAlignment="Top" Height="52" Width="192" Background="#FF8B5A2B" FontSize="16" FontWeight="Bold" Click="btnRegister_Click" Foreground="#FFF7F3F3">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -50,12 +50,12 @@
             </TextBox.Effect>
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Height="46" Margin="406,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" FontWeight="Bold" FontSize="14"><Run Text="Full"/><LineBreak/><Run Text="name"/></TextBlock>
-        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="732,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" >
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="732,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="14,15,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="14,15,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

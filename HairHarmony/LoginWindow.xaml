@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HairHarmony"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="#FFD5EFCD" Width="800" Height="450">
+        Title="LoginWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FFFEFAE0">
+    <Grid Background="#FFF6F0D4" Width="800" Height="450">
 
         <TextBlock HorizontalAlignment="Left" Margin="206,42,0,0" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="419" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout"/>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="36" Margin="218,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="441" FontSize="16">
@@ -16,12 +16,12 @@
         </TextBox>
         <TextBlock HorizontalAlignment="Left" Margin="103,179,0,0" TextWrapping="Wrap" Text="Username " VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
         <TextBlock HorizontalAlignment="Left" Margin="103,260,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="218,337,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnLogin_Click" Foreground="#FFF7F3F3">
+        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="218,337,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF8B5A2B" FontSize="16" FontWeight="Bold" Click="btnLogin_Click" Foreground="#FFF7F3F3">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="52" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnCancel_Click" Foreground="#FFF7F3F3">
+        <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="52" Background="#FF8B5A2B" FontSize="16" FontWeight="Bold" Click="btnCancel_Click" Foreground="#FFF7F3F3">
             <Button.Effect>
                 <DropShadowEffect/>
 
@@ -33,7 +33,7 @@
             </PasswordBox.Effect>
         </PasswordBox>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="206,119,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="417" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="btnRegis" Content="Register" HorizontalAlignment="Left" Margin="543,337,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF72B359" FontSize="16" FontWeight="Bold" Click="btnRegis_Click" Foreground="#FFF7F3F3">
+        <Button x:Name="btnRegis" Content="Register" HorizontalAlignment="Left" Margin="543,337,0,0" VerticalAlignment="Top" Height="34" Width="116" Background="#FF8B5A2B" FontSize="16" FontWeight="Bold" Click="btnRegis_Click" Foreground="#FFF7F3F3">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
