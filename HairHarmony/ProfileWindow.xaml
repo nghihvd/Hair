@@ -8,21 +8,28 @@
     <Grid Background="#FFF6F0D4">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Margin="0,20,0,0" Text="YOUR ACCOUNT INFORMATION"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,70,0,0" FontSize="16" Text="AccountID:" FontWeight="Bold"/>
-        <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,70,0,0" Width="200" Height="30" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,97,0,0" FontSize="16" Text="AccountID:" FontWeight="Bold"/>
+        <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,93,0,0" Width="200" Height="30" IsReadOnly="True"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,110,0,0" FontSize="16" Text="Password:" FontWeight="Bold"/>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,110,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,150,0,0" FontSize="16" Text="New Password:" FontWeight="Bold"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,150,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,150,0,0" FontSize="16" Text="Full Name:" FontWeight="Bold"/>
-        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,150,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,190,0,0" FontSize="16" Text="Confirm New Password:" FontWeight="Bold"/>
+        <PasswordBox x:Name="txtConfirmPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,190,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,190,0,0" FontSize="16" Text="Email:" FontWeight="Bold"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,190,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,230,0,0" FontSize="16" Text="Full Name:" FontWeight="Bold"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,230,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,230,0,0" FontSize="16" Text="Phone number:" FontWeight="Bold"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,230,0,0" Width="200" Height="30"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,330,0,0" Width="120" Height="40" Background="#FF8B5A2B" Click="btnUpdate_Click"/>
-        <Button x:Name="btnGoHome" Content="Go To Home Page" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="290,330,0,0" Width="150" Height="40" Background="#FF8B5A2B" Click="btnGoHome_Click"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,270,0,0" FontSize="16" Text="Email:" FontWeight="Bold"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,270,0,0" Width="200" Height="30"/>
+
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,310,0,0" FontSize="16" Text="Phone number:" FontWeight="Bold"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,310,0,0" Width="200" Height="30"/>
+
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,350,0,0" FontSize="16" Text="Point:" FontWeight="Bold"/>
+        <TextBox x:Name="txtPoint" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,350,0,0" Width="200" Height="30" IsReadOnly="True"/>
+
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,400,0,0" Width="120" Height="40" Background="#FF8B5A2B" Click="btnUpdate_Click"/>
+        <Button x:Name="btnGoHome" Content="Go To Home Page" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="290,400,0,0" Width="150" Height="40" Background="#FF8B5A2B" Click="btnGoHome_Click"/>
     </Grid>
 </Window>

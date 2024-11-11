@@ -110,6 +110,30 @@ namespace HairHarmony_DAOs
 
                     dbContext.Feedbacks.Add(feedback);
                     dbContext.SaveChanges();
+                    var stylistFeedbacks = dbContext.Feedbacks.Where(f => f.StylistId == stylistId).ToList();
+
+                    if (stylistFeedbacks.Any())
+                    {
+                        var averageRating = stylistFeedbacks.Average(f => f.Rating);
+                        var roundedUpRating = (int)Math.Ceiling((decimal)averageRating);
+
+                        var stylistAccount = dbContext.Accounts.FirstOrDefault(a => a.AccountId == stylistId);
+                        if (stylistAccount != null)
+                        {
+                            stylistAccount.LoyaltyPoints = roundedUpRating;
+
+                            dbContext.Update(stylistAccount);
+                            dbContext.SaveChanges();
+                        }
+                        else
+                        {
+                            throw new Exception($"Stylist with ID {stylistId} not found in Accounts.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No feedbacks found for stylist with ID {stylistId}.");
+                    }
                 }
                 else
                 {
@@ -119,7 +143,6 @@ namespace HairHarmony_DAOs
                     dbContext.Update(feedback);
                     dbContext.SaveChanges();
                 }
-
 
             }
             catch (Exception ex)

@@ -28,6 +28,7 @@ namespace PRN212_HairHarmony
             {
                 txtFeedback.Text = feedback.Comments;
                 txtPoints.Text = feedback.Rating?.ToString() ?? "10";
+                btnSubmit.IsEnabled = true;
             }
             else
             {
