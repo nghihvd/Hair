@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HairHarmony"
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFD5EFCD" Width="800" Height="450">
 
         <TextBlock HorizontalAlignment="Left" Margin="206,42,0,0" TextWrapping="Wrap" Text="HAIR HARMONY" VerticalAlignment="Top" Height="63" Width="419" FontWeight="Bold" TextAlignment="Center" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="VNI-Standout"/>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="36" Margin="218,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="441" FontSize="16">
