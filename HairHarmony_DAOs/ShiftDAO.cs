@@ -76,5 +76,11 @@ namespace HairHarmony_DAOs
                 dbContext.SaveChanges();
             }
         }
+
+        public void DeleteAllShifts(List<Shift> shifts)
+        {
+            dbContext.RemoveRange(shifts);
+            dbContext.SaveChanges();
+        }
     }
 }

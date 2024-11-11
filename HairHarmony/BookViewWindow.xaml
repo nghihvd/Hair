@@ -50,5 +50,10 @@
                 <DropShadowEffect/>
             </TextBox.Effect>
         </TextBox>
+        <Button x:Name="btnCancel"  Content="Cancel" HorizontalAlignment="Left" Margin="27,11,0,0" VerticalAlignment="Top" Height="42" Width="115" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Grid.Row="1" Click="btnCancel_Click" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>

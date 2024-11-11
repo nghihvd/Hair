@@ -31,8 +31,8 @@ namespace PRN212_HairHarmony
         private Appointment currentAppointment;
         private Account currentAccount;
         private List<StylistService> allStylistService;
-
         private int currentServiceIndex = 0;
+        private List<Shift> allShiftCreated;
 
         public BookStylistWindow(List<Service> selectedServices, DateTime selectedDateTime)
         {
@@ -45,6 +45,7 @@ namespace PRN212_HairHarmony
             orderService = new OrderService();
             stylistServiceService = new StylistServiceService();
             currentAccount = (Account)Application.Current.Properties["LoggedAccount"];
+            allShiftCreated = new List<Shift>();
 
             currentAppointment = appointmentService.CreateNewAppointment(selectedDateTime, currentAccount.AccountId);
             allStylistService = stylistServiceService.getListServiceStylist();
@@ -90,11 +91,6 @@ namespace PRN212_HairHarmony
             }
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -104,7 +100,7 @@ namespace PRN212_HairHarmony
         {
             if (selectedServices.Count == currentServiceIndex)
             {
-                BookViewWindow bookViewWindow = new BookViewWindow(selectedServices, selectedDateTime);
+                BookViewWindow bookViewWindow = new BookViewWindow(selectedServices, selectedDateTime, currentAppointment, allShiftCreated);
                 bookViewWindow.Show();
                 this.Close();
             } else
@@ -166,6 +162,7 @@ namespace PRN212_HairHarmony
                     selectedDateTime = selectedDateTime.Add(TimeSpan.FromMinutes((long)selectedService.Duration));
 
                     shiftService.AddShift(newShift);
+                    allShiftCreated.Add(newShift);
                     MessageBox.Show("Shift created for the stylist.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     currentServiceIndex += 1;
@@ -199,6 +196,21 @@ namespace PRN212_HairHarmony
                 txtStylistPoint.Text = selectedStylist.LoyaltyPoints.ToString();
                 txtStylistPhoneNum.Text = selectedStylist.Phone;
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (allShiftCreated.Count > 0)
+            {
+                shiftService.DeleteAllShifts(allShiftCreated);
+            }
+            orderService.DeleteOrdersByAppointmentId(currentAppointment.AppointmentId);
+            appointmentService.RemoveByID(currentAppointment.AppointmentId);
+            
+            MessageBox.Show("Cancel booking successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            var homeWindow = new HomeWindow();
+            homeWindow.Show();
+            this.Close();
         }
     }
 }

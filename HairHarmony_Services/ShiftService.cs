@@ -27,5 +27,7 @@ namespace HairHarmony_Services
         public void AddShift(Shift shift) => shiftRepo.AddShift(shift);
 
         public void UpdateShift(Shift shift) => shiftRepo.UpdateShift(shift);
+
+        public void DeleteAllShifts(List<Shift> shifts) =>shiftRepo.DeleteAllShifts(shifts);
     }
 }

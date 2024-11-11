@@ -20,5 +20,9 @@ namespace HairHarmony_Repository
         public void AddShift(Shift shift) => ShiftDAO.Instance.AddShift(shift);
 
         public void UpdateShift(Shift shift) => ShiftDAO.Instance.UpdateShift(shift);
+
+        public void DeleteAllShifts(List<Shift> shifts) =>ShiftDAO.Instance.DeleteAllShifts(shifts);
+
+
     }
 }

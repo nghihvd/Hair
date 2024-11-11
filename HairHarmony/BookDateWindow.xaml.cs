@@ -42,8 +42,6 @@ namespace PRN212_HairHarmony
                 minuteComboBox.Items.Add(minute.ToString("D2")); 
             }
 
-
-
             LoadSelectedServices();
         }
 

@@ -14,5 +14,7 @@ namespace HairHarmony_Services
         bool IsStylistAvailable(string stylistId, DateTime date, TimeSpan startTime, TimeSpan endTime);
         void AddShift(Shift shift);
         void UpdateShift(Shift shift);
+
+        public void DeleteAllShifts(List<Shift> shifts);
     }
 }

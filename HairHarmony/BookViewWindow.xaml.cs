@@ -1,4 +1,5 @@
 ﻿using HairHarmony_BusinessObject;
+using HairHarmony_Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,27 @@ namespace PRN212_HairHarmony
     /// </summary>
     public partial class BookViewWindow : Window
     {
+        private readonly IShiftService shiftService;
+        private readonly IAppointmentService appointmentService;
+        private readonly IOrderService orderService;
+
         private List<Service> selectedServices;
         private DateTime selectedDateTime;
         private Account currentAccount;
+        Appointment currentAppointment;
+        List<Shift> allShiftCreated;
 
-        public BookViewWindow(List<Service> selectedServices, DateTime selectedDateTime)
+        public BookViewWindow(List<Service> selectedServices, DateTime selectedDateTime, Appointment currentAppointment,List<Shift> allShiftCreated)
         {
             InitializeComponent();
+            shiftService = new ShiftService();
+            appointmentService = new AppointmentService();
+            orderService = new OrderService();
+
             this.selectedServices = selectedServices;
             this.selectedDateTime = selectedDateTime;
+            this.currentAppointment= currentAppointment;
+            this.allShiftCreated = allShiftCreated;
             currentAccount = (Account)Application.Current.Properties["LoggedAccount"];
 
             txtCusName.Text = currentAccount.Name;
@@ -55,6 +68,21 @@ namespace PRN212_HairHarmony
         {
             BookSuccessfulWindow bookSuccessfulWindow = new BookSuccessfulWindow();
             bookSuccessfulWindow.Show();
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (allShiftCreated.Count > 0)
+            {
+                shiftService.DeleteAllShifts(allShiftCreated);
+            }
+            orderService.DeleteOrdersByAppointmentId(currentAppointment.AppointmentId);
+            appointmentService.RemoveByID(currentAppointment.AppointmentId);
+
+            MessageBox.Show("Cancel booking successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            var homeWindow = new HomeWindow();
+            homeWindow.Show();
             this.Close();
         }
     }
