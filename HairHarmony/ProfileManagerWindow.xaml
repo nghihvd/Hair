@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
-        Title="ProfileManagerWindow" Height="450" Width="800">
+        Title="ProfileManagerWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,74,0,0" FontSize="16" Text="AccountID:" FontWeight="Bold"/>
         <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,70,0,0" Width="200" Height="30" IsReadOnly="True" />
