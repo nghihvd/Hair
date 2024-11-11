@@ -22,6 +22,7 @@ namespace PRN212_HairHarmony
     /// </summary>
     public partial class ViewStylistWindow : Window
     {
+        private Account? acc = null;
         private readonly IAccountService accountService;
         public ViewStylistWindow()
         {
@@ -29,7 +30,25 @@ namespace PRN212_HairHarmony
             accountService = new AccountService();
             LoadGrid();
         }
+        public ViewStylistWindow(Account? acc)
+        {
+            this.acc = acc;
+            InitializeComponent();
+            accountService = new AccountService();
+            btnAdd.Visibility = Visibility.Hidden;
+            btnEnable.Visibility = Visibility.Hidden;   
+            btnDetail.Visibility = Visibility.Hidden;
+            btnUpdate.Visibility = Visibility.Hidden;
+            tblSalary.Visibility = Visibility.Hidden;
+            txtSalary.Visibility = Visibility.Hidden;   
 
+            LoadGridMember();
+        }
+
+        private void LoadGridMember()
+        {
+            dtgStylist.ItemsSource = accountService.getStylistAcc();
+        }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -44,6 +63,13 @@ namespace PRN212_HairHarmony
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            if(acc != null)
+            {
+                this.Hide();
+                HomeWindow homeWindow = new HomeWindow();
+                homeWindow.Show();
+                return;
+            }
             this.Hide();
             HomeManagerWindow managerWindow = new HomeManagerWindow();
             managerWindow.Show();
@@ -63,9 +89,11 @@ namespace PRN212_HairHarmony
             }
             DataGridCell? rowColum =
                 dataGrid.Columns[0].GetCellContent(row)?.Parent as DataGridCell;
-
+            if (rowColum == null) return;
             string id = ((TextBlock)rowColum.Content).Text;
+            if(id == null) return;
             Account ac = accountService.getAccountByID(id);
+            if (ac == null) return; 
             this.txtEmail.Text = ac.Email;
             this.txtFullName.Text = ac.Name;
             this.txtPassword.Password = ac.Password;

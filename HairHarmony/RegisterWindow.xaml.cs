@@ -66,7 +66,7 @@ namespace PRN212_HairHarmony
                 MessageBox.Show("Phone number has to 9 to 11 numbers and start with 0", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            string patterEmail = @"^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]+$";
+            string patterEmail = @"^[^@\s]+@[^@\s]+\.[^@\s]{2,}+$";
             if (!Regex.IsMatch(this.txtEmail.Text, patterEmail))
             {
                 MessageBox.Show("Invalid Email","Error",MessageBoxButton.OK, MessageBoxImage.Error);

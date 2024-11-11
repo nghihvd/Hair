@@ -27,6 +27,7 @@ namespace PRN212_HairHarmony
            account = Application.Current.Properties["LoggedAccount"] as Account;
             this.tblWelcome.Text = "Welcome "+ account.Name;
         }
+        
 
         private void btnService_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +70,9 @@ namespace PRN212_HairHarmony
 
         private void btnStylist_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            ViewStylistWindow viewStylistWindow = new ViewStylistWindow(account);
+            viewStylistWindow.Show();
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)

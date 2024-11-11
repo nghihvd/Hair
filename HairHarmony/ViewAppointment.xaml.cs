@@ -38,17 +38,6 @@ namespace PRN212_HairHarmony
             LoadGrid();
         }
 
-        public ViewAppointment(Account acc)
-        {
-            InitializeComponent();
-            this.appointmentService = new AppointmentService();
-            this.serviceService = new ServiceService();
-            this.orderService = new OrderService();
-            this.feedbackService = new FeedbackService();
-            this.btnDeleteAppointment.IsEnabled = false;
-            account = acc;
-            this.dtgAppointment.ItemsSource = appointmentService.getAppointmentByCustomerID(acc.AccountId);
-        }
 
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -66,18 +55,9 @@ namespace PRN212_HairHarmony
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            switch (account.RoleId)
-            {
-                case 1:
-                    HomeManagerWindow HomeManagerWindow = new HomeManagerWindow();
-                    HomeManagerWindow.Show();
-                    break;
-                case 3:
-                    HomeWindow homeWindow = new HomeWindow();
-                    homeWindow.Show();
-                    break;
-            }
-
+            HomeManagerWindow HomeManagerWindow = new HomeManagerWindow();
+            HomeManagerWindow.Show();
+            
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

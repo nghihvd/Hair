@@ -8,12 +8,12 @@
         Title="HomeWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="#FFD5EFCD">
 
-        <Button x:Name="btnBookService" Content="Book Services" HorizontalAlignment="Left" Margin="57,189,0,0" VerticalAlignment="Top" Height="53" Width="275" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnBookService_Click">
+        <Button x:Name="btnBookService" Content="Book Services" HorizontalAlignment="Center" Margin="0,189,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnBookService_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnStylist" Content="View Stylists" HorizontalAlignment="Left" Margin="57,310,0,0" VerticalAlignment="Top" Height="54" Width="275" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnStylist_Click">
+        <Button x:Name="btnStylist" Content="View Stylists" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnStylist_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -29,7 +29,7 @@
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnAppointment" Content="Appointments" HorizontalAlignment="Left" Margin="488,189,0,0" VerticalAlignment="Top" Height="53" Width="275" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnAppointment_Click" >
+        <Button x:Name="btnAppointment" Content="Appointments" HorizontalAlignment="Center" Margin="0,272,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF72B359" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnAppointment_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>

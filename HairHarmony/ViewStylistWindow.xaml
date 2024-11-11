@@ -57,7 +57,7 @@
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="18" Margin="585,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
         <TextBlock HorizontalAlignment="Left" Height="36" Margin="510,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"><Run Text="Phone "/><LineBreak/><Run Text="number"/><LineBreak/><Run/></TextBlock>
         <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="18" Margin="585,115,0,0" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,290,0,0" TextWrapping="Wrap" Text="Salary" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock x:Name="tblSalary" HorizontalAlignment="Left" Height="26" Margin="510,290,0,0" TextWrapping="Wrap" Text="Salary" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <TextBox x:Name="txtSalary" HorizontalAlignment="Left" Height="18" Margin="585,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,329,0,0" TextWrapping="Wrap" Text="Level" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <ComboBox x:Name="cmbLevel" HorizontalAlignment="Left" Height="20" Margin="585,334,0,0" VerticalAlignment="Top" Width="205"/>
