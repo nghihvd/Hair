@@ -41,7 +41,8 @@ namespace PRN212_HairHarmony
             btnUpdate.Visibility = Visibility.Hidden;
             tblSalary.Visibility = Visibility.Hidden;
             txtSalary.Visibility = Visibility.Hidden;
-
+            txtPassword.Visibility = Visibility.Hidden;
+            tblPass.Visibility = Visibility.Hidden;
             LoadGridMember();
         }
 

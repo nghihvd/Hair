@@ -40,7 +40,7 @@
         </Button>
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,71,0,0" TextWrapping="Wrap" Text="Stylist ID" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="txtStylistID" HorizontalAlignment="Left" Height="18" Margin="585,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,111,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock x:Name="tblPass" HorizontalAlignment="Left" Height="26" Margin="510,111,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="18" Margin="585,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="510,150,0,0" TextWrapping="Wrap" Text="Full Name" VerticalAlignment="Top" Width="99" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Height="18" Margin="585,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" RenderTransformOrigin="0.5,0.5">

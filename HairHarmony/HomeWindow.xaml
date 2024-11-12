@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="HomeWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="#FFF6F0D4">
+    <Grid Background="#FFF6F0D4" Height="500" Width="800">
 
         <Button x:Name="btnBookService" Content="Book Services" HorizontalAlignment="Center" Margin="0,189,0,0" VerticalAlignment="Top" Height="48" Width="526" Background="#FF8B5A2B" FontSize="22" FontWeight="Bold" Foreground="White" Click="btnBookService_Click">
             <Button.Effect>

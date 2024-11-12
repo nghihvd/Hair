@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PRN212_HairHarmony"
         mc:Ignorable="d"
         Title="BookServiceWindow" Height="450" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
-    <Grid Background="#FFD5EFCD">
+    <Grid Background="#FFF6F0D4">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="214*"/>

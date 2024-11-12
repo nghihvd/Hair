@@ -8,28 +8,32 @@
     <Grid Background="#FFF6F0D4">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Margin="0,20,0,0" Text="YOUR ACCOUNT INFORMATION"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,97,0,0" FontSize="16" Text="AccountID:" FontWeight="Bold"/>
-        <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,93,0,0" Width="200" Height="30" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,76,0,0" FontSize="16" Text="AccountID:" FontWeight="Bold"/>
+        <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,104,0,0" Width="200" Height="30" IsReadOnly="True"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,150,0,0" FontSize="16" Text="New Password:" FontWeight="Bold"/>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,150,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,240,0,0" FontSize="16" Text="New Password:" FontWeight="Bold"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="107,270,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,190,0,0" FontSize="16" Text="Confirm New Password:" FontWeight="Bold"/>
-        <PasswordBox x:Name="txtConfirmPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,190,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="425,233,0,0" FontSize="16" Text="Confirm New Password:" FontWeight="Bold"/>
+        <PasswordBox x:Name="txtConfirmPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="469,270,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,230,0,0" FontSize="16" Text="Full Name:" FontWeight="Bold"/>
-        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,230,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,159,0,0" FontSize="16" Text="Full Name:" FontWeight="Bold"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,191,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,270,0,0" FontSize="16" Text="Email:" FontWeight="Bold"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,270,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="425,80,0,0" FontSize="16" Text="Email:" FontWeight="Bold"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="448,106,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,310,0,0" FontSize="16" Text="Phone number:" FontWeight="Bold"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,310,0,0" Width="200" Height="30"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="425,163,0,0" FontSize="16" Text="Phone number:" FontWeight="Bold"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="483,191,0,0" Width="200" Height="30"/>
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,350,0,0" FontSize="16" Text="Point:" FontWeight="Bold"/>
-        <TextBox x:Name="txtPoint" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,350,0,0" Width="200" Height="30" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,325,0,0" FontSize="16" Text="Point:" FontWeight="Bold"/>
+        <TextBox x:Name="txtPoint" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,321,0,0" Width="200" Height="30" IsReadOnly="True"/>
 
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,400,0,0" Width="120" Height="40" Background="#FF8B5A2B" Click="btnUpdate_Click"/>
-        <Button x:Name="btnGoHome" Content="Go To Home Page" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="290,400,0,0" Width="150" Height="40" Background="#FF8B5A2B" Click="btnGoHome_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="251,371,0,0" Width="278" Height="40" Background="#FF8B5A2B" Click="btnUpdate_Click" FontWeight="Bold" FontSize="18" Foreground="White">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnGoHome" Content="⬅️" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,16,0,0" Width="78" Height="40" Background="#FF8B5A2B" Click="btnGoHome_Click" Foreground="White"/>
     </Grid>
 </Window>
