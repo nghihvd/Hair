@@ -25,6 +25,8 @@ namespace PRN212_HairHarmony
         private readonly IStylistServiceService stylistServiceService;
         private readonly IAppointmentService appointmentService;
         private readonly IOrderService orderService;
+        private readonly IAccountService accountService;
+        private readonly IServiceService serviceService;
 
         private List<Service> selectedServices;
         private DateTime selectedDateTime;
@@ -39,11 +41,12 @@ namespace PRN212_HairHarmony
             InitializeComponent();
             this.selectedServices = selectedServices;
             this.selectedDateTime = selectedDateTime;
-
+            accountService = new AccountService();
             shiftService = new ShiftService();
             appointmentService = new AppointmentService();
             orderService = new OrderService();
             stylistServiceService = new StylistServiceService();
+            serviceService = new ServiceService();
             currentAccount = (Account)Application.Current.Properties["LoggedAccount"];
             allShiftCreated = new List<Shift>();
 
@@ -71,7 +74,7 @@ namespace PRN212_HairHarmony
         }
         private void LoadAvailableStylists()
         {
-            var stylistList = new AccountService().GetStylists();
+            var stylistList = accountService.GetStylists();
             dtgBookStylist.ItemsSource = stylistList;
         }
 
@@ -136,7 +139,7 @@ namespace PRN212_HairHarmony
                 {
                     if (stylistService.StylistId.Equals(selectedStylist.AccountId))
                     {
-                        if (stylistService.ServiceId.Equals(selectedService.ServiceId))
+                        if (stylistService.ServiceId.Equals(selectedService.ServiceId) && stylistService.Status)
                         {
                             checkStylistService = true;
                         }
@@ -183,7 +186,7 @@ namespace PRN212_HairHarmony
                     }
                 } else
                 {
-                    MessageBox.Show("This stylist is not available during the selected time period or cannot perform this service.", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("This stylist is not available for service.", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
 
@@ -218,5 +221,8 @@ namespace PRN212_HairHarmony
             homeWindow.Show();
             this.Close();
         }
+
+
+    
     }
 }

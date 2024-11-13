@@ -44,7 +44,7 @@ namespace HairHarmony_DAOs
         {
             bool result = false;
             Service search = GetServiceByID(service.ServiceId);
-            if (search == null)
+            if (search == null || !search.ServiceName.Equals(service.ServiceName))
             {
                 dbContext.Services.Add(service);
                 dbContext.SaveChanges();
@@ -103,6 +103,12 @@ namespace HairHarmony_DAOs
             List<Service> services = GetServiceList();
             services.RemoveAll(a => a.Duration == 0);
             return services;
+        }
+
+
+        public Service GetServiceByName(string name)
+        {
+            return dbContext.Services.SingleOrDefault(a => a.ServiceName.Equals(name));
         }
 
 

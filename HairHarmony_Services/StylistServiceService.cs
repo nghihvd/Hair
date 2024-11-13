@@ -63,5 +63,11 @@ namespace HairHarmony_Services
         {
             return repo.GetStylisServiceByStylistId(stylistId);
         }
+
+        public List<StylistService> GetListAvailableStylistByServiceID(int serviceID)
+        {
+            return repo.GetListAvailableStylistByServiceID(serviceID);
+        }
+
     }
 }

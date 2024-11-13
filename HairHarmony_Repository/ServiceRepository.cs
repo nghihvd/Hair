@@ -25,5 +25,7 @@ namespace HairHarmony_Repository
 
         public List<Service> ShowServiceForCustomer() => ServiceDAO.Instance.ShowServiceForCustomer();
 
+        public Service GetServiceByName(string name) => ServiceDAO.Instance.GetServiceByName(name);
+
     }
 }

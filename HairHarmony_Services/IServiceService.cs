@@ -19,5 +19,7 @@ namespace HairHarmony_Services
         public bool DisableService(int ServiceId);
 
         public List<Service> ShowServiceForCustomer();
+
+        public Service GetServiceByName(string name);
     }
 }

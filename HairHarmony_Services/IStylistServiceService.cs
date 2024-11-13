@@ -28,5 +28,7 @@ namespace HairHarmony_Services
 
         public StylistService GetStylisServiceByStylistId(String stylistId);
 
+        public List<StylistService> GetListAvailableStylistByServiceID(int serviceID);
+
     }
 }

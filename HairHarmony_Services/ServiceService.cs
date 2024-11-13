@@ -50,5 +50,10 @@ namespace HairHarmony_Services
         {
             return serviceRepo.ShowServiceForCustomer();
         }
+
+        public Service GetServiceByName(string name)
+        {
+            return serviceRepo.GetServiceByName(name);
+        }
     }
 }

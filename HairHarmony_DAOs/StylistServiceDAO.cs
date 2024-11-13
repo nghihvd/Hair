@@ -124,6 +124,15 @@ namespace HairHarmony_DAOs
             return stylistServices;
         }
 
+        public List<StylistService> GetListAvailableStylistByServiceID(int serviceID)
+        {
+            List<StylistService> stylistServices = getListServiceStylist();
+            stylistServices.RemoveAll(a => a.ServiceId != serviceID || !a.Status);
+
+            return stylistServices;
+        }
+
+
 
         public StylistService GetStylisServiceByStylistId(String stylistId)
         {

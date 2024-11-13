@@ -28,5 +28,7 @@ namespace HairHarmony_Repository
         public bool Delete(string stylistID, int serviceID);
 
         public StylistService GetStylisServiceByStylistId(String stylistId);
+
+        public List<StylistService> GetListAvailableStylistByServiceID(int serviceID);
     }
 }
