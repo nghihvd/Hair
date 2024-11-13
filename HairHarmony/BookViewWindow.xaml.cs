@@ -61,6 +61,12 @@ namespace PRN212_HairHarmony
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
+            if (allShiftCreated.Count > 0)
+            {
+                shiftService.DeleteAllShifts(allShiftCreated);
+            }
+            orderService.DeleteOrdersByAppointmentId(currentAppointment.AppointmentId);
+            appointmentService.RemoveByID(currentAppointment.AppointmentId);
             Application.Current.Shutdown();
         }
 
