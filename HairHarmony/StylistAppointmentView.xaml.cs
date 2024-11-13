@@ -81,6 +81,7 @@ namespace PRN212_HairHarmony
 
                     string appointmentid = ((TextBlock)column0.Content).Text;
                     Appointment appointment = appointmentService.GetById(Int32.Parse(appointmentid));
+                    if(appointment == null) return;
                     txtDateTime.Text = appointment.AppointmentDate.ToString();
                     Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> orders = orderService.GetServiceDetailsByAppointmentID(Int32.Parse(appointmentid));
                     lbService.ItemsSource = orders.Values.SelectMany(list => list).ToList();
