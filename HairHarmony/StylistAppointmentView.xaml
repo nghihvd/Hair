@@ -1,0 +1,41 @@
+﻿<Window x:Class="PRN212_HairHarmony.StylistAppointmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRN212_HairHarmony"
+        mc:Ignorable="d"
+        Title="StylistAppointmentView" Height="450" Width="800">
+    <Grid Background="#FFD5EFCD">
+        <Button x:Name="btnLogout" Content="📲" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" Height="42" Width="48" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnLogout_Click" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnClose" Content="❌" HorizontalAlignment="Left" Margin="727,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnClose_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnBack" Content="⬅️" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Height="42" Width="47" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnBack_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="441,147,0,0" TextWrapping="Wrap" Text="Services Ordered" VerticalAlignment="Top" Width="150" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.56,0.082"/>
+        <Button x:Name="btnFinish" Content="Finish" HorizontalAlignment="Center" Margin="0,357,0,0" VerticalAlignment="Top" Height="56" Width="112" Background="#FF72B359" FontSize="22" FontWeight="Bold"  Foreground="White" Click="btnFinish_Click" RenderTransformOrigin="0.242,0.434" >
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <ListBox x:Name="lbService" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="573,147,49,177"/>
+        <DataGrid x:Name="dtgAppointment" HorizontalAlignment="Left" Height="275" Margin="27,77,0,0" VerticalAlignment="Top" Width="357" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dtgAppoitment_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="441,84,0,0" TextWrapping="Wrap" Text="Customer Name" VerticalAlignment="Top" Width="115" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name ="txtCustomerName" HorizontalAlignment="Left" Margin="573,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" />
+        <TextBox x:Name ="txtDateTime" HorizontalAlignment="Left" Margin="573,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" />
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="441,112,0,0" TextWrapping="Wrap" Text="Date Time" VerticalAlignment="Top" Width="115" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.523,0.327"/>
+        <TextBox x:Name ="txtTotal" HorizontalAlignment="Left" Margin="573,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" />
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="441,284,0,0" TextWrapping="Wrap" Text="Total" VerticalAlignment="Top" Width="115" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.523,0.327"/>
+    </Grid>
+</Window>

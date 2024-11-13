@@ -45,5 +45,11 @@ namespace HairHarmony_Services
         {
             orderrepo.CreateOrder(order);
         }
+
+        public Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId)
+        {
+            return orderrepo.GetServiceDetailsByAppointmentID(appointmentId);
+        }
+
     }
 }

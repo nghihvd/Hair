@@ -124,7 +124,11 @@ namespace HairHarmony_DAOs
             return stylistServices;
         }
 
-        
-      
+
+        public StylistService GetStylisServiceByStylistId(String stylistId)
+        {
+            return dbContext.StylistServices.SingleOrDefault(m => m.StylistId.Equals(stylistId));
+        }
+
     }
 }
