@@ -57,7 +57,7 @@
                 <DropShadowEffect/>
             </TextBox.Effect>
         </TextBox>
-        <ListBox x:Name="lstSelectedServices" HorizontalAlignment="Left" Height="83" Margin="334,339,0,0" VerticalAlignment="Top" Width="220" FontSize="16" Grid.Row="1" SelectionChanged="lstSelectedServices_SelectionChanged">
+        <ListBox x:Name="lstSelectedServices" HorizontalAlignment="Left" Height="83" Margin="334,339,0,0" VerticalAlignment="Top" Width="220" FontSize="16" Grid.Row="1">
             <ListBox.Effect>
                 <DropShadowEffect/>
             </ListBox.Effect>

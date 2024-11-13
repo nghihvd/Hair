@@ -35,7 +35,7 @@ namespace PRN212_HairHarmony
         {
             Account loggedAccount = (Account)Application.Current.Properties["LoggedAccount"];
             AppointmentDAO appointmentDAO = new AppointmentDAO();
-            this.dtgAppointment.ItemsSource = appointmentDAO.GetAppointmentsByUserId(loggedAccount.AccountId);
+            this.dtgAppointment.ItemsSource = appointmentDAO.GetAppointmentsByUserId(loggedAccount.AccountId).Where(a => !a.Status.Equals("Cancelled"));
         }
 
         private Order? selectedOrder;

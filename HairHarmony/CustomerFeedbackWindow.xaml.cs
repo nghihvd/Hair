@@ -62,9 +62,14 @@ namespace PRN212_HairHarmony
                 Feedback f = feedbackService.getFeedbackByAppoinIdAndServiceId(appointmentId, serviceId);
                 if (f == null)
                 {
-                    AddLoyaltyPoints(5);
+                    AddLoyaltyPoints(points);
+                    feedbackService.SaveFeedback(appointmentId, serviceId, feedback, points, stylistId);
                 }
-                feedbackService.SaveFeedback(appointmentId, serviceId, feedback, points, stylistId);
+                else
+                {
+                    MessageBox.Show("Already feedback","Information",MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                
 
             }
             catch (Exception ex)
@@ -81,6 +86,7 @@ namespace PRN212_HairHarmony
             {
                 AccountService accountService = new AccountService();
                 loggedAccount.LoyaltyPoints = (loggedAccount.LoyaltyPoints ?? 0) + pointsToAdd;
+                
                 accountService.UpdateAccountLoyaltyPoints(loggedAccount);
                 Application.Current.Properties["LoggedAccount"] = loggedAccount;
             }
