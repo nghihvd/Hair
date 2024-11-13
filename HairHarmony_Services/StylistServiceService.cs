@@ -58,5 +58,10 @@ namespace HairHarmony_Services
         {
             return repo.Delete(stylistID,serviceID);
         }
+
+        public StylistService GetStylisServiceByStylistId(String stylistId)
+        {
+            return repo.GetStylisServiceByStylistId(stylistId);
+        }
     }
 }

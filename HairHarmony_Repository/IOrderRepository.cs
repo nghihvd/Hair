@@ -20,5 +20,7 @@ namespace HairHarmony_Repository
         public List<Order> GetOrderByStylistIDAndServiceID(string stylistId, int serviceID);
 
         public void CreateOrder(Order order);
+
+        public Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId);
     }
 }

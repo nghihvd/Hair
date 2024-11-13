@@ -53,11 +53,14 @@ namespace PRN212_HairHarmony
             viewComissionRate.Show();
         }
 
-       
+
+
 
         private void btnAppoinment_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            StylistAppointmentView stylistAppointmentView = new StylistAppointmentView(account);
+            stylistAppointmentView.Show();
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
