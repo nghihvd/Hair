@@ -139,7 +139,7 @@ namespace HairHarmony_DAOs
             dbContext.SaveChanges();
         }
 
-        public Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId)
+        public Dictionary<int, List<(int ServiceId, string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId)
         {
             var orderWithService = dbContext.Orders
                 .Where(o => o.AppointmentId == appointmentId)
@@ -148,6 +148,7 @@ namespace HairHarmony_DAOs
                 service => service.ServiceId,
                 (order, service) => new {
                     order.AppointmentId,
+                    serviceId = service.ServiceId,
                     serviceName = service.ServiceName,
                     servicePrice = service.Price,
                     serviceDuration = service.Duration
@@ -155,13 +156,24 @@ namespace HairHarmony_DAOs
 
             if (orderWithService.Any())
             {
-                var result = new Dictionary<int, List<(string?, decimal?, int?)>>();
-                result[appointmentId] = orderWithService.Select(o => (o.serviceName, o.servicePrice, o.serviceDuration)).ToList();
+                var result = new Dictionary<int, List<(int,string?, decimal?, int?)>>();
+                result[appointmentId] = orderWithService.Select(o => (o.serviceId,o.serviceName, o.servicePrice, o.serviceDuration)).ToList();
                 return result;
             }
             return null;
         }
 
+
+        public List<int> GetAppointmentsByStylistId(string stylistId)
+        {
+            var appointments = dbContext.Orders
+                .Where(o => o.StylistId == stylistId)
+                .Select(o => o.AppointmentId)
+                .Distinct()
+                .ToList();
+
+            return appointments;
+        }
     }
 
 

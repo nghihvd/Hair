@@ -21,6 +21,9 @@ namespace HairHarmony_Services
 
         public void CreateOrder(Order order);
 
-        public Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId);
+        public Dictionary<int, List<(int ServiceId, string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId);
+
+        public List<int> GetAppointmentsByStylistId(string stylistId);
+
     }
 }
