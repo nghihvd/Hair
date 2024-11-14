@@ -24,7 +24,9 @@ namespace HairHarmony_Repository
 
         public void CreateOrder(Order order) => OrderDAO.Instance.CreateOrder(order);
 
-        public Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId) => OrderDAO.Instance.GetServiceDetailsByAppointmentID((int)appointmentId);
+        public Dictionary<int, List<(int ServiceId, string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId)=> OrderDAO.Instance.GetServiceDetailsByAppointmentID((int)appointmentId);
+
+        public List<int> GetAppointmentsByStylistId(string stylistId) => OrderDAO.Instance.GetAppointmentsByStylistId(stylistId);
 
     }
 }

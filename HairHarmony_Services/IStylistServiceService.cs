@@ -9,6 +9,7 @@ namespace HairHarmony_Services
 {
     public interface IStylistServiceService
     {
+        
         public List<StylistService> getListServiceStylist();
 
         public List<StylistService> GetStylistServiceByStylistID(string id);
@@ -29,6 +30,9 @@ namespace HairHarmony_Services
         public StylistService GetStylisServiceByStylistId(String stylistId);
 
         public List<StylistService> GetListAvailableStylistByServiceID(int serviceID);
+
+        public List<int> GetServiceIdsByStylistId(string stylistId);
+
 
     }
 }

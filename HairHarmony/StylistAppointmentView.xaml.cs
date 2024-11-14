@@ -63,18 +63,40 @@ namespace PRN212_HairHarmony
             var account = Application.Current.Properties["LoggedAccount"] as Account;
             if (account != null)
             {
-                this.dtgAppointment.ItemsSource = appointmentService.GetAll().Select(a => new { a.AppointmentId, a.AppointmentDate, a.CustomerId, a.Status });
+                // Lấy danh sách appointmentID từ stylist
+                var appointmentIds = orderService.GetAppointmentsByStylistId(account.AccountId);
 
+                // Lấy chi tiết từng appointment dựa trên appointmentID
+                var appointments = appointmentIds
+                    .Select(id => appointmentService.GetById(id))
+                    .Where(a => a != null)
+                    .Select(a => new
+                    {
+                        AppointmentID = a.AppointmentId,
+                        CustomerID = a.CustomerId,
+                        AppointmentDate = a.AppointmentDate,
+                        Status = a.Status
+                    })
+                    .ToList();
+
+                // Gán dữ liệu vào DataGrid
+                this.dtgAppointment.ItemsSource = appointments;
             }
-
         }
+
 
         private void dtgAppoitment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //if (string.IsNullOrEmpty(lbService.SelectedValue.ToString()) || lbService.SelectedValue == null)
+            //{
+            //    return;
+            //}
+
             DataGrid dataGrid = sender as DataGrid;
             if (dataGrid.SelectedIndex >= 0)
             {
                 var row = dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex) as DataGridRow;
+
                 var column0 = dataGrid.Columns[0].GetCellContent(row)?.Parent as DataGridCell;
                 if (column0 != null)
                 {
@@ -83,14 +105,18 @@ namespace PRN212_HairHarmony
                     Appointment appointment = appointmentService.GetById(Int32.Parse(appointmentid));
                     if(appointment == null) return;
                     txtDateTime.Text = appointment.AppointmentDate.ToString();
-                    Dictionary<int, List<(string? ServiceName, decimal? Price, int? Duration)>> orders = orderService.GetServiceDetailsByAppointmentID(Int32.Parse(appointmentid));
+                    Dictionary<int, List<(int ServiceID,string? ServiceName, decimal? Price, int? Duration)>> orders = orderService.GetServiceDetailsByAppointmentID(Int32.Parse(appointmentid));
+                    if(orders == null)
+                    {
+                        return ;
+                    }
                     lbService.ItemsSource = orders.Values.SelectMany(list => list).ToList();
                     Dictionary<int, List<decimal?>> servicePrice = orderService.GetPriceWithServiceIDByAppointmentID(Int32.Parse(appointmentid));
                     decimal? totalAmount = servicePrice.Values.SelectMany(list => list).Sum();
                     txtTotal.Text = totalAmount?.ToString("C") ?? "N/A";
                 }
 
-                var column2 = dataGrid.Columns[2].GetCellContent(row)?.Parent as DataGridCell;
+                var column2 = dataGrid.Columns[1].GetCellContent(row)?.Parent as DataGridCell;
                 if (column2 != null)
                 {
                     string customerID = ((TextBlock)column2.Content).Text;
@@ -106,25 +132,74 @@ namespace PRN212_HairHarmony
 
         private void btnFinish_Click(object sender, RoutedEventArgs e)
         {
-            var account = Application.Current.Properties["LoggedAccount"] as Account;
-
-            if (account != null)
+            try
             {
-                var stylistInfo = stylistServiceService.GetStylisServiceByStylistId(account.AccountId);
-                if (stylistInfo != null && stylistInfo.CommissionRate.HasValue)
+                var account = Application.Current.Properties["LoggedAccount"] as Account;
+                if (account != null)
                 {
+                    var serviceIds = stylistServiceService.GetServiceIdsByStylistId(account.AccountId);
+                    decimal totalCommission = 0;
                     decimal? oldSalary = account.Salary ?? 0;
-                    decimal commissionAmount = totalAmount * (decimal)(stylistInfo.CommissionRate.Value / 100.0); // Convert percentage to decimal
-                    decimal newSalary = oldSalary.Value + commissionAmount;
 
+                    if (serviceIds == null || !serviceIds.Any())
+                    {
+                        MessageBox.Show("No services found for this stylist");
+                        return;
+                    }
 
+                    foreach (var serviceId in serviceIds)
+                    {
+                        var stylistInfo = stylistServiceService.GetStylistServiceByStylistIDAndServiceID(account.AccountId, serviceId);
+                        if (stylistInfo == null)
+                        {
+                            MessageBox.Show($"Not found information of stylist service for service ID: {serviceId}");
+                            continue;
+                        }
+
+                        if (stylistInfo.CommissionRate.HasValue)
+                        {
+                            decimal commissionRate = (decimal)stylistInfo.CommissionRate.Value / 100.0m;
+                            var appointments = orderService.GetAppointmentsByStylistId(account.AccountId);
+
+                            if (appointments != null && appointments.Any())
+                            {
+                                foreach (var appointmentId in appointments)
+                                {
+                                    var services = orderService.GetServiceDetailsByAppointmentID(appointmentId);
+                                    foreach (var serviceDetails in services.Values.SelectMany(s => s))
+                                    {
+                                        if (serviceDetails.ServiceId == serviceId)
+                                        {
+                                            decimal price = serviceDetails.Price ?? 0;
+                                            totalCommission += price * commissionRate;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    decimal newSalary = oldSalary.Value + totalCommission;
                     account.Salary = newSalary;
                     accountService.UpdateAccount(account);
 
+                    MessageBox.Show($"Salary update successful!\nOld Salary: {oldSalary:C}\nCommission: {totalCommission:C}\nNew Salary: {newSalary:C}",
+                                  "Success",
+                                  MessageBoxButton.OK,
+                                  MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No logged account found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+
     }
 }
 

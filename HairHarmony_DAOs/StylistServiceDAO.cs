@@ -43,11 +43,31 @@ namespace HairHarmony_DAOs
             return stylistServices;
 
         }
+        public List<int> GetServiceIdsByStylistId(string stylistId)
+        {
+            return dbContext.StylistServices
+                .Where(s => s.StylistId == stylistId)
+                .Select(s => s.ServiceId)
+                .ToList();
+        }
 
         public StylistService GetStylistServiceByStylistIDAndServiceID(string id, int serviceId)
         {
-            return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id) && a.ServiceId == serviceId);
+            
+            if (string.IsNullOrEmpty(id) || serviceId <= 0)
+            {
+                return null; 
+            }
+
+            var stylistService = dbContext.StylistServices
+                .FirstOrDefault(a => a.StylistId == id && a.ServiceId == serviceId);
+
+            return stylistService; 
+            // return dbContext.StylistServices.SingleOrDefault(a => a.StylistId.Equals(id) && a.ServiceId == serviceId);
+
         }
+
+
 
         public bool DisableServiceStylist(string stylistID, int serviceID)
         {

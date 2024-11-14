@@ -78,7 +78,7 @@ namespace HairHarmony_DAOs
 
         public List<Appointment> GetAll()
         {
-            return dbContext.Appointments .ToList();
+            return dbContext.Appointments.ToList();
         }
 
         public List<Appointment> getAppointmentByCustomerID(string customerId)
