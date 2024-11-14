@@ -29,27 +29,24 @@
             </Button.Effect>
         </Button>
         <DataGrid x:Name="dtgService" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="27,90,416,95" SelectionChanged="DataGrid_SelectionChanged"/>
-        <TextBox x:Name="txtServiceID" HorizontalAlignment="Left" Height="41" Margin="496,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
-        <Label Content="Service Name" HorizontalAlignment="Left" Height="41" Margin="446,123,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Commission Rate" HorizontalAlignment="Left" Height="41" Margin="446,215,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="txtComission" HorizontalAlignment="Left" Height="42" Margin="494,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
-        <Label Content="Status" HorizontalAlignment="Left" Height="41" Margin="446,320,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
-        <CheckBox x:Name="ckbRate" Content="Selected " HorizontalAlignment="Left" Height="34" Margin="614,327,0,0" VerticalAlignment="Top" Width="80" FontSize="16"/>
+        <TextBox x:Name="txtServiceID" HorizontalAlignment="Left" Height="41" Margin="496,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
+        <Label Content="Service Name" HorizontalAlignment="Left" Height="41" Margin="428,184,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Commission Rate" HorizontalAlignment="Left" Height="41" Margin="428,256,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
+        <TextBox x:Name="txtComission" HorizontalAlignment="Left" Height="42" Margin="494,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
+        <Label Content="Status" HorizontalAlignment="Left" Height="41" Margin="471,344,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="ckbRate" Content="Selected " HorizontalAlignment="Left" Height="34" Margin="639,351,0,0" VerticalAlignment="Top" Width="80" FontSize="16"/>
         <Button x:Name="btnAddService" HorizontalAlignment="Left" Margin="27,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF8B5A2B" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Add service" Click="btnAddService_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnEnableService" HorizontalAlignment="Left" Margin="219,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF8B5A2B" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Enable" Click="btnEnableService_Click" >
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
-        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="428,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF8B5A2B" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" Click="btnDisable_Click" >
+        <Button x:Name="btnDisable" HorizontalAlignment="Left" Margin="263,366,0,0" VerticalAlignment="Top" Height="38" Width="137" Background="#FF8B5A2B" FontSize="20" FontWeight="Bold"  Foreground="White" Content="Disable" Click="btnDisable_Click" >
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBlock x:Name="tblStylistID" HorizontalAlignment="Left" Height="36" Margin="428,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="361" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <TextBox x:Name="txtServiceName" HorizontalAlignment="Left" Height="42" Margin="496,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="16"/>
+        <Label Content="ServiceID" HorizontalAlignment="Left" Height="41" Margin="428,105,0,0" VerticalAlignment="Top" Width="99" FontWeight="Bold" FontSize="14"/>
     </Grid>
 </Window>

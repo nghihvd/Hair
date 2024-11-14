@@ -31,13 +31,8 @@ namespace HairHarmony_DAOs
         public List<Feedback> getFeedbackByStylistID(string id)
         {
             List<Feedback> feed = dbContext.Feedbacks.ToList();
-            foreach (Feedback f in feed)
-            {
-                if(f.StylistId != id)
-                {
-                    feed.Remove(f);
-                }
-            }
+            feed.RemoveAll(f => f.StylistId != id);
+            
             return feed;    
         }
         public Feedback getFeedbackByAppoinId(int id)

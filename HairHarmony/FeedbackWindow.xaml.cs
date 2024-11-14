@@ -53,6 +53,7 @@ namespace PRN212_HairHarmony
 
 
             DataGrid dataGrid = sender as DataGrid;
+           
             DataGridRow row =
                 (DataGridRow)dataGrid.ItemContainerGenerator
                 .ContainerFromIndex(dataGrid.SelectedIndex);
@@ -60,6 +61,7 @@ namespace PRN212_HairHarmony
             DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
 
             string id = ((TextBlock)RowColumn.Content).Text;
+            if (id.Trim().Length ==0) return;
             int feedbackID = int.Parse(id);
 
             Feedback feedback = feedbackService.searchFeedback(feedbackID);

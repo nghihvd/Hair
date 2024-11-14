@@ -38,7 +38,7 @@ namespace PRN212_HairHarmony
             {
                 case 1:
                     btnAddService.Visibility = Visibility.Hidden;
-                    btnEnableService.Visibility = Visibility.Hidden;
+                    
                     btnDisable.Visibility = Visibility.Hidden;
                     this.dtgService.ItemsSource = stylistServiceService.getListServiceStylist();
                     break;
@@ -60,7 +60,6 @@ namespace PRN212_HairHarmony
             {
                 case 1:
                     btnAddService.Visibility = Visibility.Hidden;
-                    btnEnableService.Visibility = Visibility.Hidden;
                     btnDisable.Visibility = Visibility.Hidden;
                     this.dtgService.ItemsSource = stylistServiceService.getListServiceStylist();
                     break;
@@ -111,10 +110,11 @@ namespace PRN212_HairHarmony
                 return;
             }    
             StylistService stylistService = stylistServiceService.GetStylistServiceByStylistIDAndServiceID(id, ser);
-            this.txtServiceID.Text = serviceService.GetServiceByID(stylistService.ServiceId).ServiceName;
+            this.txtServiceID.Text =stylistService.ServiceId.ToString() ;
             this.txtComission.Text = stylistService.CommissionRate.ToString();
             this.ckbRate.IsChecked = stylistService.Status;
             this.tblStylistID.Text = stylistService.StylistId;
+            this.txtServiceName.Text = serviceService.GetServiceByID(stylistService.ServiceId).ServiceName;
 
         }
 
@@ -204,7 +204,7 @@ namespace PRN212_HairHarmony
              
             if (result)
             {
-                MessageBox.Show("Disable success", "Success", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Disable success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
             else { MessageBox.Show("Already disable service.", "Announce", MessageBoxButton.OK, MessageBoxImage.Warning); }

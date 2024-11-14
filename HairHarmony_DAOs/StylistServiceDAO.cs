@@ -80,7 +80,7 @@ namespace HairHarmony_DAOs
         {
             bool result = false;
             StylistService stylist = GetStylistServiceByStylistIDAndServiceID(stylistID, serviceID);
-            if (!stylist.Status)
+            if (stylist == null || !stylist.Status)
             {
                 stylist.Status = true;
                 dbContext.Update(stylist);

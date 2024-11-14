@@ -48,7 +48,7 @@ namespace PRN212_HairHarmony
 
         private void LoadGridMember()
         {
-            dtgStylist.ItemsSource = accountService.getStylistAcc();
+            dtgStylist.ItemsSource = accountService.getStylistAcc().Select(a => new {a.AccountId,a.RoleId,a.LoyaltyPoints,a.Phone });
         }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
