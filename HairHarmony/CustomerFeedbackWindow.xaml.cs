@@ -62,14 +62,13 @@ namespace PRN212_HairHarmony
                 Feedback f = feedbackService.getFeedbackByAppoinIdAndServiceId(appointmentId, serviceId);
                 if (f == null)
                 {
-                    AddLoyaltyPoints(points);
+                    AddLoyaltyPoints(5);
                     feedbackService.SaveFeedback(appointmentId, serviceId, feedback, points, stylistId);
                 }
                 else
                 {
                     MessageBox.Show("Already feedback","Information",MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                
 
             }
             catch (Exception ex)
