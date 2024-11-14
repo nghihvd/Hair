@@ -57,5 +57,10 @@ namespace HairHarmony_Services
             return orderrepo.GetAppointmentsByStylistId(stylistId);
         }
 
+        public bool Update(string stylistId, int serviceID, int appointment)
+        {
+            return orderrepo.Update(stylistId,serviceID,appointment);
+        }
+
     }
 }

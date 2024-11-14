@@ -28,5 +28,8 @@ namespace HairHarmony_Repository
 
         public List<int> GetAppointmentsByStylistId(string stylistId) => OrderDAO.Instance.GetAppointmentsByStylistId(stylistId);
 
+        public bool Update(string stylistId, int serviceID, int appointment) => OrderDAO.Instance.Update(stylistId,serviceID,appointment);
+
+        
     }
 }

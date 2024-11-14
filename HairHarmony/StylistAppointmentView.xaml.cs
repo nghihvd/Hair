@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -158,7 +159,7 @@ namespace PRN212_HairHarmony
 
                         if (stylistInfo.CommissionRate.HasValue)
                         {
-                            decimal commissionRate = (decimal)stylistInfo.CommissionRate.Value / 100.0m;
+                            decimal commissionRate = (decimal)stylistInfo.CommissionRate.Value;
                             var appointments = orderService.GetAppointmentsByStylistId(account.AccountId);
 
                             if (appointments != null && appointments.Any())
@@ -168,17 +169,30 @@ namespace PRN212_HairHarmony
                                     var services = orderService.GetServiceDetailsByAppointmentID(appointmentId);
                                     foreach (var serviceDetails in services.Values.SelectMany(s => s))
                                     {
-                                        if (serviceDetails.ServiceId == serviceId)
+                                        if (serviceDetails.ServiceId == serviceId )
                                         {
-                                            decimal price = serviceDetails.Price ?? 0;
-                                            totalCommission += price * commissionRate;
+                                            bool re = orderService.Update( stylistInfo.StylistId, stylistInfo.ServiceId,appointmentId);
+                                            if (re)
+                                            {
+                                                decimal price = serviceDetails.Price ?? 0;
+                                                totalCommission += price * commissionRate;
+                                                
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Already add salary");
+                                                
+                                            }
+
                                         }
                                     }
+                                    appointmentService.UpdateStatus(appointmentId,"Completed");
+
                                 }
                             }
                         }
                     }
-
+                    
                     decimal newSalary = oldSalary.Value + totalCommission;
                     account.Salary = newSalary;
                     accountService.UpdateAccount(account);

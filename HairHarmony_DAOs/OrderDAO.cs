@@ -139,6 +139,20 @@ namespace HairHarmony_DAOs
             dbContext.SaveChanges();
         }
 
+        public bool Update(string stylistId, int serviceID, int appointment)
+        {
+            Order or = GetOrder( stylistId,  serviceID,  appointment);
+            if (or.status == true) return false;
+            or.status = true;
+            dbContext.Update(or);
+            dbContext.SaveChanges();
+            return true;
+        }
+
+        public Order GetOrder(string stylistId, int serviceID, int appointment)
+        {
+            return dbContext.Orders.SingleOrDefault(a => a.StylistId.Equals(stylistId) && a.ServiceId == serviceID && appointment == a.AppointmentId);
+        }
         public Dictionary<int, List<(int ServiceId, string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId)
         {
             var orderWithService = dbContext.Orders

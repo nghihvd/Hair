@@ -24,5 +24,6 @@ namespace HairHarmony_Repository
         public Dictionary<int, List<(int ServiceId, string? ServiceName, decimal? Price, int? Duration)>> GetServiceDetailsByAppointmentID(int appointmentId);
         public List<int> GetAppointmentsByStylistId(string stylistId);
 
+        public bool Update(string stylistId, int serviceID, int appointment);
     }
 }

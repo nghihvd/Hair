@@ -25,5 +25,7 @@ namespace HairHarmony_Services
 
         public List<int> GetAppointmentsByStylistId(string stylistId);
 
+        public bool Update(string stylistId, int serviceID, int appointment);
+
     }
 }
